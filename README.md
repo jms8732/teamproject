@@ -16,10 +16,10 @@
 
 Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 얻습니다:
 
-- 유지보수를 단순화하며 사용자들의 기여를 장려합니다 [contributions](CONTRIBUTING.md)
-- 여러 개발자간의 분할개발을 지원합니다
-- core를 수정하지 않고 고급UI 사용을 지원합니다 [advanced UIs] 
-- 확장성을 극대화합니다 [extensibility](https://github.com/neovim/neovim/wiki/Plugin-UI-architecture)
+- 유지보수를 단순화하며 사용자들의 기여를 장려 [contributions](CONTRIBUTING.md)
+- 여러 개발자간의 분할개발을 지원
+- core를 수정하지 않고 고급UI 사용 지원 [advanced UIs] 
+- 확장성 극대화 [extensibility](https://github.com/neovim/neovim/wiki/Plugin-UI-architecture)
 
 [위키(Wiki)](https://github.com/neovim/neovim/wiki/Introduction) 와 [로드맵]
 을 사용하시면 더 많은 정보를 얻을 수 있습니다.
@@ -32,13 +32,13 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
     make CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make install
 
- 자세한 내용은 [위키(Wiki)](https://github.com/neovim/neovim/wiki/Building-Neovim)를 참조하세요
+ 자세한 내용은 [위키(Wiki)](https://github.com/neovim/neovim/wiki/Building-Neovim) 참조
  
 설치 패키지
 --------------------
 
 패키지는 [Homebrew], [Debian], [Ubuntu], [Fedora], [Arch Linux], 및
-[more](https://github.com/neovim/neovim/wiki/Installing-Neovim)를 참조하세요
+[more](https://github.com/neovim/neovim/wiki/Installing-Neovim)를 참조
 
 프로젝트 레이아웃
 --------------
@@ -51,7 +51,7 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
   `USE_BUNDLED_DEPS` 플래그가 정의되지 않았거나 `USE_BUNDLED` CMake 옵션이 false).
 - [`test/`](test/README.md): 테스트 파일
 
-지금까지 무슨일이 있었는지
+개발이력
 -----------------------
 
 - [MessagePack](https://msgpack.org)을 기반으로한 RPC API
@@ -66,27 +66,28 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
 
 포괄적인 리스트를 보려면 [`:help nvim-features`][nvim-features]를 참조하세요
 
-License
+라이센스
 -------
 
 Neovim은 Apache 2.0 라이센스의 조건에 따라 라이센스가 부여됩니다(Vim 라이선스에 따라 공헌 된 부분 제외)
 
-- [b17d96][license-commit] 이전에 커밋 된 기여물은 Vim 라이센스에 남아 있습니다
+- [b17d96][license-commit] 이전에 커밋 된 기여물은 Vim 라이스에 남아 있습니다
 
-- [b17d96][license-commit] 이후 커밋 된 기여물은 Vim에서 복사 된 것이 아니라면 아파치 2.0 하에서 라이선스가 허가됩니다 (`vim-patch` 토큰에 의해 커밋 로그에서 확인가능)
+- [b17d96][license-commit] 이후 커밋 된 기여물은 Vim에서 복사 된 것이 아니라면 Apache 2.0 하에서 라이선스가 허가됩니다 (`vim-patch` 토큰에 의해 커밋 로그에서 확인가능)
 
- 자세한 내용은 `라이센스`를 참조하세요
+ 자세한 내용은 라이센스를 참조하세요
 
-   Vim은 Charityware(프리웨어)입니다. 원하는만큼 Vim을 사용하고 복사 할 수 있지만, 
-   우간다의 가난한 어린이들을 위한 기부를 권장합니다. 
+
+   Vim은 Charityware(프리웨어)입니다. 원하는만큼 Vim을 사용하고 복사 할 수 있지만,
+   우간다의 가난한 어린이들을 위한 기부를 권장합니다.
    vim 문서의 kcc 섹션을 보거나 다음 URL에있는 ICCF 웹 사이트를 방문하십시오.
+   
 
             http://iccf-holland.org/
             http://www.vim.org/iccf/
             http://www.iccf.nl/
 
-    당신은 Vim의 개발을 후원할 수도 있으며, Vim 후원자는 기능 투표 또한 가능합니다. 
-    
+    당신은 Vim의 개발을 후원할 수도 있으며, Vim 후원자는 기능 투표 또한 가능합니다.
     후원금은 모두 우간다에 기부됩니다.
 
 [license-commit]: https://github.com/neovim/neovim/commit/b17d9691a24099c9210289f16afb1a498a89d803

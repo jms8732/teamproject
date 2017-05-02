@@ -16,85 +16,82 @@
 
 Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 얻습니다:
 
-- Simplify maintenance and encourage [contributions](CONTRIBUTING.md)
-- Split the work between multiple developers
-- Enable [advanced UIs] without modifications to the core
-- Maximize [extensibility](https://github.com/neovim/neovim/wiki/Plugin-UI-architecture)
+- 유지보수를 단순화하며 사용자들의 기여를 장려합니다 [contributions](CONTRIBUTING.md)
+- 여러 개발자간의 분할개발을 지원합니다
+- core를 수정하지 않고 고급UI 사용을 지원합니다 [advanced UIs] 
+- 확장성을 극대화합니다 [extensibility](https://github.com/neovim/neovim/wiki/Plugin-UI-architecture)
 
-See [the wiki](https://github.com/neovim/neovim/wiki/Introduction) and [Roadmap]
-for more information.
+[위키(Wiki)](https://github.com/neovim/neovim/wiki/Introduction) 와 [로드맵]
+을 사용하시면 더 많은 정보를 얻을 수 있습니다.
 
 [![Throughput Graph](https://graphs.waffle.io/neovim/neovim/throughput.svg)](https://waffle.io/neovim/neovim/metrics)
 
-Install from source
+설치 소스
 -------------------
 
     make CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make install
 
-See [the wiki](https://github.com/neovim/neovim/wiki/Building-Neovim) for details.
-
-Install from package!d
+ 자세한 내용은 [위키(Wiki)](https://github.com/neovim/neovim/wiki/Building-Neovim)를 참조하세요
+ 
+설치 패키지
 --------------------
 
-Packages are in [Homebrew], [Debian], [Ubuntu], [Fedora], [Arch Linux], and
-[more](https://github.com/neovim/neovim/wiki/Installing-Neovim).
+패키지는 [Homebrew], [Debian], [Ubuntu], [Fedora], [Arch Linux], 및
+[more](https://github.com/neovim/neovim/wiki/Installing-Neovim)를 참조하세요
 
-Project layout
+프로젝트 레이아웃
 --------------
 
-- `ci/`: Build server scripts
-- `cmake/`: Build scripts
-- `runtime/`: Application files
-- [`src/`](src/nvim/README.md): Application source code
-- `third-party/`: CMake sub-project to build third-party dependencies (if the
-  `USE_BUNDLED_DEPS` flag is undefined or `USE_BUNDLED` CMake option is false).
-- [`test/`](test/README.md): Tst files
+- `ci/`: 서버 스크립트 작성
+- `cmake/`: 스크립트 작성
+- `runtime/`: 응용 프로그램 파일
+- [`src/`](src/nvim/README.md): 응용 프로그램 소스코드
+- `third-party/`: 제3자의 종속성 Build를 위한 Cmake 하위 프로젝트 (만약
+  `USE_BUNDLED_DEPS` 플래그가 정의되지 않았거나 `USE_BUNDLED` CMake 옵션이 false).
+- [`test/`](test/README.md): 테스트 파일
 
-What's been done so far
+지금까지 무슨일이 있었는지
 -----------------------
 
-- RPC API based on [MessagePack](https://msgpack.org)
-- Embedded [terminal emulator](https://neovim.io/doc/user/nvim_terminal_emulator.html)
-- Asynchronous [job control](https://github.com/neovim/neovim/pull/2247)
-- [Shared data (shada)](https://github.com/neovim/neovim/pull/2506) among multiple editor instances
-- [XDG base directories](https://github.com/neovim/neovim/pull/3470) support
-- [libuv](https://github.com/libuv/libuv/)-based platform/OS layer
-- [Pushdown automaton](https://github.com/neovim/neovim/pull/3413) input model
-- 1000s of new tests
-- Legacy tests converted to Lua tests
+- [MessagePack](https://msgpack.org)을 기반으로한 RPC API
+- 임베디드 [terminal emulator](https://neovim.io/doc/user/nvim_terminal_emulator.html)
+- 비동기 [job control](https://github.com/neovim/neovim/pull/2247)
+- 여러 편집기 instance간의 [공유 데이터(shada)](https://github.com/neovim/neovim/pull/2506)
+- [XDG 기본 디렉토리](https://github.com/neovim/neovim/pull/3470) 지원
+- [libuv](https://github.com/libuv/libuv/)-기반 플랫폼/OS 계층
+- [Pushdown automaton](https://github.com/neovim/neovim/pull/3413) 입력 모델
+- 1000여 개의 새로운 테스트
+- Legacy tests를 Lua tests로 변경
 
-See [`:help nvim-features`][nvim-features] for a comprehensive list.
+포괄적인 리스트를 보려면 [`:help nvim-features`][nvim-features]를 참조하세요
 
 License
 -------
 
-Neovim is licensed under the terms of the Apache 2.0 license, except for
-parts that were contributed under the Vim license.
+Neovim은 Apache 2.0 라이센스의 조건에 따라 라이센스가 부여됩니다(Vim 라이선스에 따라 공헌 된 부분 제외)
 
-- Contributions committed before [b17d96][license-commit] remain under the Vim
-  license.
+- [b17d96][license-commit] 이전에 커밋 된 기여물은 Vim 라이센스에 남아 있습니다
 
-- Contributions committed after [b17d96][license-commit] are licensed under
-  Apache 2.0 unless those contributions were copied from Vim (identified in
-  the commit logs by the `vim-patch` token).
+- [b17d96][license-commit] 이후 커밋 된 기여물은 Vim에서 복사 된 것이 아니라면 아파치 2.0 하에서 라이선스가 허가됩니다 (`vim-patch` 토큰에 의해 커밋 로그에서 확인가능)
 
-See `LICENSE` for details.
+ 자세한 내용은 `라이센스`를 참조하세요
 
-    Vim is Charityware.  You can use and copy it as much as you like, but you are
-    encouraged to make a donation for needy children in Uganda.  Please see the
-    kcc section of the vim docs or visit the ICCF web site, available at these URLs:
+   Vim은 Charityware(프리웨어)입니다. 원하는만큼 Vim을 사용하고 복사 할 수 있지만, 
+   우간다의 가난한 어린이들을 위한 기부를 권장합니다. 
+   vim 문서의 kcc 섹션을 보거나 다음 URL에있는 ICCF 웹 사이트를 방문하십시오.
 
             http://iccf-holland.org/
             http://www.vim.org/iccf/
             http://www.iccf.nl/
 
-    You can also sponsor the development of Vim.  Vim sponsors can vote for
-    features.  The money goes to Uganda anyway.
+    당신은 Vim의 개발을 후원할 수도 있으며, Vim 후원자는 기능 투표 또한 가능합니다. 
+    
+    후원금은 모두 우간다에 기부됩니다.
 
 [license-commit]: https://github.com/neovim/neovim/commit/b17d9691a24099c9210289f16afb1a498a89d803
 [nvim-features]: https://neovim.io/doc/user/vim_diff.html#nvim-features
-[Roadmap]: https://neovim.io/roadmap/
+[로드맵]: https://neovim.io/roadmap/
 [advanced UIs]: https://github.com/neovim/neovim/wiki/Related-projects#gui-projects
 [Homebrew]: https://github.com/neovim/homebrew-neovim#installation
 [Debian]: https://packages.debian.org/testing/neovim

@@ -1,11 +1,12 @@
-This directory contains Vim scripts to be used with a specific compiler.
-They are used with the ":compiler" command.
+이 디렉토리에는 특정 컴파일러와 함께 사용할 빔 스크립트가 들어 있습니다.
+그것들은 ": compiler"명령과 함께 사용됩니다.
 
-These scripts usually set options, for example 'errorformat'.
-See ":help write-compiler-plugin".
+해당 스크립트는 보통 'errorformat'과 같은 옵션을 설정합니다.
+":help write-compiler-plugin"을 참조하십시오.
 
-If you want to write your own compiler plugin, have a look at the other files
-for how to do it, the format is simple.
+만약 당신이 직접 컴파일러 플러그인을 작성하고 싶다면, 
+다른 파일들을 어떻게 만드는지 살펴보십시오. 
+포맷은 간단합니다
 
-If you think a compiler plugin you have written is useful for others, please
-send it to Bram@vim.org.
+작성한 컴파일러 플러그인이 다른 사람에게 유용하다고 생각되면 
+Bram@vim.org로 보내주십시오.

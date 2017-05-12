@@ -21,7 +21,7 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
 - core를 수정하지 않고 고급UI 사용을 지원합니다 [advanced UIs] 
 - 확장성을 극대화합니다 [extensibility](https://github.com/neovim/neovim/wiki/Plugin-UI-architecture)
 
-[위키(Wiki)](https://github.com/neovim/neovim/wiki/Introduction) 와 [로드맵]
+[위키(Wiki)](https://github.com/jms8732/teamproject/wiki/소개) 와 [로드맵]
 을 사용하시면 더 많은 정보를 얻을 수 있습니다.
 
 [![Throughput Graph](https://graphs.waffle.io/neovim/neovim/throughput.svg)](https://waffle.io/neovim/neovim/metrics)

@@ -1,24 +1,22 @@
-The ftplugin directory is for Vim plugin scripts that are only used for a
-specific filetype.
+ftplugin 디렉토리는 특정 파일 유형에만 사용되는 Vim 플러그인 스크립트입니다.
 
-All files ending in .vim in this directory and subdirectories will be sourced
-by Vim when it detects the filetype that matches the name of the file or
-subdirectory.
-For example, these are all loaded for the "c" filetype:
+이 디렉토리와 하위 디렉토리에서 .vim으로 끝나는 모든 파일은 
+파일이나 하위 디렉토리의 이름과 일치하는 파일 유형을 감지하면 
+Vim에 의해 소스됩니다.
+
+예를들어, 이것들은 모두 "c"파일 형식으로 로드됩니다:
 
 	c.vim
 	c_extra.vim
 	c/settings.vim
 
-Note that the "_" in "c_extra.vim" is required to separate the filetype name
-from the following arbitrary name.
+"c_extra.vim"의 "_"은 파일 유형 이름을 다음 임의의 이름과 구분하는 데 필요합니다.
 
-The filetype plugins are only loaded when the ":filetype plugin" command has
-been used.
+filetype 플러그인은 ": filetype plugin"명령이 사용 된 경우에만 로드됩니다.
 
-The default filetype plugin files contain settings that 95% of the users will
-want to use.  They do not contain personal preferences, like the value of
+기본 파일 형식 플러그인 파일에는 95 %의 사용자가 사용하려는 설정이 포함되어 있습니다.
+They do not contain personal preferences, like the value of
 'shiftwidth'.
 
-If you want to do additional settings, or overrule the default filetype
-plugin, you can create your own plugin file.  See ":help ftplugin" in Vim.
+추가 설정을 수행하거나 기본 파일 유형 플러그인을 덮어 쓰려면 
+사용자는 고유 플러그인 파일을 만들 수 있습니다.  See ":help ftplugin" in Vim.

@@ -1,21 +1,20 @@
-README.txt for color scheme files
+colorscheme 파일용 README.txt
 
-These files are used for the ":colorscheme" command.  They appear in the
-Edit/Color Scheme menu in the GUI.
+해당 파일은 ":colorscheme" 명령에 사용합니다
+GUI의 편집/colorscheme에 사용합니다
 
 
 Hints for writing a color scheme file:
 
-There are two basic ways to define a color scheme:
+color scheme을 정의하는 두 가지 방법:
 
-1. Define a new Normal color and set the 'background' option accordingly.
+1. 새 표준 색상을 정의하고 이에 따라 배경옵션 설정
 	set background={light or dark}
 	highlight clear
 	highlight Normal ...
 	...
 
-2. Use the default Normal color and automatically adjust to the value of
-   'background'.
+2. 기본색상을 사용하고 배경값으로 자동 조절
 	highlight clear Normal
 	set background&
 	highlight clear
@@ -27,46 +26,39 @@ There are two basic ways to define a color scheme:
 	  ...
 	endif
 
-You can use ":highlight clear" to reset everything to the defaults, and then
-change the groups that you want differently.  This also will work for groups
-that are added in later versions of Vim.
-Note that ":highlight clear" uses the value of 'background', thus set it
-before this command.
-Some attributes (e.g., bold) might be set in the defaults that you want
-removed in your color scheme.  Use something like "gui=NONE" to remove the
-attributes.
+":highlight clear"를 사용해 모든 것을 기본값으로 재설정 할 수 있습니다, 또한
+원하는 그룹을 변경할 수 있습니다. 이 기능은 Update된 Vim에서도 사용 가능합니다.
+":highlight clear" 은 'background'값을 사용합니다
+일부 속성은 색상 표에서 제거하려는 기본값으로 설정할 수 있습니다.
+attributes를 제거하려면 "gui=NONE" 명령어를 사용하십시오
 
-In case you want to set 'background' depending on the colorscheme selected,
-this autocmd might be useful:
+선택한 colorscheme에 따라 배경을 설정하려는 경우
+아래의 자동작성이 유용하게 사용될 수 있습니다:
      autocmd SourcePre */colors/blue_sky.vim set background=dark
 Replace "blue_sky" with the name of the colorscheme.
 
-In case you want to tweak a colorscheme after it was loaded, check out that
-ColorScheme autocmd event.
+Colorcheme을 로드 한 후 조정하려는 경우 ColorScheme autocmd 이벤트를 확인하십시오.
 
-To see which highlight group is used where, find the help for
-"highlight-groups" and "group-name".
+하이라이트 그룹에 대한 정보는
+"highlight-groups" 및 "group-name"에 대한 도움말을 찾으세요
 
-You can use ":highlight" to find out the current colors.  Exception: the
-ctermfg and ctermbg values are numbers, which are only valid for the current
-terminal.  Use the color names instead.  See ":help cterm-colors".
+You can use ":highlight"를 사용해 현재 사용하고있는 색상을 찾을 수 있습니다.  
+예외 : ctermfg와 ctermbg 값은 숫자이며 현재 터미널에서만 유효합니다. 
+Use the color names instead.  See ":help cterm-colors".
 
-The default color settings can be found in the source file src/syntax.c.
-Search for "highlight_init".
+기본 색상 설정은 소스 파일 src / syntax.c에서 찾을 수 있습니다.
+"highlight_init"를 검색하십시오.
 
-If you think you have a color scheme that is good enough to be used by others,
-please check the following items:
+다른 사용자들이 사용할 수있는 색 구성표가 있다고 생각하면,
+다음 항목을 확인하십시오.:
 
-- Does it work in a color terminal as well as in the GUI?
-- Is "g:colors_name" set to a meaningful value?  In case of doubt you can do
-  it this way:
-  	let g:colors_name = expand('<sfile>:t:r')
-- Is 'background' either used or appropriately set to "light" or "dark"?
-- Try setting 'hlsearch' and searching for a pattern, is the match easy to
-  spot?
-- Split a window with ":split" and ":vsplit".  Are the status lines and
-  vertical separators clearly visible?
-- In the GUI, is it easy to find the cursor, also in a file with lots of
-  syntax highlighting?
-- Do not use hard coded escape sequences, these will not work in other
-  terminals.  Always use color names or #RRGGBB for the GUI.
+- color terminal 뿐만아니라 GUI에서도 작동합니까?
+- "g:colors_name"가 의미있는 값으로 설정되어있습니까? 해당 질문이 명확하지 않은 경우
+   다음과 같이 할 수 있습니다 let g:colors_name = expand('<sfile>:t:r')
+- '배경'이 사용되었거나 적절한 명도가 설정되어 있습니까??
+- 'hlsearch'설정을 시도하고 패턴을 검색하면 일치하는 것이 쉽게 발견됩니까?
+- ": split"및 ": vsplit"을 사용하여 창을 분할하십시오. 
+  상태 표시 줄과 세로 구분 기호가 명확하게 표시됩니까?
+- GUI에서 많은 구문 강조가있는 파일에서도 커서를 쉽게 찾을 수 있습니까?
+- 하드 코딩 된 escape sequences를 사용하지 마십시오. 다른 터미널에서는 작동하지 않습니다. 
+  GUI에는 항상 색상 이름 또는 #RRGGBB를 사용하십시오.

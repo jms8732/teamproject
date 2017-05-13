@@ -1,56 +1,51 @@
-## Source code overview
+##  소스 코드 개요
+ 
+ 
+Neovim은 Vim에서 대부분의 코드를 상속 받았기 때문에 [README (https://raw.githubusercontent.com/vim/vim/master/src/README.txt)]의 
+일부 정보가 계속 적용됩니다.
 
-Since Neovim has inherited most code from Vim, some information in [its
-README](https://raw.githubusercontent.com/vim/vim/master/src/README.txt) still
-applies.
+이 문서는 Vim과 다른 부분에 초점을 맞춰 Neovim이 내부적으로 어떻게 작동하는지에 대한 수준 높은 개요를 제공하는 것을 목표로 합니다.
+특히 끊임없이 변화하는 부품에 대한 세부 정보를 아직 추가하지 않았기 때문에 현재 이 작업은 여전히 진행 중입니다. 
+코드가 보다 체계적이고 안정적이 되면, 이 문서는 변경 사항을 반영하여 업데이트 될 것입니다.
 
-This document aims to give a high level overview of how Neovim works internally,
-focusing on parts that are different from Vim. Currently this is still a work in
-progress, especially because I have avoided adding too many details about parts
-that are constantly changing. As the code becomes more organized and stable,
-this document will be updated to reflect the changes.
+각 모듈의 세부 정보를 찾으려면 소스 코드를 읽는 것이 가장 좋습니다. 
+일부 파일은 상단에 댓글을 달았습니다 (예 : terminal.c, screen.c)
 
-If you are looking for module-specific details, it is best to read the source
-code. Some files are extensively commented at the top (e.g. terminal.c,
-screen.c).
+###  최상위 프로그램 루프
 
-### Top-level program loops
+먼저 일반적인 편집 흐름을 분석하여 Vim과 유사한 프로그램이 하는 일을 이해해 보겠습니다.
 
-First let's understand what a Vim-like program does by analyzing the workflow of
-a typical editing session:
+01. Vim이 환영 화면을 보냅니다.
+02. 사용자 유형 : `:`
+03. Vim이 명령 행 모드로 들어갑니다. 
+04. 사용자 유형 : `edit README.txt<CR>`
+05. Vim이 파일을 열고 정상 모드로 돌아갑니다.
+06. 사용자 유형 : `G`
+07. Vim이 파일 끝으로 이동합니다.
+08. 사용자 유형 : `5`
+09. Vim이 count-pending 모드로 들어갑니다.
+10. 사용자 유형 : `d`
+11. Vim이 operator-pending 모드로 들어갑니다.
+12. 사용자 유형 : `w`
+13. Vim이 5개의 단어를 삭제합니다.
+14. 사용자 유형 : `g`
+15. Vim이 "g command" 모드로 들어갑니다.
+16. 사용자 유형 : `g`
+17. Vim이 파일의 시작 부분으로 갑니다.
+18. 사용자 유형 : `i`
+19. Vim이 insert 모드로 들어갑니다.
+20. 사용자 유형 : `word<ESC>`
+21. Vim이 처음에 "단어"를 삽입하고 정상 모드로 돌아갑니다.
 
-01. Vim dispays the welcome screen
-02. User types: `:`
-03. Vim enters command-line mode
-04. User types: `edit README.txt<CR>`
-05. Vim opens the file and returns to normal mode
-06. User types: `G`
-07. Vim navigates to the end of the file
-09. User types: `5`
-10. Vim enters count-pending mode
-11. User types: `d`
-12. Vim enters operator-pending mode
-13. User types: `w`
-14. Vim deletes 5 words
-15. User types: `g`
-16. Vim enters the "g command mode"
-17. User types: `g`
-18. Vim goes to the beginning of the file
-19. User types: `i`
-20. Vim enters insert mode
-21. User types: `word<ESC>`
-22. Vim inserts "word" at the beginning and returns to normal mode
 
-Note that we have split user actions into sequences of inputs that change the
-state of the editor. While there's no documentation about a "g command
-mode" (step 16), internally it is implemented similarly to "operator-pending
-mode".
+우리는 사용자의 행동을 편집자의 상태를 변경하는 일련의 입력으로 분할했습니다.
+"g 명령 모드"(16 단계)에 대한 문서는 없지만 내부적으로 "연산자 보류 모드"와 비슷하게 구현됩니다.
 
-From this we can see that Vim has the behavior of a input-driven state
-machine (more specifically, a pushdown automaton since it requires a stack for
-transitioning back from states). Assuming each state has a callback responsible
-for handling keys, this pseudocode (a python-like language) shows a good
-representation of the main program loop:
+이것으로부터 우리는 Vim이 입력 구동 상태 머신(좀 더 구체적으로 말하자면 pushdown automaton은  현 상태로 전환하기 위해 스택이 필요합니다.)
+의 동작을 가지고 있음을 볼 수 있습니다.
+
+각 상태가 키를 처리하는 콜백을 담당한다고 가정하면 
+이 의사 코드(파이썬과 비슷한 언어)는 기본 프로그램 루프를 잘 보여줍니다.
 
 ```py
 def state_enter(state_callback, data):
@@ -58,10 +53,8 @@ def state_enter(state_callback, data):
     key = readkey()                 # read a key from the user
   while state_callback(data, key)   # invoke the callback for the current state
 ```
-
-That is, each state is entered by calling `state_enter` and passing a
-state-specific callback and data. Here is a high-level pseudocode for a program
-that implements something like the workflow described above:
+즉, 각 상태는`state_enter`를 호출하고 상태 별 콜백과 데이터를 전달하여 입력됩니다.
+위에서 설명한 흐름과 같은 것을 구현하는 프로그램의 상위 의사 코드는 다음과 같습니다.
 
 ```py
 def main()
@@ -126,43 +119,33 @@ def insert_state(data, key):
   return true
 ```
 
-While the actual code is much more complicated, the above gives an idea of how
-Neovim is organized internally. Some states like the `g_command_state` or
-`get_operator_count_state` do not have a dedicated `state_enter` callback, but
-are implicitly embedded into other states (this will change later as we continue
-the refactoring effort). To start reading the actual code, here's the
-recommended order:
+실제 코드는 훨씬 복잡하지만 위의 내용은 Neovim이 내부적으로 어떻게 구성되어 있는지에 대한 아이디어를 제공합니다.
+`g_command_state` 나`get_operator_count_state`와 같은 몇몇 상태는 전용`state_enter` 콜백을 가지고 있지 않지만 
+다른 상태로 암시적으로 내포됩니다 (이것은 업데이트를 계속할 때 나중에 바뀔 것입니다).
+실제 코드를 읽으려면 다음의 권장 순서를 따르십시오.
 
-1. `state_enter()` function (state.c). This is the actual program loop,
-   note that a `VimState` structure is used, which contains function pointers
-   for the callback and state data.
-2. `main()` function (main.c). After all startup, `normal_enter` is called
-   at the end of function to enter normal mode.
-3. `normal_enter()` function (normal.c) is a small wrapper for setting
-   up the NormalState structure and calling `state_enter`.
-4. `normal_check()` function (normal.c) is called before each iteration of
-   normal mode.
-5. `normal_execute()` function (normal.c) is called when a key is read in normal
-   mode.
+1. `state_enter ()`함수 (state.c)는 실제 프로그램 루프입니다. 
+    콜백 및 상태 데이터에 대한 함수 포인터를 포함하는`VimState` 구조가 사용됩니다.
+2. `main ()`함수 (main.c)는 모든 시작 후 normal_enter는 정상 모드로 들어가기 위해 함수의 끝에서 호출됩니다.
+3. `normal_enter()` 함수 (normal.c)는 NormalState 구조체를 설정하고`state_enter`를 호출하는 작은 래퍼입니다.
+4. `normal_check()` 함수 (normal.c)는 일반 모드의 각 반복 전에 호출됩니다.
+5.  normal_execute ()`함수 (normal.c)는 키가 일반 모드에서 읽힐 때 호출됩니다.
 
-The basic structure described for normal mode in 3, 4 and 5 is used for other
-modes managed by the `state_enter` loop:
+3, 4, 5의 일반 모드에서 설명한 기본 구조는 'state_enter` 루프에 의해 관리되는 다른 모드에 사용됩니다.
+- command-line 모드 : `command_line_{enter,check,execute}()`(`ex_getln.c`)
+- insert 모드 : `insert_{enter,check,execute}()`(`edit.c`)
+- terminal 모드 : `terminal_{enter,execute}()`(`terminal.c`)
 
-- command-line mode: `command_line_{enter,check,execute}()`(`ex_getln.c`)
-- insert mode: `insert_{enter,check,execute}()`(`edit.c`)
-- terminal mode: `terminal_{enter,execute}()`(`terminal.c`)
+###  비동기 행사 지원
 
-### Async event support
+Neovim이 추가 한 기능 중 하나는 임의의 비동기 이벤트 처리 지원입니다. 
+다음과 같은 기능이 포함될 수 있습니다
 
-One of the features Neovim added is the support for handling arbitrary
-asynchronous events, which can include:
+- msgpack-rpc 요청
+- 작업 제어 콜백
+- 타이머 (아직 구현되지 않았지만 지원 코드가 이미 있음)
 
-- msgpack-rpc requests
-- job control callbacks
-- timers (not implemented yet but the support code is already there)
-
-Neovim implements this functionality by entering another event loop while
-waiting for characters, so instead of:
+Neovim은 문자를 기다리는 동안 다른 이벤트 루프를 입력하여 이 기능을 구현합니다.
 
 ```py
 def state_enter(state_callback, data):
@@ -171,7 +154,7 @@ def state_enter(state_callback, data):
   while state_callback(data, key)   # invoke the callback for the current state
 ```
 
-Neovim program loop is more like:
+Neovim 프로그램 루프는 다음과 같습니다.
 
 ```py
 def state_enter(state_callback, data):
@@ -180,11 +163,10 @@ def state_enter(state_callback, data):
   while state_callback(data, event) # invoke the callback for the current state
 ```
 
-where `event` is something the operating system delivers to us, including (but
-not limited to) user input. The `read_next_event()` part is internally
-implemented by libuv, the platform layer used by Neovim.
+여기서 '이벤트'는 사용자 입력을 포함하여 운영 체제가 제공하는 것입니다 (그러나 이에 국한되지 않음). 
+`read_next_event ()`부분은 Neovim이 사용하는 플랫폼 계층인 libuv에 의해 내부적으로 구현됩니다.
 
-Since Neovim inherited its code from Vim, the states are not prepared to receive
-"arbitrary events", so we use a special key to represent those (When a state
-receives an "arbitrary event", it normally doesn't do anything other update the
-screen).
+
+Neovim은 Vim에서 코드를 상속 받았기 때문에 
+주에서는 "임의 이벤트"를 받을 준비가 되어 있지 않으므로 특별한 키를 사용하여 상태를 나타냅니다 
+(상태가 "임의의 이벤트"를 수신하면 일반적으로 다른 작업을 수행하지 않습니다.)

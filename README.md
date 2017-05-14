@@ -42,7 +42,7 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
 
 설치 방법
 --------------------
-[1.알집으로 설치하는 방법](https:/github.com/jms8732/teamproject/src/알집으로다운받는방법-1.pdf)
+[1.알집으로 설치하는 방법](teamproject/src/알집으로다운받는방법-1.pdf)
 
 
 프로젝트 레이아웃

@@ -32,13 +32,18 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
     make CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make install
 
- 자세한 내용은 [위키(Wiki)](https://github.com/neovim/neovim/wiki/Building-Neovim)를 참조하세요
+ 자세한 내용은 [위키(Wiki)](https:/github.com/neovim/neovim/wiki/Building-Neovim)를 참조하세요
  
 설치 패키지
 --------------------
 
 패키지는 [Homebrew], [Debian], [Ubuntu], [Fedora], [Arch Linux], 및
 [more](https://github.com/neovim/neovim/wiki/Installing-Neovim)를 참조하세요
+
+설치 방법
+--------------------
+[1.알집으로 설치하는 방법](http://github.com/jms8732/teamproject/src/알집으로다운받는방법-1.pdf)
+
 
 프로젝트 레이아웃
 --------------

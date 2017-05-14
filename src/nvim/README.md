@@ -1,7 +1,7 @@
 ##  소스 코드 개요
  
  
-Neovim은 Vim에서 대부분의 코드를 상속 받았기 때문에 [README (https://raw.githubusercontent.com/vim/vim/master/src/README.txt)]의 
+Neovim은 Vim에서 대부분의 코드를 상속 받았기 때문에 [README](https://raw.githubusercontent.com/vim/vim/master/src/README.txt)의 
 일부 정보가 계속 적용됩니다.
 
 이 문서는 Vim과 다른 부분에 초점을 맞춰 Neovim이 내부적으로 어떻게 작동하는지에 대한 수준 높은 개요를 제공하는 것을 목표로 합니다.

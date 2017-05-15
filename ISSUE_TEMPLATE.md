@@ -1,14 +1,14 @@
-- `nvim --version`:
-- Vim (version: ) behaves differently?
-- Operating system/version:
-- Terminal name/version:
+- `nvim --버전`:
+- vim (버전 :)은 다르게 동작합니까?
+- 운영 체제 / 버전 :
+- 터미널 이름 / 버전 :
 - `$TERM`:
 
-### Actual behaviour
+### 실제 행동
 
-### Expected behaviour
+### 예상되는 행동
 
-### Steps to reproduce using `nvim -u NORC`
+### `nvim -u NORC`를 사용하여 재현하는 단계들
 
 ```
 nvim -u NORC

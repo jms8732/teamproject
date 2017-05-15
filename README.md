@@ -14,6 +14,8 @@
 [![Clang Scan Build](https://neovim.io/doc/reports/clang/badge.svg)](https://neovim.io/doc/reports/clang)
 <a href="https://buildd.debian.org/neovim"><img src="https://www.debian.org/logos/openlogo-nd-25.png" width="13" height="15">Debian</a>
 
+`Neovim은 Ubuntu 12.04 이상에서 설치할수있습니다`
+
 Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 얻습니다:
 
 - 유지보수를 단순화하며 사용자들의 기여를 장려합니다 [contributions](CONTRIBUTING.md)

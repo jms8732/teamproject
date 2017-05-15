@@ -1,8 +1,9 @@
-# Bountysource Backers
+# 후원자들
 
-Thank you to everyone who backed our [Bountysource fundraiser](https://www.bountysource.com/teams/neovim/fundraiser)!
+우리 [Bountysource 기금 모금 행사 (https://www.bountysource.com/teams/neovim/fundraiser)를 후원 해 주신 
+모든 분들께 감사드립니다!
 
-### Your name and URL in BACKERS.md.
+###  BACKERS.md에있는 귀하의 이름과 URL.
 
 - [Bob Breznak](http://brez.io)
 - [Tim Uruski](http://timuruski.net)
@@ -641,6 +642,6 @@ Thank you to everyone who backed our [Bountysource fundraiser](https://www.bount
 - Ziling Zhao
 - Zsolt Botykai
 
-### Anonymous Supporters
+### 익명의 지지자
 
-There were also 307 other people who didn't claim any level of reward but contributed to the fundraiser. Thank you all for the support!
+또한 보상 정도를 말씀하시지 않았지만 기금 모금에 기여한 307 명의 사람들이 있었습니다. 지원해 주셔서 감사합니다.

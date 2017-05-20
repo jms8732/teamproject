@@ -1,38 +1,39 @@
-This directory contains Vim scripts for syntax highlighting.
+이 디렉토리에는 구문 강조를위한 Vim 스크립트가 들어 있습니다.
 
-These scripts are not for a language, but are used by Vim itself:
+이 스크립트는 언어가 아니지만 Vim 자체에서 사용됩니다 :
 
-syntax.vim	Used for the ":syntax on" command.  Uses synload.vim.
+syntax.vim ": syntax on"명령에 사용됩니다. synload.vim을 사용합니다.
 
-manual.vim	Used for the ":syntax manual" command.  Uses synload.vim.
-
-synload.vim	Contains autocommands to load a language file when a certain
-		file name (extension) is used.  And sets up the Syntax menu
-		for the GUI.
-
-nosyntax.vim	Used for the ":syntax off" command.  Undo the loading of
-		synload.vim.
+manual.vim ": 구문 매뉴얼"명령에 사용됩니다. synload.vim을 사용합니다.
 
 
-A few special files:
-
-2html.vim	Converts any highlighted file to HTML (GUI only).
-colortest.vim	Check for color names and actual color on screen.
-hitest.vim	View the current highlight settings.
-whitespace.vim  View Tabs and Spaces.
+synload.vim 특정 파일 이름 (확장자)이 사용될 때 언어 파일을 로드 하는 자동 명령을 포함합니다. 
+GUI의 구문 메뉴를 설정합니다.
 
 
-If you want to write a syntax file, read the docs at ":help usr_44.txt".
+nosyntax.vim ": syntax off" 명령에 사용됩니다. synload.vim의 로드를 취소하십시오.
 
-If you make a new syntax file which would be useful for others, please send it
-to Bram@vim.org.  Include instructions for detecting the file type for this
-language, by file name extension or by checking a few lines in the file.
-And please write the file in a portable way, see ":help 44.12".
 
-If you have remarks about an existing file, send them to the maintainer of
-that file.  Only when you get no response send a message to Bram@vim.org.
 
-If you are the maintainer of a syntax file and make improvements, send the new
-version to Bram@vim.org.
+몇 가지 특수 파일 :
 
-For further info see ":help syntax" in Vim.
+2html.vim 강조 표시된 파일을 HTML로 변환합니다 (GUI 전용).
+colortest.vim 화면의 색상 이름과 실제 색상을 확인하십시오.
+hitest.vim 현재 강조 표시 설정을 봅니다.
+whitespace.vim 탭과 스페이스를 표시합니다.
+
+
+구문 파일을 작성하려면 ": help usr_44.txt"에있는 문서를 읽으십시오.
+
+다른 사람에게 유용 할 새로운 구문 파일을 만들면 Bram@vim.org로 보내주십시오. 
+파일 이름 확장명을 사용하거나 파일의 몇 줄을 확인하십시오.
+이 언어의 파일 형식을 검색하기 위한 지침을 포함 시키십시오.
+
+파일을 이식성 있는 방법으로 작성하십시오 ( ": help 44.12"참조).
+
+기존 파일에 대한 의견이 있으면 해당 파일을 관리자에게 보내십시오.  
+응답이 없을 때만 Bram@vim.org로 메시지를 보내십시오.
+
+구문 파일을 관리하고 개선 작업을 수행하는 경우 새 버전을 Bram@vim.org로 보내십시오.
+
+더 자세한 정보는 Vim의 "help syntax"를 보십시오.

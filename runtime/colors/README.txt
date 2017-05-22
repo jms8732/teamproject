@@ -29,8 +29,8 @@ color scheme 를 정의하는 두 가지 기본 방법이 있습니다 :
 일부 속성 (예 : 굵게 표시)은 색상 표에서 제거하려는 기본값으로 설정할 수 있습니다. 
 특성을 제거하려면 "gui = NONE" 을 사용하십시오.
 
-선택한 color scheme에 따라 'background'를 설정하려는 경우에 다음의 autocmd가 유용 할 수 있습니다.
-     autocmd SourcePre */colors/blue_sky.vim set background=dark
+선택한 color scheme에 따라 'background'를 설정하려는 경우에 다음의 autocmd를 사용할 수 있습니다.
+autocmd SourcePre */colors/blue_sky.vim set background=dark
 "blue_sky"를 colorscheme의 이름으로 바꾸십시오.
 Colorcheme을 로드 한 후 조정하려는 경우 ColorScheme autocmd 이벤트를 확인하십시오.
 
@@ -45,8 +45,8 @@ Colorcheme을 로드 한 후 조정하려는 경우 ColorScheme autocmd 이벤�
 
 다른 사람들이 사용할 수있는 color scheme가 있다고 생각되면 다음 항목을 확인하십시오 :
 - GUI뿐 아니라 컬러 터미널에서도 작동합니까?
-- "g : colors_name"이 의미있는 값으로 설정 되었습니까? 의심스러운 경우 다음과 같이 할 수 있습니다 :
-  	let g:colors_name = expand('<sfile>:t:r')
+- "g : colors_name"이 의미있는 값으로 설정 되었습니까?  다음의 명령어로 확인할 수 있습니다. :
+  let g:colors_name = expand('<sfile>:t:r')
 - '배경'이 사용되었거나 적절하게 '밝게'또는 '어둡게' 설정되어 있습니까?
 - 'hlsearch'설정을 시도하고 패턴을 검색하면 일치하는 것이 쉽게 발견됩니까?
 - ": split"및 ": vsplit"을 사용하여 창을 분할하십시오. 

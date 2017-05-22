@@ -2,27 +2,27 @@
 
 			VIM - main help file
 									 k
-      Move around:  Use the cursor keys, or "h" to go left,	       h   l
-		    "j" to go down, "k" to go up, "l" to go right.	 j
-Close this window:  Use ":q<Enter>".
-   Get out of Vim:  Use ":qa!<Enter>" (careful, all changes are lost!).
+          이동하기:  Use the cursor keys, or "h" to go left,	       h   l
+		    "j" to go down, "k" to go up, "l" to go right.	 j
+해당 window창 닫기:  Use ":q<Enter>".
+       Vim 나가기:  Use ":qa!<Enter>" (careful, all changes are lost!).
 
-Jump to a subject:  태그에(e.g. |bars|) 커서를 올리고 마우스로 CTRL-]
-   를 누르세요: 태그에서 마우스 왼쪽 버튼을 두 번 클릭하세요 e.g. |bars|.
+  제목으로 이동:  태그에(e.g. |bars|) 커서를 올리고 마우스로 CTRL-] 를 누르세요
+  마우스로 조작: 태그에서 마우스 왼쪽 버튼을 두 번 클릭하세요 e.g. |bars|.
 	뒤로이동:  Type CTRL-T or CTRL-O. 훨씬 더 이전 상태로 돌아갈 수 있습니다
 
-구체적인 help:  | : help |명령어 에 argument를 줌으로써 당신이 원하는 정보를 얻을 수 있습니다.
+  구체적인 help:  |: help| 명령어에 인자를 줌으로써 당신이 원하는 정보를 얻을 수 있습니다.
 		    Prepend something to specify the context:  *help-context*
 
 			  WHAT			PREPEND    EXAMPLE	~
-		      일반모드 명령어		   :help x
-		      시각모드 명령어	  v_	   :help v_u
-		      삽입모드 명령어	  i_	   :help i_<Esc>
-		      Command-line 명령어	  :	   :help :quit
-		      Command-line 편집	  c_	   :help c_<Del>
-		      Vim 명령인자	  -	   :help -r
-		      옵션			  '	   :help 'textwidth'
-		      정규 표현	  /	   :help /[
+		      일반모드 명령어		       :help x
+		      시각모드 명령어	      v_	   :help v_u
+		      삽입모드 명령어	      i_	   :help i_<Esc>
+		      Command-line 명령어	   :	  :help :quit
+		      Command-line 편집	      c_	   :help c_<Del>
+		      Vim 명령인자	          -	   :help -r
+		      옵션			  '	     :help 'textwidth'
+		      정규 표현	            /	     :help /[
 		    |help-summary|를 보시면 더 많은 내용과 설명을 보실 수 있습니다.
 
  도움말 검색:  ": help word"를 입력 한 다음 CTRL-D를 누르면 

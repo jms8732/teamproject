@@ -1,49 +1,48 @@
 *pi_tutor.txt* Interactive tutorials.
 *vim-tutor-mode*
 
-vim-tutor-mode provides a system to follow and create interactive tutorials
-for vim and third party plugins. It replaces the venerable `vimtutor` system.
+vim-tutor-mode는 vim 및 타사 플러그인을 위한 시스템을 제공합니다.
+이것은 vimtutor 시스템을 대체합니다.
 
 ==============================================================================
-1. Usage                                                      *vim-tutor-usage*
+1. 사용법                                                      *vim-tutor-usage*
 
-vim-tutor-mode tutorials are hypertext documents, they have rich text and
-contain links. To stand out from the rest of the text, links are underlined.
-You can follow them by placing the cursor over them and pressing <Enter>, or
-by double-clicking them.
+vim-tutor-mode 튜토리얼은 하이퍼 텍스트 문서이며, 리치 텍스트와 링크가 포함
+되어 있습니다. 본문 나머지 부분의 가독성을 위해, 링크에 밑줄이 그어져 있습니다.
+커서를 링크 위에 놓고 <Enter>를 누르거나 더블클릭하여 볼 수 있습니다.
 
-1.1 Commands
+1.1 명령어
 ------------
 								      *:Tutor*
-:Tutor {tutorial}	Opens a tutorial. Command-line completion for
-			{tutorial} is provided, the candidates are a list of
-			'.tutor' files found in the 'tutor/'  folder in
-			the 'runtimepath'. Tutorials prefixed with 'vim-' will
-			always be shown first.
+:Tutor {tutorial}	튜토리얼을 실행합니다. {tutorial}에 대한
+			완성된 Command-line을 제공하며 candidates는 'runtimepath'의
+      'tutor/' 폴더에 있는 '.tutor'파일의 목록입니다.
+      'vim-'접두어가 붙은 tutorial은 항상 먼저 표시됩니다.
+			
 
-			If no {tutorial} is provided, the command starts the
-			'vim-01-beginner' tutorial, which is equivalent to
-			Vim's `vimtutor`.
+			{tutorial}이 제공되지 않으면 명령은 Vim의 
+      'vimtutor'과 동일한 'vim-01-beginner' 
+      tutorial을 시작합니다.
 
 =============================================================================
-2. Creating tutorials                                        *vim-tutor-create*
+2. tutorials 제작                                            *vim-tutor-create*
 
-Writing vim-tutor-mode tutorials is easy. For an overview of the format used,
-please consult the 'tutor.tutor' file: >
+vim-tutor-mode tutorials을 제작하는 것은 간단합니다. 
+사용 된 형식에 대한 개요는 'tutor.tutor'파일을 참조하십시오.>
 
     :Tutor tutor
 <
-New tutorials must be placed in the 'tutor/' folder in the 'runtimepath'
-to be detected by the :Tutor command.
+새로운 튜토리얼은 : Tutor 명령에 의해 참조될 
+'runtime path'의 'tutor /'폴더에 있어야합니다.
 
-It is recommended to use a less formal style when writing tutorials than in
-regular documentation (unless the content requires it).
+일반 설명서와 달리 tutorial을 작성할 땐 공식적인 스타일을 요구하지 않습니다
+(해당 contents가 공식적인 스타일을 요구할때는 제외).
 
 ============================================================================
-3. Contributing
+3. 기부/기여
 
-Development of the plugin is done over at github [1].  Feel free to report
-issues and make suggestions.
+플러그인의 개발은 github [1]에서 완료됩니다.
+언제든지 문제를 보고하고 제안 할 수 있습니다.
 
 [1]: https://github.com/fmoralesc/vim-tutor-mode
 

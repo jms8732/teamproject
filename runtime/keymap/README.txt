@@ -1,26 +1,23 @@
-keymap files for Vim
+Vim 용 keymap 파일
 
-One of these files is loaded when the 'keymap' option is set.
+'keymap'옵션이 설정되면 이 파일 중 하나가 로드 됩니다.
 
-The name of the file consists of these parts:
+파일의 이름은 다음 부분으로 구성됩니다 :
 
 	{language}[-{layout}][_{encoding}].vim
 
-{language}	Name of the language (e.g., "hebrew", "greek")
+{language} 언어 이름 (예 : "hebrew", "greek")
 
-{layout}	Optional: name of the keyboard layout (e.g., "spanish",
-		"russian3").  When omitted the layout of the standard
-		US-english keyboard is assumed.
+{layout} 선택 사항 : 키보드 레이아웃의 이름 (예 : '스페인어', "russian3"). 
+표준 레이아웃을 생략하면 영어 (미국) 키보드가 사용됩니다.
 
-{encoding}	Optional: character encoding for which this keymap works.
-		When omitted the "normal" encoding for the language is
-		assumed.
-		Use the value the 'encoding' option: lower case only, use '-'
-		instead of '_'.
+{encoding} 선택 사항 : 이 키맵이 작동하는 문자 인코딩 입니다. 
+생략되면 언어에 대한 "normal" 인코딩이 가정됩니다.
+'encoding' 옵션의 값을 사용하십시오. 
+소문자 만 '_'대신 '-'를 사용하십시오.
 
-Each file starts with a header, naming the maintainer and the date when it was
-last changed.  If you find a problem in a keymap file, check if you have the
-most recent version.  If necessary, report a problem to the maintainer.
+각 파일은 관리자와 마지막으로 변경된 날짜를 지칭하는 헤더로 시작합니다.
+keymap 파일에 문제가있는 경우 최신 버전인지 확인하십시오.
+필요한 경우 유지 보수 담당자에게 문제점을 보고 하십시오.
 
-The format of the keymap lines below "loadkeymap" is explained in the Vim help
-files, see ":help keymap-file-format".
+"loadkeymap" 아래의 keymap 행의 형식은 Vim 도움말 파일에서 설명합니다 ( ": help keymap-file-format" 참조).

@@ -1,16 +1,16 @@
 # vim-addon-local-vimrc
 
-## Installation
+## 설치
 
-### Step 1
+### 1단계
 
-Install [vim-addon-local-vimrc](https://github.com/MarcWeber/vim-addon-local-vimrc).
-For example with [Vundle](https://github.com/MarcWeber/vim-addon-local-vimrc):
+[vim-addon-local-vimrc](https://github.com/MarcWeber/vim-addon-local-vimrc)를 설치합니다.
+예를들면 [Vundle](https://github.com/MarcWeber/vim-addon-local-vimrc)은 이렀습니다.
 ```vim
 Bundle 'MarcWeber/vim-addon-local-vimrc'
 ```
 
-### Step 2
+### 2단계
 
 ```bash
 cp vimrc ../../.vimrc

@@ -1,10 +1,9 @@
-# CREATING A VIM TUTORIAL WITH VIM-TUTOR-MODE
+# VIMTUTOR 모드로 VIM-TUTORIAL 만들기
 
-This tutorial will guide you through the steps required to create a tutorial
-file for vim-tutor-mode. It is also meant as a demo of vim-tutor-mode
-capabilities.
+해당 tutorial은 vim-tutor-mode 전용 튜토리얼 파일을 만드는 데 필요한 단계를 안내합니다. 
+또한 vim-tutor-mode 기능의 데모이기도합니다.
 
-Table of contents:
+목차:
 
 - [Setting up](*setting-up*)
 - [vim-tutor-mode's markup](*markup*)
@@ -17,63 +16,63 @@ Table of contents:
 
 ## SETTING UP *setting-up*
 
-First, you'll need to enable "debug" mode
+우선, '디버그' 모드를 활성화해야합니다.
 ~~~ cmd
     :let g:tutor_debug = 1
 ~~~
-This will allow saving changes to the tutor files and will disable conceals, so
-you can more easily check your changes.
+해당 기능을 통해 튜터 파일의 변경 사항을 저장할 수 있고
+변경 사항을 더 쉽게 확인할 수 있습니다.
 
-After this, create a new .tutor file (we will be practicing on this very file, so you
-don't need to do this now):
+그 후, 새로운 .tutor파일을 생성합니다:
 ~~~ cmd
     :e new-tutorial.tutor
 ~~~
 
 ## VIM-TUTOR-MODE's MARKDOWN *markup*
 
-vim-tutor-mode uses a subset of markdown's syntax to format the tutorials. The
-subset supported should be enough for most tutorials and the maintainers will
-try to keep it as small as possible (if regular markdown allows for several
-ways to do the same thing, tutor markdown will only provide the one the
-maintainers think is easier to handle).
+vim-tutor-mode는 markdown 구문의 subset을 사용하여 tutorial의 형식을 정합니다.
+지원되는 subset은 tutorial 형식을 만족해야하며 유지보수 담당자는 튜터자격을 가능한
+작게 유지합니다 (정기적인 자격 인증을 통해 여러 가지 방법으로 같은 일을 할 수 있다면,
+튜터 자격은 관리자가 취급하기가 더 쉽다고 생각하는 것에 부여됩니다).
 
 ### Emphasis *emphasis*
 
-For emphasized text (italics), as in normal markdown, you use \*. E.g.:
+강조 표시 텍스트(italics)의 경우 일반 markdown처럼 \*를 사용합니다. 
+예 :
 
     \*text\*
 
-is displayed like
+위의 구문은 다음과 같이 표시됩니다.
 
     *text*
 
-Note: The underscores variant is not supported.
+참고 : 밑줄 변형은 지원되지 않습니다.
 
-For strong emphasis (bold), you use \*\*. E.g.:
+강한 강조(bold)는 \*\*를 사용합니다. 
+예 :
 
     \*\*this\*\*
 
-is displayed like
+위의 구문은 다음과 같이 표시됩니다.
 
     **this**
 
-1. Format the line below so it becomes a lesson description:
+1. 아래 줄을 format하여 설명합니다.
 
----> This is text with important information {expect:This is text with **important information**}
----> This is text with **important information** {expect:This is text with **important information**}
+---> 중요한 정보가 포함 된 텍스트입니다. {expect : **중요 정보가있는 텍스트입니다**}
+---> **중요한 정보**가있는 텍스트입니다. (expect : **중요한 정보가있는 텍스트**)
 
-Note: Some words (e.g., NOTE, IMPORTANT, tip, ATTENTION, etc.) will also be
-highlighted. You don't need to mark them specially.
+참고 : 일부 단어 (예 : NOTE, IMPORTANT, tip, ATTENTION 등)도 강조 표시됩니다. 
+특별하게 표시 할 필요는 없습니다.
 
-2. Turn the line below into a TODO item:
+2. 아래 줄을 TODO 항목으로 바꿉니다.
 
 ---> Document '&variable' {expect:TODO: Document '&variable'}
 ---> TODO: Document '&variable' {expect:TODO: Document '&variable'}
 
 ### Headers *headers*
 
-3. Practice fixing the lines below:
+3. 아래 라인을 수정하는 방법을 연습하십시오.
 
 ---> This is a level 1 header {expect:# This is a level 1 header}
 ---> # This is a level 1 header {expect:# This is a level 1 header}
@@ -82,18 +81,16 @@ highlighted. You don't need to mark them specially.
 ---> This is a header with a label {expect:# This is a header with a label {*label*}}
 ---> # This is a header with a label {*label*} {expect:# This is a header with a label {*label*}}
 
-4. Now, create a 4th level section here, and add a label like in the previous
+4. 이제 여기에 4레벨 section을 만들고 이전과 같은 라벨을 추가하십시오.
 exercise:
-
 
 
    ATTENTION We will use this label later, so remember it.
 
 ### Links *links*
 
-It is good practice to include links in your tutorials to reference materials,
-like vim's own help or external documents. You can also link to other parts of
-the document.
+vim의 도움말이나 외부 문서와 같은 자료를 참조하려면 tutorial에 링크를 포함하는 것이 좋습니다.
+문서의 다른 부분에 연결할 수도 있습니다.
 
 Links have the syntax
 
@@ -101,58 +98,56 @@ Links have the syntax
 
 #### Help links
 
-If the target of a link matches a help topic, opening it will open it.
+링크 대상이 도움말 항목과 일치하는 경우 링크를 열면 도움말 항목이 열립니다.
 
-5. Fix the following line:
+5. 해당 라인을 수정하세요:
 
 ---> A link to help for the 'breakindent' option {expect:A link to help for the ['breakindent']('breakindent') option}
 ---> A link to help for the ['breakindent']('breakindent') option {expect:A link to help for the ['breakindent']('breakindent') option}
 
 #### Anchor links
 
-A link can also lead to a place in the file itself. Anchors are written
+링크는 파일 자체의 위치로 이어질 수 있습니다. Anchors는 다음과 같이 쓰여지며
 
     \*anchor\*
 
-and are hidden by default. Links to them look like
+기본적으로 숨겨져있습니다. 링크는 다음과 같습니다.
 
     \[label\]\(\*anchor\*\)
 
-6. Add the appropiate link:
+6. 적절한 링크 추가:
 
 ---> A link to the Links section {expect:A link to the [Links](*links*) section}
 ---> A link to the [Links](*links*) section {expect:A link to the [Links](*links*) section}
 
-7. Now, create a link to the section you created on exercise 4
-   above.
-
+7. 이제 연습 문제 4에서 만든 섹션에 대한 링크를 만듭니다.
 
 
 # Tutorial links
 
-You can also have links to other tutorials. For this, you'll write the anchor in the format
+다른 tutorial에 대한 링크가 있을 수도 있습니다. For this, you'll write the anchor in the format
 
     @tutor:TUTORIAL
 
-7. Create a link to this tutorial:
+7. 해당 tutorial에 대한 링크 만들기:
 
 ---> A link to the vim-tutor-mode tutorial {expect:A link to [the vim-tutor-mode tutorial](@tutor:tutor)}
 ---> A link to [the vim-tutor-mode tutorial](@tutor:tutor) {expect:A link to [the vim-tutor-mode tutorial](@tutor:tutor)}
 
 ### Codeblocks *codeblocks*
 
-vim-tutor-mode tutorials can include viml sections
+vim-tutor-mode 튜토리얼에는 viml section이 포함될 수 있습니다.
 
     ~~~ cmd
     echom "hello"
     ~~~
 
-is displayed as
+다음과 같이 표시됩니다
 ~~~ cmd
 echom "hello"
 ~~~
 
-8. Copy the viml section below
+8. 아래의 viml 섹션 복사
 
 --->  {expect:~~~ viml}
 --->  {expect:echom "the value of &number is".string(&number)}
@@ -162,28 +157,28 @@ echom "hello"
 ---> echom "the value of &number is".string(&number) {expect:echom "the value of &number is".string(&number)}
 ---> ~~~ {expect:~~~}
 
-You can inline viml code using "\`" and "\`{vim}":
+"\`"와 "\`{vim}"을 사용하여 viml 코드를 인라인 할 수 있습니다 :
 
     \`call myFunction()\`{vim}
 
-is displayed as
+다음과 같이 표시됩니다
 
     `call myFunction()`{vim}
 
-[normal](Normal-mode) commands can also be embedded in tutorials.
+[normal](Normal-mode) commands는 tutorial에 포함될 수도 있습니다.
 
     ~~~ normal
     ftdaW
     ~~~
 
-is displayed as
+다음과 같이 표시됩니다
 ~~~ normal
 ftdaW
 ~~~
 
-Note: you can also write `norm` or `normal`.
+참고 : 'norm'또는 'normal'이라고 쓸 수도 있습니다.
 
-9. Copy the normal section below
+9. 아래의 normal section 복사
 
 --->  {expect:~~~ normal}
 --->  {expect:d2w}
@@ -193,11 +188,11 @@ Note: you can also write `norm` or `normal`.
 ---> d2w {expect:d2w}
 ---> ~~~ {expect:~~~}
 
-You can also inline normal commands by using "\`" and "\`{normal}":
+"\`"및 "\`{normal}"을 사용하여 일반 명령을 인라인 할 수도 있습니다.
 
     \`gq\`{normal} is very useful.
 
-is displayed:
+다음과 같이 표시됩니다:
 
     `gq`{normal} is very useful.
 
@@ -206,7 +201,7 @@ is displayed:
 ---> d {expect:«d2w»}
 ---> «d2w» {expect:«d2w»}
 
-Commands to run in the system shell can be highlighted by indenting a line starting with "$".
+시스템 쉘에서 실행할 명령은 "$"로 시작하는 줄을 들여 쓰기로 강조 표시 할 수 있습니다.
 
 ~~~ sh
     $ vim --version
@@ -214,14 +209,14 @@ Commands to run in the system shell can be highlighted by indenting a line start
 
 ## INTERACTIVE ELEMENTS *interactive*
 
-As visible in this very document, vim-tutor-mode includes some interactive
-elements, to provide feedback to the user about his progress. These elements
-all have the syntax
+이 문서에서 볼 수 있듯이 vim-tutor-mode에는 사용자에게 진행 상황에 대한 
+피드백을 제공하는 몇 가지 대화식 요소가 포함되어 있습니다. 
+이 요소들은 모두 syntax를 가지고 있습니다.
 
     \---> TEXT {CLAUSE}
 
-where \---> must start at the beginning of the line. If TEXT satisfies CLAUSE,
-a ✓ sign will appear to the left. A ✗ sign is displayed otherwise. The CLAUSE
+여기서 \--->는 줄 시작 부분에서 시작해야합니다. TEXT가 CLAUSE를 만족하면,
+✓ 기호가 왼쪽에 나타납니다. A ✗ sign is displayed otherwise. The CLAUSE
 itself is hidden unless debug mode is set or ['conceallevel']('conceallevel')
 is 2.
 

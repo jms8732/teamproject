@@ -7,67 +7,55 @@
 			*uganda* *Uganda* *copying* *copyright* *license*
 SUMMARY
 								*iccf* *ICCF*
-Vim is Charityware.  You can use and copy it as much as you like, but you are
-encouraged to make a donation for needy children in Uganda.  Please see |kcc|
-below or visit the ICCF web site, available at these URLs:
+Vim은 Charityware입니다. 당신이 원하는대로 그것을 사용하고 복사 할 수 있지만, 
+우간다의 가난한 아이들을 위해 기부를하는 것이 좋습니다. 아래의 URLs를 참조하세요:
 
 	http://iccf-holland.org/
 	http://www.vim.org/iccf/
 	http://www.iccf.nl/
 
-You can also sponsor the development of Vim.  Vim sponsors can vote for
-features.  See |sponsor|.  The money goes to Uganda anyway.
+당신은 Vim의 개발을 후원 할 수도 있습니다. Vim 스폰서는 기능투표에 참가 
+할 수 있습니다. |sponsor|를 참조하세요. 금액은 Uganda의 복지에 사용됩니다.
 
-The Open Publication License applies to the Vim documentation, see
-|manual-copyright|.
+Open Publication License는 Vim 문서에 적용됩니다.
+|manual-copyright| 참조
+
 
 === begin of license ===
 
 VIM LICENSE
 
-I)  There are no restrictions on distributing unmodified copies of Vim except
-    that they must include this license text.  You can also distribute
-    unmodified parts of Vim, likewise unrestricted except that they must
-    include this license text.  You are also allowed to include executables
-    that you made from the unmodified Vim sources, plus your own usage
-    examples and Vim scripts.
+I)  Vim의 수정되지 않은 사본 배포에는 본 라이센스 텍스트가 포함되어야
+    한다는 점을 제외하고는 제한이 없습니다. 이 라이센스 텍스트를 포함
+    해야한다는 점을 제외하고는 Vim의 수정 된 부분을 배포 할 수 있습니다.
+    또한 수정되지 않은 Vim 소스에서 만든 실행 파일과 사용자의 사용 
+    예제 및 Vim 스크립트를 포함 할 수 있습니다.
 
-II) It is allowed to distribute a modified (or extended) version of Vim,
-    including executables and/or source code, when the following four
-    conditions are met:
-    1) This license text must be included unmodified.
-    2) The modified Vim must be distributed in one of the following five ways:
-       a) If you make changes to Vim yourself, you must clearly describe in
-	  the distribution how to contact you.  When the maintainer asks you
-	  (in any way) for a copy of the modified Vim you distributed, you
-	  must make your changes, including source code, available to the
-	  maintainer without fee.  The maintainer reserves the right to
-	  include your changes in the official version of Vim.  What the
-	  maintainer will do with your changes and under what license they
-	  will be distributed is negotiable.  If there has been no negotiation
-	  then this license, or a later version, also applies to your changes.
-	  The current maintainer is Bram Moolenaar <Bram@vim.org>.  If this
-	  changes it will be announced in appropriate places (most likely
-	  vim.sf.net, www.vim.org and/or comp.editors).  When it is completely
-	  impossible to contact the maintainer, the obligation to send him
-	  your changes ceases.  Once the maintainer has confirmed that he has
-	  received your changes they will not have to be sent again.
-       b) If you have received a modified Vim that was distributed as
-	  mentioned under a) you are allowed to further distribute it
-	  unmodified, as mentioned at I).  If you make additional changes the
-	  text under a) applies to those changes.
-       c) Provide all the changes, including source code, with every copy of
-	  the modified Vim you distribute.  This may be done in the form of a
-	  context diff.  You can choose what license to use for new code you
-	  add.  The changes and their license must not restrict others from
-	  making their own changes to the official version of Vim.
-       d) When you have a modified Vim which includes changes as mentioned
-	  under c), you can distribute it without the source code for the
-	  changes if the following three conditions are met:
-	  - The license that applies to the changes permits you to distribute
-	    the changes to the Vim maintainer without fee or restriction, and
-	    permits the Vim maintainer to include the changes in the official
-	    version of Vim without fee or restriction.
+II) 다음 네 가지 조건이 충족되는 경우 실행 파일 및 소스 코드를 포함하여
+    수정 된 (또는 확장 된) 버전의 Vim을 배포 할 수 있습니다.:
+    1) 이 라이센스 텍스트는 수정되지 않은 상태로 포함되어야합니다.
+    2) 수정 된 Vim은 다음 다섯 가지 방법 중 하나로 배포되어야합니다.:
+       a) Vim을 직접 변경하는 경우 배포판에 연락하는 방법을 명확하게 설명해야합니다.  
+    관리자가 당신이 배포 한 수정 된 Vim의 사본을 묻는 경우 당신은 수수료없이 변경 사
+    항과 소스 코드를 포함하여 제공해야합니다. 관리자는 변경 사항을 공식 버전의 Vim에
+    포함시킬 권한을 보유합니다. 관리자는 변경 사항을 처리하고 배포 될 라이센스가 협
+    상 가능한지 여부를 판단합니다. 현재 관리자는 Bram Moolenaar <Bram@vim.org>입니다.
+    이 내용이 변경되면 적절한 장소 (대개 vim.sf.net, www.vim.org 및 / 또는 comp.edit
+    ors)에서 발표됩니다.  관리자에게 연락하는 것이 완전히 불가능한 경우 변경 사항을 보내
+    야 할 의무가 중지됩니다. 관리자가 변경 사항을 수신했음을 확인하면 다시 보낼 필요가 
+    없습니다.
+       b) a)에서 언급 한대로 배포 된, 수정 된 Vim을 받은 경우 I)에서 언급 한 바와 같이
+    수정되지 않은 Vim을 추가로 배포 할 수 있습니다. 추가 변경을하면 a)의 텍스트가 변경 
+    내용에 적용됩니다.
+       c) 당신이 배포 한 수정 된 Vim의 모든 복사본과 함께 소스 코드를 포함한 모든 변경 
+    사항을 제공하십시오. 이 작업은 context diff 형식으로 수행 할 수 있습니다. 
+    추가하는 새 코드에 사용할 라이센스를 선택할 수 있습니다.  변경 사항과 라이센스로
+    인해 다른 사람들이 Vim의 공식 버전을 변경하지 못하도록 제한해서는 안됩니다.
+       d) c)에서 언급 한 변경 사항을 포함하는 수정 된 Vim이있는 경우 다음 세 가지 조건이
+       충족되는 경우 변경 사항의 소스 코드없이 배포 할 수 있습니다:
+	  - 변경 사항에 적용되는 라이센스로 인해 수수료 또는 제한없이 Vim 관리자에게 변경 
+      사항을 배포 할 수 있으며 Vim 관리자가 요금이나 제한없이 Vim의 공식 버전에 변경
+      사항을 포함 할 수 있습니다.
 	  - You keep the changes for at least three years after last
 	    distributing the corresponding modified Vim.  When the maintainer
 	    or someone who you distributed the modified Vim to asks you (in

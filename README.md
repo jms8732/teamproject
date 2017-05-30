@@ -34,7 +34,7 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
     make CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make install
 
- 자세한 내용은 [위키(Wiki)](https:/github.com/jms8732/teamproject/wiki/Building-Neovim)를 참조하세요
+ 자세한 내용은 [위키(Wiki)](https://github.com/jms8732/teamproject/wiki/Building-Neovim)를 참조하세요
  
 설치 패키지
 --------------------

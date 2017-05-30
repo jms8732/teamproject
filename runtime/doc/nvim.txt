@@ -6,54 +6,52 @@
 
 Nvim						*nvim* *nvim-intro*
 
-If you are new to Vim (and Nvim) see |help.txt| or type ":Tutor".
-If you already use Vim (but not Nvim) see |nvim-from-vim| for a quickstart.
+Vim (혹은 Nvim)을 처음 사용한다면 |help.txt| 또는 ": Tutor"를 입력하십시오.
+이미 Vim(Nvim 제외)을 사용한다면 빠른 시작을 위해 |nvim-from-vim|를 보십시오.
 
-Nvim is emphatically a fork of Vim, not a clone: compatibility with Vim is
-maintained where possible. See |vim_diff.txt| for the complete reference of
-differences from Vim.
+Nvim은 Vim의 복제품이 아니라 Vim fork입니다. 가능한 경우 Vim과의 호환성이 유지됩니다.
+Nvim과 vim의 차이점은 |vim_diff.txt|을 참조하십시오.
 
 ==============================================================================
-Transitioning from Vim				*nvim-from-vim*
+Vim에서 전환하기				*nvim-from-vim*
 
-To start the transition, link your previous configuration so Nvim can use it:
+전환을 시작하려면 이전 구성을 링크하여 Nvim에서 사용할 수 있도록하십시오.
 >
     mkdir ~/.config
     ln -s ~/.vim ~/.config/nvim
     ln -s ~/.vimrc ~/.config/nvim/init.vim
 <
-Note: If your system sets `$XDG_CONFIG_HOME`, use that instead of `~/.config`
-in the code above. Nvim follows the XDG |base-directories| convention.
+참조: 시스템이`$ XDG_CONFIG_HOME`을 설정하면, 위의 코드에서`~ / .config` 대신에
+그것을 사용하십시오. Nvim follows the XDG |base-directories| convention.
 
-See |provider-python| and |provider-clipboard| for additional software you
-might need to use some features.
+일부 기능을 사용해야할 경우 추가 소프트웨어에 대한 자세한 내용은
+|provider-python|과 |provider-clipboard|을 참조하십시오
 
-Your Vim configuration might not be entirely compatible with Nvim. For a
-full list of differences between Vim and Nvim see |vim-differences|.
+Vim 구성이 Nvim와 완전히 호환되지 않을 수 있습니다. 
+Vim과 Nvim의 차이점 전체 목록을 보려면 |vim-differences|를 참조하십시오.
 
-The |'ttymouse'| option, for example, was removed from Nvim (mouse support
-should work without it). If you use the same |vimrc| for Vim and Nvim,
-consider guarding |'ttymouse'| in your configuration like so:
+|'ttymouse'|옵션은 Nvim에서 제거되었습니다 (마우스 지원은 Nvim 없이도 작동합니다).
+Vim과 Nvim에서 같은 |vimrc|를 사용한다면 다음과 같은 구성을 고려해 보십시오
 >
     if !has('nvim')
         set ttymouse=xterm2
     endif
 <
-Conversely, if you have Nvim specific configuration items, you could do
-this:
+반대로 Nvim 특정 구성 항목이있는 경우,
+아래와 같이 진행:
 >
     if has('nvim')
         tnoremap <Esc> <C-\><C-n>
     endif
 <
-For a more granular approach use |exists()|:
+보다 자세한 접근법을 원하시면 |exists()| 참조:
 >
     if exists(':tnoremap')
         tnoremap <Esc> <C-\><C-n>
     endif
 <
-Now you should be able to explore Nvim more comfortably. Check |nvim-features|
-for more information.
+이제 Nvim을 더 편안하게 탐색 할 수 있어야합니다. 
+자세한 내용은 |nvim-features|을 참조하십시오
 
 ==============================================================================
  vim:tw=78:ts=8:noet:ft=help:norl:

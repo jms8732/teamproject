@@ -54,28 +54,21 @@ II) 다음 네 가지 조건이 충족되는 경우 실행 파일 및 소스 코
        d) c)에서 언급 한 변경 사항을 포함하는 수정 된 Vim이있는 경우 다음 세 가지 조건이
        충족되는 경우 변경 사항의 소스 코드없이 배포 할 수 있습니다:
 	  - 변경 사항에 적용되는 라이센스로 인해 수수료 또는 제한없이 Vim 관리자에게 변경 
-      사항을 배포 할 수 있으며 Vim 관리자가 요금이나 제한없이 Vim의 공식 버전에 변경
-      사항을 포함 할 수 있습니다.
-	  - You keep the changes for at least three years after last
-	    distributing the corresponding modified Vim.  When the maintainer
-	    or someone who you distributed the modified Vim to asks you (in
-	    any way) for the changes within this period, you must make them
-	    available to him.
-	  - You clearly describe in the distribution how to contact you.  This
-	    contact information must remain valid for at least three years
-	    after last distributing the corresponding modified Vim, or as long
-	    as possible.
-       e) When the GNU General Public License (GPL) applies to the changes,
-	  you can distribute the modified Vim under the GNU GPL version 2 or
-	  any later version.
-    3) A message must be added, at least in the output of the ":version"
-       command and in the intro screen, such that the user of the modified Vim
-       is able to see that it was modified.  When distributing as mentioned
-       under 2)e) adding the message is only required for as far as this does
-       not conflict with the license used for the changes.
-    4) The contact information as required under 2)a) and 2)d) must not be
-       removed or changed, except that the person himself can make
-       corrections.
+            사항을 배포 할 수 있으며 Vim 관리자가 요금이나 제한없이 Vim의 공식 버전에 변경
+            사항을 포함 할 수 있습니다.
+	  - 수정 된 Vim을 마지막으로 배포 한 후 최소 3 년 동안 변경 사항을 유지합니다.
+            관리자 또는 변경된 Vim을 배포 한 사람이 이 기간 내에 변경 사항을 묻는 메시지
+            를 사용할 수있게해야합니다.
+	  - 배포판에 연락하는 방법을 명확하게 명시해야합니다. 이 연락처 정보는 해당 수정
+            Vim을 배포 한 후 최소 3년 또는 가능한 한 오랫동안 유효해야합니다.
+       e) GNU GPL(General Public License)이 변경 사항에 적용되면 수정 된 Vim을
+          GNU GPL 버전2 또는 그 이후 버전으로 배포 할 수 있습니다.
+    3) 메시지는 ":version"명령의 출력과 인트로 화면에 추가되어야합니다. 
+       해당 기능을 통해 수정 된 Vim의 사용자가 수정사항을 알 수 있습니다. 
+       2) e)에서 설명한 바와 같이 배포 할 때 변경 사항에 사용 된 라이센스와
+       충돌하지 않는 한 메시지를 추가해야합니다.
+    4) 2)a) 및 2)d)에서 요구하는 연락 정보는 잘못된 사항을 정정하는 것을 제외하고는
+       제거하거나 변경해서는 안됩니다
 
 III) If you distribute a modified version of Vim, you are encouraged to use
      the Vim license for your changes and make them available to the

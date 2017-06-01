@@ -2707,16 +2707,16 @@ void intro_message(int colon)
     N_(NVIM_VERSION_LONG),
     "",
     N_("by Bram Moolenaar et al."),
-    N_("Nvim은 오픈 소스이며 자유롭게 배포 할 수 있습니다."),
+    N_("Nvim is open source and freely distributable"),
     N_("https://neovim.io/community"),
     "",
-    N_("신규사용자는            :help nvim<Enter>       입력 "),
-    N_("Nvim을 최적하려면       :CheckHealth<Enter>     입력 "),
-    N_("Nvim을 종료하려면       :q<Enter>               입력 "),
-    N_("Nvim도움말을 참조       :help<Enter>            입력 "),
+    N_("type  :help nvim<Enter>       if you are new! "),
+    N_("type  :CheckHealth<Enter>     to optimize Nvim"),
+    N_("type  :q<Enter>               to exit         "),
+    N_("type  :help<Enter>            for help        "),
     "",
-    N_("우간다의 가난한 아이들을 도와주세요!"),
-    N_("해당정보를 보려면       :help iccf<Enter>       입력 "),
+    N_("Help poor children in Uganda!"),
+    N_("type  :help iccf<Enter>       for information "),
   };
 
   // blanklines = screen height - # message lines
@@ -2747,14 +2747,14 @@ void intro_message(int colon)
       p = lines[i];
 
       if (sponsor != 0) {
-        if (strstr(p, "아이") != NULL) {
+        if (strstr(p, "children") != NULL) {
           p = sponsor < 0
-              ? N_("Vim 개발을 후원해 주세요!")
-              : N_("Vim 사용자로 등록하세요!");
+              ? N_("Sponsor Vim development!")
+              : N_("Become a registered Vim user!");
         } else if (strstr(p, "iccf") != NULL) {
           p = sponsor < 0
-              ? N_("해당정보를 보려면       :help sponsor<Enter>    입력 ")
-              : N_("해당정보를 보려면       :help register<Enter>   입력 ");
+              ? N_("type  :help sponsor<Enter>    for information ")
+              : N_("type  :help register<Enter>   for information ");
         } else if (strstr(p, "Orphans") != NULL) {
           p = N_("menu  Help->Sponsor/Register  for information    ");
         }

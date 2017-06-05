@@ -2707,17 +2707,17 @@ void intro_message(int colon)
   static char *(lines[]) = {
     N_(NVIM_VERSION_LONG),
     "",
-    printf("by Bram Moolenaar et al."),
-    printf("네오빔은 open source and freely distributable"),
-    printf("https://neovim.io/community"),
+    printf("by Bram Moolenaar et al.");
+    printf("네오빔은 open source and freely distributable");
+    printf("https://neovim.io/community");
     "",
-    printf("type  :help nvim<Enter>       if you are new! "),
-    printf("type  :CheckHealth<Enter>     to optimize Nvim"),
-    printf("type  :q<Enter>               to exit         "),
-    printf("type  :help<Enter>            for help        "),
+    printf("type  :help nvim<Enter>       if you are new! ");
+    printf("type  :CheckHealth<Enter>     to optimize Nvim");
+    printf("type  :q<Enter>               to exit         ");
+    printf("type  :help<Enter>            for help        ");
     "",
-    printf("Help poor children in Uganda!"),
-    printf("type  :help iccf<Enter>       for information "),
+    printf("Help poor children in Uganda!");
+    printf("type  :help iccf<Enter>       for information ");
   };
 
   // blanklines = screen height - # message lines

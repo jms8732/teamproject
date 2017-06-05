@@ -2710,7 +2710,7 @@ void intro_message(int colon)
     N_(NVIM_VERSION_LONG),
     "",
     N_("by Bram Moolenaar et al."),
-    N_("네오빔은 오픈소스이며 무료 배포 가능합니다."),
+    N_("Nvim is open source and freely distributable"),
     N_("https://neovim.io/community"),
     "",
     N_("type  :help nvim<Enter>       if you are new! "),

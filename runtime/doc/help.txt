@@ -49,28 +49,28 @@ USER MANUAL :이 파일은 편집 작업을 수행하는 방법을 설명합니�
 시작하기 ~
 |usr_01.txt|  설명서 정보
 |usr_02.txt|  Vim의 첫 번째 단계
-|usr_03.txt|  Moving around
-|usr_04.txt|  작은 변화 만들기
+|usr_03.txt|  돌아다니기
+|usr_04.txt|  약간 수정
 |usr_05.txt|  개인설정 지정
 |usr_06.txt|  구문 강조 사용
-|usr_07.txt|  둘 이상의 파일 편집
-|usr_08.txt|  창 분할하기
+|usr_07.txt|  여러 파일 편집
+|usr_08.txt|  창 분할
 |usr_09.txt|  GUI사용
-|usr_10.txt|  큰 변화 만들기
-|usr_11.txt|  충돌 복구
+|usr_10.txt|  많은 수정
+|usr_11.txt|  작업 복구
 |usr_12.txt|  Clever tricks
 
 효과적으로 편집하기 ~
 |usr_20.txt|  Command-line 명령을 빠르게 입력하는 방법
 |usr_21.txt|  Go away and come back
 |usr_22.txt|  편집 할 파일 찾기
-|usr_23.txt|  다른 파일 편집
-|usr_24.txt|  신속하게 삽입하기
-|usr_25.txt|  서식있는 텍스트 편집
+|usr_23.txt|  특별한 파일 편집
+|usr_24.txt|  신속하게 입력하기
+|usr_25.txt|  서식에 맞추어 텍스트 편집
 |usr_26.txt|  반복
 |usr_27.txt|  검색 명령 및 패턴
 |usr_28.txt|  Folding
-|usr_29.txt|  프로그램을 통한 이동
+|usr_29.txt|  프로그램을 코드 탐험
 |usr_30.txt|  프로그램 편집
 |usr_31.txt|  GUI 활용
 |usr_32.txt|  실행 취소 트리
@@ -79,7 +79,7 @@ Vim 튜닝 ~
 |usr_40.txt|  새 명령 만들기
 |usr_41.txt|  Vim 스크립트 작성
 |usr_42.txt|  새 메뉴 추가
-|usr_43.txt|  파일 유형 사용
+|usr_43.txt|  파일 형식 플러그인 사용
 |usr_44.txt|  나만의 구문 강조
 |usr_45.txt|  언어 선택
 

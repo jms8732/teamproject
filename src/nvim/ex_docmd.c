@@ -1734,7 +1734,7 @@ static char_u * do_one_cmd(char_u **cmdlinep,
   }
   if (ea.cmdidx == CMD_SIZE) {
     if (!ea.skip) {
-      STRCPY(IObuff, _("E492: Not an editor command"));
+      STRCPY(IObuff, _("E492: 편집기 명령이 "));
       if (!(flags & DOCMD_VERBOSE)) {
         append_command(*cmdlinep);
       }

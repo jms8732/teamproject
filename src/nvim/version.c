@@ -2600,6 +2600,7 @@ void list_version(void)
 {
   // When adding features here, don't forget to update the list of
   // internal variables in eval.c!
+  
   MSG(longVersion);
   MSG(version_buildtype);
   MSG(version_cflags);
@@ -2706,17 +2707,17 @@ void intro_message(int colon)
   static char *(lines[]) = {
     N_(NVIM_VERSION_LONG),
     "",
-    N_("by Bram Moolenaar et al."),
-    N_("Nvim is open source and freely distributable"),
-    N_("https://neovim.io/community"),
+    printf("by Bram Moolenaar et al."),
+    printf("네오빔은 open source and freely distributable"),
+    printf("https://neovim.io/community"),
     "",
-    N_("type  :help nvim<Enter>       if you are new! "),
-    N_("type  :CheckHealth<Enter>     to optimize Nvim"),
-    N_("type  :q<Enter>               to exit         "),
-    N_("type  :help<Enter>            for help        "),
+    printf("type  :help nvim<Enter>       if you are new! "),
+    printf("type  :CheckHealth<Enter>     to optimize Nvim"),
+    printf("type  :q<Enter>               to exit         "),
+    printf("type  :help<Enter>            for help        "),
     "",
-    N_("Help poor children in Uganda!"),
-    N_("type  :help iccf<Enter>       for information "),
+    printf("Help poor children in Uganda!"),
+    printf("type  :help iccf<Enter>       for information "),
   };
 
   // blanklines = screen height - # message lines
@@ -2749,12 +2750,12 @@ void intro_message(int colon)
       if (sponsor != 0) {
         if (strstr(p, "children") != NULL) {
           p = sponsor < 0
-              ? N_("Sponsor Vim development!")
-              : N_("Become a registered Vim user!");
+              ? printf("Sponsor Vim development!")
+              : printf("Become a registered Vim user!");
         } else if (strstr(p, "iccf") != NULL) {
           p = sponsor < 0
-              ? N_("type  :help sponsor<Enter>    for information ")
-              : N_("type  :help register<Enter>   for information ");
+              ? printf("type  :help sponsor<Enter>    for information ")
+              : printf("type  :help register<Enter>   for information ");
         } else if (strstr(p, "Orphans") != NULL) {
           p = N_("menu  Help->Sponsor/Register  for information    ");
         }

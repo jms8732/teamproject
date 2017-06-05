@@ -4,30 +4,30 @@
 									 k
           이동하기:  Use the cursor keys, or "h" to go left,	       h   l
 		    "j" to go down, "k" to go up, "l" to go right.	 j
-해당 window창 닫기:  Use ":q<Enter>".
-       Vim 나가기:  Use ":qa!<Enter>" (careful, all changes are lost!).
+     window창 닫기:  ":q<Enter>" 명령어 사용
+         Vim나가기:  ":qa!<Enter>" 명령어 사용(모든 변경이 적용되지 않고종료됩니다.)
 
   제목으로 이동:  태그에(e.g. |bars|) 커서를 올리고 마우스로 CTRL-] 를 누르세요
   마우스로 조작: 태그에서 마우스 왼쪽 버튼을 두 번 클릭하세요 e.g. |bars|.
-뒤로이동:  Type CTRL-T or CTRL-O. 훨씬 더 이전 상태로 돌아갈 수 있습니다
+	뒤로 이동하기: CTRL-T 혹은 CTRL-O. 훨씬 더 이전 상태로 돌아갈 수 있습니다
 
-  구체적인 help:  |: help| 명령어에 인자를 줌으로써 당신이 원하는 정보를 얻을 수 있습니다.
+  구체적인 도움:  |: help| 명령어에 인자를 줌으로써 당신이 원하는 정보를 얻을 수 있습니다.
 		   Prepend something to specify the context:  *help-context*
 
 			  WHAT			PREPEND    EXAMPLE	~
 		      일반모드 명령어		           :help x
-		      시각모드 명령어	         v_ 	:help v_u
-		      삽입모드 명령어	         i_	:help i_<Esc>
+		      시각모드 명령어	          v_ 	 :help v_u
+		      삽입모드 명령어	          i_	 :help i_<Esc>
 		      Command-line 명령어	   :	  :help :quit
-		      Command-line 편집	         c_	:help c_<Del>
-		      Vim 명령인자	          -	   :help -r
-		      옵션			  '	   :help 'textwidth'
-		      정규 표현	            /	     :help /[
+		      Command-line 편집	          c_	 :help c_<Del>
+		      Vim 명령인자	           -	   :help -r
+		      옵션			   '	   :help 'textwidth'
+		      정규 표현	             /	     :help /[
 		      |help-summary|를 보시면 더 많은 내용과 설명을 보실 수 있습니다.
 
  도움말 검색:  ": help word"를 입력 한 다음 CTRL-D를 누르면
-        "word"와 일치하는 도움말 항목을 볼 수 있습니다.
-		    또는 ":helpgrep word". |:helpgrep|를 사용하십시오.
+ word와 일치하는 도움말 항목을 볼 수 있습니다.
+ 또는 ":helpgrep word". |:helpgrep|를 사용하십시오.
 
 VIM은 Vi IMproved 나타냅니다. VIM의 대부분은 Bram Moolenaar과 
 많은 다른 사람들의 도움을 통해서 이루어졌습니다.
@@ -84,7 +84,7 @@ Vim 튜닝 ~
 |usr_45.txt|  언어 선택
 
 
-참조 메뉴얼: 이 파일들은 Vim의 모든 세부 사항을 설명합니다.	*reference_toc*
+상세 설명서: 이 파일들은 Vim의 모든 세부 사항을 설명합니다.	*reference_toc*
 
 General subjects ~
 |intro.txt|	Vim에 대한 일반적인 소개; 도움말 파일에 사용되는 표기법
@@ -171,7 +171,7 @@ Interfaces ~
 |pi_vimball.txt|   자체 설치 Vim 스크립트 만들기
 |pi_zip.txt|       Zip 아카이브 탐색기
 
-LOCAL ADDITIONS:				*local-additions*
+추가설명서:				*local-additions*
 
 ------------------------------------------------------------------------------
 *bars*		Bars example
@@ -179,12 +179,12 @@ LOCAL ADDITIONS:				*local-additions*
 CTRL-] 또는 두 번 마우스를 클릭하여 접속했으므로 CTRL-T, CTRL-O, g <RightMouse>
 또는 <C-RightMouse>를 사용하여 이전 위치로 돌아갈 수 있습니다.
 
-태그는 | 하이라이트가 활성화되면 해당 문자는 숨겨집니다.  
+|문자가 태그를 둘러싸고 있지만 강조기능이 활성화되면 해당 문자는 숨겨집니다.  
 따라서 명령어를 더 쉽게 읽을 수 있습니다.
 
-Anyway, you can use CTRL-] on any word, also when it is not within |, and Vim
-will try to find help for it.  Especially for options in single quotes, e.g.
-'hlsearch'.
+한편, |문자 사이에 있지 않은 낱말도, CTRL-]를 누르면 Vim이
+가장 관련이 깊은 도움말을 찾아줍니다(특히 작은따옴표 안에 있는 옵션들)
+예 : 'hlsearch'.
 
 ------------------------------------------------------------------------------
  vim:tw=78:fo=tcq2:isk=!-~,^*,^\|,^\":ts=8:ft=help:norl:

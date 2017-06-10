@@ -476,271 +476,258 @@ or press a sequence of keys
 
 # Lesson 4.3: PARTIESES 검색과 일치
 
-** Type `%`{normal} to find a matching ),], or }. **
+** 일치하는 것을 찾으려면`%`{normal}을 입력하십시오),], 또는}. **
 
-  1. Place the cursor on any (, [, or { in the line below marked --->.
+  1. 커서를 임의의 (, [, 또는 {아래 줄에 --->로 표시하십시오.
 
-  2. Now type the  [%](%)  character.
+  2. 이제 [%](%) 문자를 입력하십시오.
 
-  3. The cursor will move to the matching parenthesis or bracket.
+  3. 커서가 일치하는 괄호 또는 대괄호로 이동합니다.
 
-  4. Type `%`{normal} to move the cursor to the other matching bracket.
+  4. 커서를 다른 대괄호로 이동하려면`%`{normal}을 입력하십시오.
 
-  5. Move the cursor to another (,),[,],{ or } and see what `%`{normal} does.
+  5. 커서를 다른 (,), [,], {또는}로 이동시키고`%`{normal}이 어떤 기능을 하는지보십시오.
 
----> This ( is a test line with ('s, ['s ] and {'s } in it. )) {expect:ANYTHING}
+---> 이것은(( 's, [s]와 {s}가있는 테스트 라인입니다.)) {expect : ANYTHING}
 
-NOTE: This is very useful in debugging a program with unmatched parentheses!
+참조: 이는 괄호 안의 프로그램을 디버깅 할 때 매우 유용합니다!
 
-# Lesson 4.4: THE SUBSTITUTE COMMAND
+# Lesson 4.4: 대체 명령
 
-** Type `:s/old/new/g` to substitute "new" for "old". **
+** `:s/old/new/g`를 입력하여 "old"를 "new"로 대체하십시오. **
 
-  1. Move the cursor to the line below marked --->.
+  1. 커서를 ---> 표시가있는 행으로 이동하십시오.
 
-  2. Type
+  2. 입력하십시오
 ~~~ cmd
     :s/thee/the/
 ~~~
 
-    NOTE that the [:s](:s) command only changed the first occurrence of "thee" in the line.
+    참고 : [: s] (: s) 명령은 줄에서 "thee"의 첫 번째 항목 만 변경했습니다.
 
-  3. Now type
+  3. 이제 입력하세요
 ~~~ cmd
      :s/thee/the/g
 ~~~
 
-     Adding the g [flag](:s_flags) means to substitute globally in the line, change
-     all occurrences of "thee" in the line.
+     g [플래그] (: s_flags)를 추가하면 해당 줄에서 전역으로 대체되고 줄의 "thee"가 모두 변경됩니다
 
 ---> thee best time to see thee flowers is in thee spring. {expect:the best time to see the flowers is in the spring.}
 
-  4. To change every occurrence of a character string between two lines, type
+  4. 두 줄 사이의 모든 문자열을 변경하려면, 입력하십시오
 ~~~ cmd
      :#,#s/old/new/g
 ~~~
-     where #,# are the line numbers of the range of lines where the substitution is to be done.
+     여기서 #, #는 대체가 수행되는 행 범위의 행 번호입니다.
 
-     Type
+     입력
 ~~~ cmd
      :%s/old/new/g
 ~~~
-     to change every occurrence in the whole file.
+     전체 파일에서 모든 변경사항을 변경합니다.
 
-     Type
+     입력
 ~~~ cmd
      :%s/old/new/gc
 ~~~
-     to find every occurrence in the whole file, with a prompt whether to substitute or not.
+     대체 할 것인지 묻는 메시지와 함께 전체 파일에서 모든 항목을 찾습니다.
 
-# Lesson 4 SUMMARY
+# Lesson 4 요약
 
-  1. `<Ctrl-g>`{normal}     displays your location in the file and the file status.
-             `G`{normal}    moves to the end of the file.
-     number  `G`{normal}    moves to that line number.
-            `gg`{normal}    moves to the first line.
+  1. `<Ctrl-g>`{normal}     파일의 위치와 파일 상태를 표시합니다.
+             `G`{normal}    파일의 끝으로 이동합니다.
+     number  `G`{normal}    해당 행 번호로 이동합니다.
+            `gg`{normal}    첫 번째 줄로 이동합니다.
 
-  2. Typing `/`{normal} followed by a phrase searches FORWARD for the phrase.
-     Typing `?`{normal} followed by a phrase searches BACKWARD for the phrase.
-     After a search type `n`{normal} to find the next occurrence in the same direction
-                      or `N`{normal} to search in the opposite direction.
-     `<Ctrl-o>`{normal} takes you back to older positions, `<Ctrl-i>`{normal} to newer positions.
+  2. `/`{normal} 다음에 구문을 입력하면 구문이 FORWARD로 검색됩니다.
+     `?`{normal}을 입력 한 후 구문은 BACKWARD를 검색합니다.
+     검색 유형 'n'(정상)을 사용하여 같은 방향으로 다음 항목을 찾습니다.
+     또는 반대 방향으로 검색하려면`N` {normal}을 사용하십시오.
+     `<Ctrl-o>`{normal}은 더 오래된 포지션으로,`<Ctrl-i>`{normal}는 새로운 포지션으로 되돌립니다.
 
-  3. Typing `%`{normal} while the cursor is on a (,),[,],{, or } goes to its match.
+  3. 커서가 (,), [,], {, 또는}에있는 동안`%`{normal}을 타이핑하면 그것의 match로 이동합니다.
 
-  4. To substitute new for the first old in a line type
+  4. 행 유형에서 첫 번째 old로 new를 대체하려면
 ~~~ cmd
         :s/old/new
 ~~~
-     To substitute new for all 'old's on a line type
+     모든 'old'를 라인 형식으로 대체하려면
 ~~~ cmd
         :s/old/new/g
 ~~~
-     To substitute phrases between two line #'s type
+     두 라인 # 유형 사이의 구를 대체하려면
 ~~~ cmd
         :#,#s/old/new/g
 ~~~
-     To substitute all occurrences in the file type
+     파일 형식의 모든 항목을 대체하려면
 ~~~ cmd
         :%s/old/new/g
 ~~~
-     To ask for confirmation each time add 'c'
+     'c'를 추가 할 때마다 확인을 요청하려면
 ~~~ cmd
         :%s/old/new/gc
 ~~~
 
-# Lesson 5.1: HOW TO EXECUTE AN EXTERNAL COMMAND
+# Lesson 5.1: 외부 명령을 실행하는 방법
 
-** Type `:!`{vim} followed by an external command to execute that command. **
+** `:!`{vim}을 입력하고 그 명령을 실행하기위한 외부 명령을 입력하십시오. **
 
-  1. Type the familiar command `:`{normal} to set the cursor at the bottom of the
-     screen.  This allows you to enter a command-line command.
+  1. 익숙한 명령`:`{normal}을 입력하여 커서를 화면 하단에 설정하십시오. 
+     이렇게하면 command-line 명령을 입력 할 수 있습니다.
 
-  2. Now type the [!](!cmd) (exclamation point) character.  This allows you to
-     execute any external shell command.
+  2. 이제 [!] (! cmd) (느낌표) 문자를 입력하십시오. 
+     이렇게하면 외부 쉘 명령을 실행할 수 있습니다.
 
-  3. As an example type "ls" following the "!" and then hit `<Enter>`{normal}.  This
-     will show you a listing of your directory, just as if you were at the
-     shell prompt.
+  3. 예를 들어, "ls"다음에 "!" 그런 다음`<Enter>`{normal}을 누르십시오. 
+     이렇게하면 쉘 프롬프트에서와 마찬가지로 디렉토리 목록이 표시됩니다.
 
-NOTE:  It is possible to execute any external command this way, also with
-       arguments.
+참조:  argument도 외부 명령을 이 방법으로 실행할 수 있습니다.
 
-NOTE:  All  :  commands must be finished by hitting <Enter>
-       From here on we will not always mention it.
+참조:  전체 : 명령은 <Enter>를 눌러 완료해야합니다. 
+      여기에서 우리는 항상 언급하지 않을 것입니다.
 
-# Lesson 5.2: MORE ON WRITING FILES
+# Lesson 5.2: 쓰기 파일에 대한 추가 정보
 
-** To save the changes made to the text, type `:w`{vim} FILENAME. **
+** 텍스트 변경 사항을 저장하려면`: w` {vim} FILENAME을 입력하십시오. **
 
-  1. Type `:!ls`{vim} to get a listing of your directory.
-     You already know you must hit `<Enter>`{normal} after this.
+  1. `:! ls` {vim}을 입력하여 디렉토리 목록을 얻으십시오.
+     당신은 다음에`<Enter>`{normal}을 눌러야한다는 것을 이미 알고 있습니다.
 
-  2. Choose a filename that does not exist yet, such as TEST.
-
-  3. Now type:
+  2. TEST와 같이 아직 존재하지 않는 파일 이름을 선택하십시오.
+  
+  3. 이제 입력하십시오:
 ~~~ cmd
         :w TEST
 ~~~
     (where TEST is the filename you chose.)
 
-  4. This saves the whole file (the Vim Tutor) under the name TEST.
-     To verify this, type `:!ls`{vim} again to see your directory.
+  4. 이것은 전체 파일 (Vim Tutor)을 TEST라는 이름으로 저장합니다.
+     이것을 확인하려면`:! ls` {vim}을 다시 입력하여 디렉토리를 확인하십시오.
 
-NOTE: If you were to exit Vim and start it again with  vim TEST , the file
-      would be an exact copy of the tutor when you saved it.
+참조: Vim을 종료하고 vim TEST로 다시 시작하면 파일을 저장했을 때
+     파일이 tutor의 정확한 사본이됩니다.
 
-  5. Now remove the file by typing:
+  5. 명령어를 입력하여 파일을 제거하십시오.:
 ~~~ cmd
         :!rm TEST
 ~~~
 
 # Lesson 5.3: SELECTING TEXT TO WRITE
 
-** To save part of the file, type `v`{normal} motion  `:w FILENAME`{vim} **
+** 파일의 일부를 저장하려면`v` {normal} 모션`: w FILENAME` {vim} **
 
-  1. Move the cursor to this line.
+  1. 커서를 해당 행으로 이동하십시오.
 
-  2. Press [v](v) and move the cursor to the fifth item below.  Notice that the
-     text is highlighted.
+  2. [v](v)를 누르고 커서를 아래 다섯 번째 항목으로 이동하십시오. 
+     텍스트가 강조 표시됩니다.
 
-  3. Press the `:`{normal} character.  At the bottom of the screen
+  3. 화면 하단의 `:`{normal} 문자를 누릅니다.
 
         :'<,'>
 
-    will appear.
+    가 나타날것입니다.
 
-  4. Type
+  4. 입력하십시오
 
         `:w TEST`{vim}
 
-     where TEST is a filename that does not exist yet.  Verify that you see
+     여기서 TEST는 아직 존재하지 않는 파일 이름입니다.  보시고 확인하십시오.
 
         `:'<,'>w TEST`{vim}
 
-     before you press `<Enter>`{normal}.
+     `<Enter>`{normal}을 누르기 전에.
 
-  5. Vim will write the selected lines to the file TEST.  Use `:!ls`{vim} to see it.
-     Do not remove it yet!  We will use it in the next lesson.
+  5. 빔은 선택한 줄을 TEST 파일에 씁니다. `:! ls` {vim}을 사용하십시오.
+     아직 제거하지 마십시오! 우리는 다음 lesson에서 그것을 사용할 것입니다.
 
-NOTE:  Pressing [v](v) starts [Visual selection](visual-mode). You can move
-       the cursor around to make the selection bigger or smaller. Then you can
-       use an operator to do something with the text. For example, `d`{normal} deletes
-       the text.
+참조:  [v] (v)를 누르면 [시각적 선택]이 시작됩니다 (Visual Selection). 
+      커서를 움직여 선택 항목을 더 크게 또는 더 작게 만들 수 있습니다. 그런 다음 연산자를 사용하여
+      텍스트로 무언가를 할 수 있습니다. 예를 들어`d` {normal}은 텍스트를 삭제합니다.
 
-# Lesson 5.4: RETRIEVING AND MERGING FILES
+# Lesson 5.4: 수색 및 합병 파일
 
-** To insert the contents of a file, type `:r FILENAME`{vim}  **
+** 파일의 내용을 삽입하려면`: r FILENAME` {vim}  **
 
-  1. Place the cursor just above this line.
+  1. 이 선 바로 위에 커서를 놓습니다.
 
-NOTE:  After executing Step 2 you will see text from Lesson 5.3.  Then move
-       DOWN to see this lesson again.
+참조:  2 단계를 실행하면 5.3과 같은 텍스트가 표시됩니다. 
+      그런 다음 아래로 이동하여 이 lesson을 다시보십시오.
 
-  2. Now retrieve your TEST file using the command
+  2. 이제 명령을 사용하여 TEST 파일을 검색하십시오.
 
         `:r TEST`{vim}
 
-     where TEST is the name of the file you used.
-     The file you retrieve is placed below the cursor line.
+     TEST는 사용한 파일의 이름입니다.
+     검색 한 파일은 커서 행 아래에 놓입니다.
 
-  3. To verify that a file was retrieved, cursor back and notice that there
-     are now two copies of Lesson 5.3, the original and the file version.
+  3. 파일이 검색되었는지 확인하려면 뒤로 커서를 이동하여 원본 및
+     파일 버전 Lesson 5.3 사본이 두 개 있음을 확인하십시오.
 
-NOTE:  You can also read the output of an external command.  For example,
+참조:  외부 명령의 출력을 읽을 수도 있습니다. 예를 들어,
 
        `:r !ls`{vim}
 
-       reads the output of the `ls` command and puts it below the cursor.
+       `ls` 명령의 출력을 읽고이를 커서 아래에 놓습니다.
 
-# Lesson 5 SUMMARY
+# Lesson 5 요약
 
-  1.  [:!command](:!cmd)  executes an external command.
+  1.  [:!command](:cmd)는 외부 명령을 실행합니다.
 
-      Some useful examples are:
-      `:!ls`{vim}              -  shows a directory listing
-      `:!rm FILENAME`{vim}     -  removes file FILENAME
+      유용한 예는 다음과 같습니다.:
+      `:!ls`{vim}              -  디렉토리 목록을 보여줍니다.
+      `:!rm FILENAME`{vim}     -  파일 FILENAME을 (를) 삭제합니다.
 
-  2.  [:w](:w) FILENAME             writes the current Vim file to disk with
-                                    name FILENAME.
+  2.  [:w](:w) FILENAME             현재 Vim 파일을 FILENAME 이름의 디스크에 씁니다.
 
-  3.  [v](v)  motion  :w FILENAME   saves the Visually selected lines in file
-                                    FILENAME.
+  3.  [v](v)  motion  :w FILENAME   시각적으로 선택된 행을 파일 FILENAME에 저장합니다.
 
-  4.  [:r](:r) FILENAME             retrieves disk file FILENAME and puts it
-                                    below the cursor position.
-
-  5.  [:r !dir](:r!)                reads the output of the dir command and
-                                    puts it below the cursor position.
+  4.  [:r](:r) FILENAME             디스크 파일 FILENAME을 검색하여 커서 위치 아래에 놓습니다.
+  
+  5.  [:r !dir](:r!)                dir 명령의 출력을 읽고 이를 커서 위치 아래에 놓습니다.
 
 # Lesson 6.1: THE OPEN COMMAND
 
-** Type `o`{normal} to open a line below the cursor and place you in Insert mode. **
+** `o` {normal}를 입력하여 커서 아래의 줄을 열고 삽입 모드로 전환하십시오. **
 
-  1. Move the cursor to the line below marked --->.
+  1. 커서를 ---> 표시가있는 행으로 이동하십시오.
 
-  2. Type the lowercase letter `o`{normal} to [open](o) up a line BELOW the cursor and place
-     you in Insert mode.
+  2. 소문자 'o` {normal}를 입력하여 [open] (o) 한 줄 아래로 커서를 이동하여 삽입 모드로 전환하십시오.
 
-  3. Now type some text and press `<Esc>`{normal} to exit Insert mode.
+  3. 이제 텍스트를 입력하고`<Esc>`{normal}을 눌러 삽입 모드를 종료하십시오.
 
----> After typing  o  the cursor is placed on the open line in Insert mode. {expect:ANYTHING}
+---> o를 입력하면 삽입 모드에서 커서가 열린 줄에 놓입니다. {expect:ANYTHING}
 
-  4. To open up a line ABOVE the cursor, simply type a [capital O](O), rather
-     than a lowercase `o`{normal}.  Try this on the line below.
+  4. 커서 위의 줄을 여는 경우 소문자`o` {normal} 대신 [capital O] (O)를 입력하십시오. 
+     아래 라인에서 이것을 시도하십시오.
 
----> Open up a line above this by typing O while the cursor is on this line. {expect:ANYTHING}
+---> 커서가 해당 줄에있을 때 O를 입력하여 위의 줄을 엽니다. {expect:ANYTHING}
 
-# Lesson 6.2: THE APPEND COMMAND
+# Lesson 6.2: APPEND 명령
 
-** Type `a`{normal} to insert text AFTER the cursor. **
+** 커서 뒤에 텍스트를 삽입하려면`a`{normal}을 입력하십시오. **
 
-  1. Move the cursor to the start of the line below marked --->.
+  1. 커서를 ---> 표시가있는 행의 시작 부분으로 이동하십시오.
 
-  2. Press `e`{normal} until the cursor is on the end of "li".
+  2. 커서가 "li"의 끝 부분에 올 때까지 "e"{normal}를 누르십시오.
 
-  3. Type an `a`{normal} (lowercase) to [append](a) text AFTER the cursor.
+  3. 커서 뒤에 '추가'(a)하기 위해`a` {normal} (소문자)를 입력하십시오.
 
-  4. Complete the word like the line below it.  Press `<Esc>`{normal} to exit Insert
-     mode.
+  4. 아래 줄과 같이 단어를 완성하십시오. 삽입 모드를 종료하려면`<Esc>`{normal}을 누르십시오.
 
-  5. Use `e`{normal} to move to the next incomplete word and repeat steps 3 and 4.
+  5. `e`{normal}를 사용하여 다음 불완전한 단어로 이동하고 3단계와 4단계를 반복하십시오.
 
 ---> This li will allow you to pract appendi text to a line. {expect:This line will allow you to practice appending text to a line.}
 ---> This line will allow you to practice appending text to a line. {expect:This line will allow you to practice appending text to a line.}
 
-NOTE:  [a](a), [i](i) and [A](A) all go to the same Insert mode, the only difference is where
-       the characters are inserted.
+참조:  [a](a), [i](i) 및 [A](A)는 모두 동일한 삽입 모드로 이동하지만 유일한 차이는 문자가 삽입되는 곳입니다.
 
-# Lesson 6.3: ANOTHER WAY TO REPLACE
+# Lesson 6.3: 대체 할 다른 방법
 
-** Type a capital `R`{normal} to replace more than one character. **
+** 두 개 이상의 문자를 대치하려면 대문자`R` {normal}을 입력하십시오. **
 
-  1. Move the cursor to the first line below marked --->.  Move the cursor to
-     the beginning of the first "xxx".
+  1. 커서를 ---> 표시가있는 첫 번째 줄로 이동하십시오. 커서를 첫 번째 "xxx"의 시작 부분으로 이동하십시오.
 
-  2. Now press `R`{normal} ([capital R](R)) and type the number below it in the second line, so that it
-     replaces the "xxx".
+  2. 이제 'R` {normal} ([capital R] (R))을 누르고 두 번째 줄에 숫자를 입력하면 "xxx"가 대체됩니다.
 
   3. Press `<Esc>`{normal} to leave [Replace mode](mode-replace).  Notice that the rest of the line
      remains unmodified.

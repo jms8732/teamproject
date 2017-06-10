@@ -729,189 +729,186 @@ or press a sequence of keys
 
   2. 이제 'R` {normal} ([capital R] (R))을 누르고 두 번째 줄에 숫자를 입력하면 "xxx"가 대체됩니다.
 
-  3. Press `<Esc>`{normal} to leave [Replace mode](mode-replace).  Notice that the rest of the line
-     remains unmodified.
+  3. `<Esc>`{normal}을 눌러 [Replace mode](mode replace)를 빠져 나오십시오. 
+     라인의 나머지 부분은 수정되지 않은 상태로 유지됩니다.
 
-  4. Repeat the steps to replace the remaining "xxx".
+  4. 단계를 반복하여 나머지 "xxx"를 바꿉니다.
 
 ---> Adding 123 to xxx gives you xxx. {expect:Adding 123 to 456 gives you 579.}
 ---> Adding 123 to 456 gives you 579. {expect:Adding 123 to 456 gives you 579.}
 
-NOTE:  Replace mode is like Insert mode, but every typed character deletes an
-       existing character.
+참조:  Replace mode는 삽입 모드와 비슷하지만 모든 입력 된 문자는 기존 문자를 삭제합니다.
 
-# Lesson 6.4: COPY AND PASTE TEXT
+# Lesson 6.4: 복사 및 붙여 넣기 텍스트
 
-** Use the `y`{normal} operator to copy text and `p`{normal} to paste it **
+** 텍스트를 복사하려면`y`{normal} 연산자를 사용하고 붙여 넣으려면`p`{normal} 연산자를 사용하십시오. **
 
-  1. Go to the line marked with ---> below and place the cursor after "a)".
+  1. 아래의 ---로 표시된 행으로 이동하여 "a)"다음에 커서를 놓으십시오.
 
-  2. Start Visual mode with `v`{normal} and move the cursor to just before "first".
+  2. 비주얼 모드를`v` {normal}로 시작하고 커서를 "first"바로 앞쪽으로 이동하십시오.
 
-  3. Type `y`{normal} to [yank](yank) (copy) the highlighted text.
+  3. 강조 표시된 텍스트에`y` {normal}를 입력하고 [yank](yank)(copy)합니다.
 
-  4. Move the cursor to the end of the next line: `j$`{normal}
+  4. 커서를 다음 줄의 끝으로 이동하십시오 :`j $`{normal}
 
-  5. Type `p`{normal} to [put](put) (paste) the text.  Then type:  "a second"`<Esc>`{normal}.
+  5. `p` {normal}을 입력하여 텍스트를 [put](put)(paste)합니다. 그런 다음 "a second",
+     "<Esc>`{normal}를 입력하십시오.
 
-  6. Use Visual mode to select " item.", yank it with `y`{normal}, move to the end of
-     the next line with `j$`{normal} and put the text there with `p`{normal}.
+  6. 비주얼 모드를 사용하여 "item."을 선택하고,`y` {normal}로 잡아 당기고,
+     `j $`{normal}을 사용하여 다음 줄 끝으로 이동하여`p` {normal}로 텍스트를 넣으십시오.
 
----> a) this is the first item.
---->     b)  {expect:    b) this is the second item}
+---> a) 이것이 첫 번째 항목입니다.
+---> b) {expect : b) 이것이 두 번째 항목}
 
-  NOTE: you can also use `y`{normal} as an operator; `yw`{normal} yanks one word.
+  참조: 연산자로`y` {normal}을 사용할 수도 있습니다; `yw` {normal}는 한 단어를 yank.
 
 # Lesson 6.5: SET OPTION
 
-** Set an option so a search or substitute ignores case **
+** 검색 또는 대체가 케이스를 무시하도록 옵션 설정 **
 
-  1. Search for 'ignore' by entering:   `/ignore`
-     Repeat several times by pressing `n`{normal}.
+  1. `/ ignore`를 입력하여 '무시'를 검색하십시오.
+     `n` {normal}을 눌러 여러 번 반복하십시오.
 
-  2. Set the 'ic' (Ignore case) option by entering:
+  2. 다음을 입력하여 'ic'(대소 문자 무시) 옵션을 설정하십시오.:
 ~~~ cmd
         :set ic
 ~~~
-  3. Now search for 'ignore' again by pressing  n
-     Notice that Ignore and IGNORE are now also found.
+  3. 이제 n을 눌러 '무시'를 다시 검색하십시오.
+     Ignore와 IGNORE도 이제 발견됩니다.
 
-  4. Set the 'hlsearch' and 'incsearch' options:
+  4. 'hlsearch'및 'incsearch'옵션을 설정하십시오.
 ~~~ cmd
         :set hls is
 ~~~
-  5. Now type the search command again and see what happens:  /ignore <Enter>
+  5. 이제 검색 명령을 다시 입력하고 어떤 일이 발생하는지 확인하십시오: /ignore <Enter>
 
-  6. To disable ignoring case enter:
+  6. 대소 문자 무시 무시를 사용하려면:
 ~~~ cmd
         :set noic
 ~~~
-  7. To toggle the value of a setting, prepend it with "inv":
+  7. 설정의 값을 토글하려면 "inv":
 ~~~ cmd
         :set invic
 ~~~
-NOTE:  To remove the highlighting of matches enter:
+참조:  일치 항목의 강조 표시를 제거하려면 다음을 입력하십시오:
 ~~~ cmd
         :nohlsearch
 ~~~
-NOTE:  If you want to ignore case for just one search command, use  [\c](/\c)
-       in the phrase:  /ignore\c  <Enter>
+참조:  하나의 검색 명령에 대한 대소 문자를 무시하려면 구문에서
+      [\c] (/\c)를 사용하십시오: /ignore\c  <Enter>
 
-# Lesson 6 SUMMARY
+# Lesson 6 요약
 
-  1. Type `o`{normal} to open a line BELOW the cursor and start Insert mode.
-     Type `O`{normal} to open a line ABOVE the cursor.
+  1. `o` {normal}를 입력하여 커서를 아래 줄에 놓고 커서를 삽입 모드로 시작하십시오.
+     `O` {normal}을 입력하여 커서 위의 줄을여십시오.
 
-  2. Type `a`{normal} to insert text AFTER the cursor.
-     Type `A`{normal} to insert text after the end of the line.
+  2. 커서 뒤에 텍스트를 삽입하려면`a` {normal}을 입력하십시오.
+     행의 끝 뒤에 텍스트를 삽입하려면`A` {normal}를 입력하십시오.
 
-  3. The `e`{normal} command moves to the end of a word.
+  3. `e` {normal} 명령은 단어의 끝으로 이동합니다.
 
-  4. The `y`{normal} operator yanks (copies) text, `p`{normal} puts (pastes) it.
+  4. `y` {normal} 연산자는 텍스트를 잡아(복사)하고 ,`p`{normal}는 그것을 붙여 넣는다.
 
-  5. Typing a capital `R`{normal} enters Replace mode until `<Esc>`{normal} is pressed.
+  5. 대문자`R` {normal}를 입력하면`<Esc>`{normal}이 눌러 질 때까지 Replace 모드로 들어갑니다.
 
-  6. Typing "[:set](:set) xxx" sets the option "xxx".  Some options are:
+  6. "[: set] (: set) xxx"를 입력하면 "xxx"옵션이 설정됩니다. 일부 옵션은 다음과 같습니다:
 
-        'ic' 'ignorecase'   ignore upper/lower case when searching
-        'is' 'incsearch'    show partial matches for a search phrase
-        'hls' 'hlsearch'    highlight all matching phrases
+        'ic' 'ignorecase'   검색 할 때 대 / 소문자를 무시하십시오.
+        'is' 'incsearch'    검색 구문에 부분 일치 검색
+        'hls' 'hlsearch'    모든 일치하는 문구를 강조 표시하십시오.
 
-     You can either use the long or the short option name.
+     긴 옵션 이름이나 짧은 옵션 이름을 사용할 수 있습니다.
 
-  7. Prepend "no" to switch an option off:
+  7. 옵션을 끄려면 "no"를 앞에 붙입니다.:
 ~~~ cmd
         :set noic
 ~~~
-  8. Prepend "inv" to toggle an option:
+  8. "inv"앞에 옵션을 토글하십시오:
 ~~~ cmd
         :set invic
 ~~~
 
-# Lesson 7.1: GETTING HELP
+# Lesson 7.1: 도움말보기
 
-** Use the on-line help system **
+** 온라인 도움말 시스템 사용 **
 
-Vim has a comprehensive on-line help system.  To get started, try one of
-these three:
-    - press the `<HELP>`{normal} key (if you have one)
-    - press the `<F1>`{normal} key (if you have one)
-    - type
+Vim은 포괄적 인 온라인 도움말 시스템을 갖추고 있습니다.  
+시작하려면이 세 가지 중 하나를 시도해보십시오:
+    - 입력 `<HELP>`{normal} key (if you have one)
+    - 입력 `<F1>`{normal} key (if you have one)
+    - 입력
         `:help`{vim}
 
-Read the text in the help window to find out how the help works.
-Type `<Ctrl-w><Ctrl-w>`{normal} to jump from one window to another.
-Type `:q`{vim} to close the help window.
+도움말 창이 어떻게 작동하는지 알아 보려면 도움말 창에있는 텍스트를 읽으십시오.
+한 window 창에서 다른 창으로 건너 뛰려면`<Ctrl-w> <Ctrl-w>`{normal}을 입력하십시오.
+`:q` {vim}을 입력하면 도움말 창이 닫힙니다.
 
-You can find help on just about any subject, by giving an argument to the
-":help" command.  Try these (don't forget pressing <Enter>):
+": help"명령에 대한 argument을 통해 모든 주제에 대한 도움말을 찾을 수 있습니다.  
+다음을 실행해보세요.(don't forget pressing <Enter>):
 ~~~ cmd
     :help w
     :help c_CTRL-D
     :help insert-index
     :help user-manual
 ~~~
-# Lesson 7.2: CREATE A STARTUP SCRIPT
+# Lesson 7.2: 시작 스크립트 만들기
 
-** Enable Vim features **
+** Vim 기능 사용 **
 
-Vim has many more features than Vi, but most of them are disabled by
-default.  To start using more features you have to create a "vimrc" file.
+Vim은 Vi보다 많은 기능을 가지고 있지만 대부분은 기본적으로 비활성화되어 있습니다.
+더 많은 기능을 사용하려면 "vimrc"파일을 만들어야합니다.
 
-  1. Start editing the "vimrc" file.  This depends on your system:
-    `:e ~/.config/nvim/init.vim`{vim}     for Unix-like systems
+  1."vimrc"파일 편집을 시작하십시오. 이것은 시스템에 따라 다릅니다:
+    `:e ~/.config/nvim/init.vim`{vim}     유닉스 계열 시스템 용
 
-  2. Now read the example "vimrc" file contents:
+  2. 이제 예제 "vimrc"파일 내용을 읽으십시오.:
     `:r $VIMRUNTIME/vimrc_example.vim`{vim}
 
-  3. Write the file with:
+  3. 다음과 같이 파일작성:
     `:w`{vim}
 
-  The next time you start Vim it will use syntax highlighting.
-  You can add all your preferred settings to this "vimrc" file.
-  For more information type  :help vimrc-intro
+  다음에 Vim을 시작할 때 구문 강조를 사용할 것이다.
+  이 "vimrc"파일에 원하는 설정을 모두 추가 할 수 있습니다.
+  자세한 정보는 다음을 입력하십시오 : help vimrc-intro
 
-# Lesson 7.3: COMPLETION
+# Lesson 7.3: 완성
 
-** Command line completion with `<Ctrl-d>`{normal} and `<Tab>`{normal} **
+** `<Ctrl-d>`{normal}과`<Tab>`{normal}을 사용한 Command-line 완료 **
 
-  1. Look what files exist in the directory:  `:!ls`{vim}
+  1. 디렉터리에 어떤 파일이 있는지 살펴보십시오.`:! ls` {vim}
 
-  2. Type the start of a command:  `:e`{vim}
+  2. 명령의 시작을 입력하십시오 :`: e` {vim}
 
-  3. Press `<Ctrl-d>`{normal} and Vim will show a list of commands that start with "e".
+  3. `<Ctrl-d>`{normal}을 누르면 Vim은 "e"로 시작하는 명령 목록을 보여줍니다.
 
-  4. Press `<Tab>`{normal} and Vim will complete the command name to ":edit".
+  4. `<Tab>`{normal}을 누르면 Vim은 명령 이름을 ": edit"으로 완료합니다.
 
-  5. Now add a space and the start of an existing file name: `:edit FIL`{vim}
+  5. 이제 공백과 기존 파일 이름의 시작 부분을 추가하십시오 :`: edit FIL` {vim}
 
-  6. Press `<Tab>`{normal}.  Vim will complete the name (if it is unique).
+  6. `<Tab>`{normal}을 누르십시오. Vim은 이름을 완성할 것 입니다(고유 한 경우).
 
-NOTE:  Completion works for many commands. It is especially useful for `:help`{vim}.
+참조:  완성은 많은 명령에 적용됩니다. 이것은`: help` {vim}에 특히 유용합니다.
 
-# Lesson 7 SUMMARY
+# Lesson 7 요약
 
-  1. Type `:help`{vim}
-     or press `<F1>`{normal} or `<Help>`{normal} to open a help window.
+  1. `:help`{vim}을 입력하거나`<F1>`{normal} 또는`<Help>`{normal}를 눌러 도움말 창을여십시오.
+  
+  2. TOPIC에 대한 도움말을 찾으려면`: help TOPIC` {vim}을 입력하십시오.
 
-  2. Type  `:help TOPIC`{vim} to find help on TOPIC.
+  3. 다른 창으로 건너 뛰려면`<Ctrl-w> <Ctrl-w>`{normal}을 입력하십시오.
 
-  3. Type  `<Ctrl-w><Ctrl-w>`{normal}  to jump to another window
+  4. 도움말 창을 닫으려면`: q` {vim}을 입력하십시오.
 
-  4. Type  `:q`{vim}  to close the help window
+  5. vimrc 시작 스크립트를 만들어 원하는 설정을 유지하십시오.
 
-  5. Create a vimrc startup script to keep your preferred settings.
+  6. 명령 모드에서`<Ctrl-d>`{normal}을 누르면 완료를 볼 수 있습니다.
+     `<Tab>`{normal}을 누르면 하나의 완료를 사용할 수 있습니다.
 
-  6. While in command mode, press `<Ctrl-d>`{normal} to see possible completions.
-     Press `<Tab>`{normal} to use one completion.
+# 결론
+이는 Vim 편집기에 대한 간략한 개요를 제공하기위한 것으로 편집기를 상당히 쉽게 사용할 수 있도록하기위한 것입니다. 
+Vim은 더 많은 명령을 가지고 있기 때문에 해당 tutor은 완벽하지는 않습니다. 도움을 자주 참조하십시오.
 
-# CONCLUSION
-
-This was intended to give a brief overview of the Vim editor, just enough to
-allow you to use the editor fairly easily. It is far from complete as Vim has
-many many more commands.  Consult the help often.
-
-There are many resources online to learn more about vim. Here's a bunch of them:
+vim에 관해 더 많은 것을 배우기 위해 온라인으로 많은 자료가 있습니다:
 
 - *Learn Vim Progressively*: http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/
 - *Learning Vim in 2014*: http://benmccormick.org/learning-vim-in-2014/
@@ -920,11 +917,11 @@ There are many resources online to learn more about vim. Here's a bunch of them:
 - *Learn Vimscript the Hard Way*: http://learnvimscriptthehardway.stevelosh.com/
 - *7 Habits of Effective Text Editing*: http://www.moolenaar.net/habits.html
 
-If you prefer a book, *Practival Vim* by Drew Neil is recommended often.
+책을 선호한다면 Drew Neil의 *Practival Vim*을 추천합니다.
 
-This tutorial was written by Michael C. Pierce and Robert K. Ware, Colorado
-School of Mines using ideas supplied by Charles Smith, Colorado State
-University.  E-mail: bware@mines.colorado.edu.
+이 튜토리얼은 Colorado State University의 Charles Smith가 제공 한 아이디어를 사용하여 
+Colorado School of Mines의 Michael C. Pierce와 Robert K. Ware가 작성했습니다. 
+이메일 : bware@mines.colorado.edu.
 
-Modified for Vim by Bram Moolenaar.
-Modified for vim-tutor-mode by Felipe Morales.
+Bram Moolenaar 님이 Vim을 수정했습니다.
+Felipe Morales의 vim-tutor-mode 용으로 수정되었습니다.

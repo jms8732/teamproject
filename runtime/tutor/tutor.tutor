@@ -216,39 +216,38 @@ ftdaW
     \---> TEXT {CLAUSE}
 
 여기서 \--->는 줄 시작 부분에서 시작해야합니다. TEXT가 CLAUSE를 만족하면,
-✓ 기호가 왼쪽에 나타납니다. A ✗ sign is displayed otherwise. The CLAUSE
-itself is hidden unless debug mode is set or ['conceallevel']('conceallevel')
-is 2.
+✓ 기호가 왼쪽에 나타납니다. 그렇지 않으면 ✗ 기호가 표시됩니다. 
+디버그 모드가 설정되거나 [conceallevel] ( 'conceallevel')이 2가 아닌 한 CLAUSE 자체는 숨겨집니다.
 
 ### expect *expect*
 
-The basic clause is "expect", which is satisfied if TEXT is the same as the
-content of the clause. For example
+기본 절은 "expect"이며, TEXT가조항의 기본 내용 입니다.
+예를들어
 
     \---> TEXT {expect:TEXT}
 
-is satisfied, but
+는 만족하지만,
 
     \---> OTHER TEXT {expect:TEXT}
 
-is not.
+은 만족하지 않습니다
 
-13. Make both lines the same:
+13. 아래의 두 줄을 동일하게 만드세요:
 
 ---> this is not right {expect:---> this is right} |expect:---> this is right {expect:---> this is right}|
 ---> ---> this is right {expect:---> this is right} |expect:---> this is right {expect:---> this is right}|
 
 
-If the content of a expect clause is ANYTHING, no checks will be performed. This is
-useful to create a line that is highlighted you want the user to play with.
+expect 절의 내용이 ANYTHING이면 점검이 수행되지 않습니다. 
+이 옵션은 사용자가 원하는대로 강조 표시되는 선을 만드는 데 유용합니다.
 
     \---> TEXT {expect:ANYTHING}
 
-is displayed
+표시됩니다.
 
 ---> this is free text {expect:ANYTHING}
 
-14. Turn the line below into free text:
+14. 아래 줄을 free text로 바꾸십시오.:
 
 ---> this is some text |expect:---> this is some text {expect:ANYTHING}|
 ---> ---> this is some text {expect:ANYTHING} |expect:---> this is some text {expect:ANYTHING}|

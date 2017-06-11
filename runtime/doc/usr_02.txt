@@ -1,38 +1,39 @@
 *usr_02.txt*	Nvim
 
-		     VIM USER MANUAL - by Bram Moolenaar
+		    VIM 사용 설명서 - Bram Moolenaar 저
 
-			    The first steps in Vim
+			    Vim의 첫 번째 단계
 
+이 장에서는 Vim을 사용하여 파일을 편집하는 데 필요한 정보를 제공합니다. 
+잘 되지도 않고 빠르지도 않지만 편집 할 수 있습니다. 
+이 명령으로 연습 할 시간을 가지십시오. 
+다음 명령의 기초가됩니다.
 
-This chapter provides just enough information to edit a file with Vim.  Not
-well or fast, but you can edit.  Take some time to practice with these
-commands, they form the base for what follows.
+|02.1|	Vim을 처음으로 실행하기
+|02.2|	텍스트 삽입하기
+|02.3|	돌아다니기
+|02.4|	문자 삭제
+|02.5|	실행 취소 및 다시 실행
+|02.6|	기타 편집 명령
+|02.7|	나가기
+|02.8|	도움말 찾기
 
-|02.1|	Running Vim for the First Time
-|02.2|	Inserting text
-|02.3|	Moving around
-|02.4|	Deleting characters
-|02.5|	Undo and Redo
-|02.6|	Other editing commands
-|02.7|	Getting out
-|02.8|	Finding help
-
-     Next chapter: |usr_03.txt|  Moving around
- Previous chapter: |usr_01.txt|  About the manuals
-Table of contents: |usr_toc.txt|
+     다음 장 : |usr_03.txt|  돌아다니기
+ 이전 장 : |usr_01.txt|  매뉴얼 정보
+목차 : |usr_toc.txt|
 
 ==============================================================================
-*02.1*	Running Vim for the First Time
+*02.1*	Vim을 처음으로 실행하기
 
-To start Vim, enter this command: >
+Vim을 시작하려면 다음 명령을 입력하십시오. >
 
 	gvim file.txt
 
-On Unix you can type this at any command prompt.  If you are running Windows,
-open a command prompt window and enter the command.  In either case, Vim
-starts editing a file called file.txt.  Because this is a new file, you get a
-blank window. This is what your screen will look like:
+Unix에서는 어떤 명령 프롬프트에서나 입력 할 수 있습니다. 
+Windows를 실행중인 경우 명령 프롬프트 창을 열고 명령을 입력하십시오. 
+두 경우 모두 Vim은 file.txt라는 파일을 편집하기 시작합니다. 
+이 파일이 새 파일이기 때문에 빈 창이 나타납니다. 
+이것이 화면의 모습입니다.
 
 	+---------------------------------------+
 	|#					|
@@ -42,47 +43,46 @@ blank window. This is what your screen will look like:
 	|~					|
 	|"file.txt" [New file]			|
 	+---------------------------------------+
-		('#" is the cursor position.)
+		('#" 은 커서 위치입니다.)
 
-The tilde (~) lines indicate lines not in the file.  In other words, when Vim
-runs out of file to display, it displays tilde lines.  At the bottom of the
-screen, a message line indicates the file is named file.txt and shows that you
-are creating a new file.  The message information is temporary and other
-information overwrites it.
+물결표 (~) 줄은 파일에없는 줄을 나타냅니다. 
+즉, Vim의 파일이 없어서 표시 할 때 tilde 선이 표시됩니다.
+화면의 맨 아래에 메시지 행은 파일 이름이 file.txt이고 새 파일을 작성 중임을 표시합니다. 
+메시지 정보는 일시적이며 다른 정보가 이를 덮어 씁니다.
 
 
-THE VIM COMMAND
+VIM 명령
 
-The gvim command causes the editor to create a new window for editing.  If you
-use this command: >
+gvim 명령을 사용하면 편집기가 편집 할 새 창을 작성합니다. 
+이 명령을 사용하는 경우 : >
 
 	vim file.txt
 
-the editing occurs inside your command window.  In other words, if you are
-running inside an xterm, the editor uses your xterm window.  If you are using
-the command prompt under Microsoft Windows, the editing occurs inside this
-window.  The text in the window will look the same for both versions, but with
-gvim you have extra features, like a menu bar.  More about that later.
+편집은 명령 창에서 수행됩니다. 즉, xterm 내부에서 실행중인 경우, 편집기는 xterm 창을 사용합니다. 
+Microsoft Windows에서 명령 프롬프트를 사용하는 경우이 창에서 편집이 수행됩니다. 
+창에있는 텍스트는 두 버전 모두에서 동일하게 보이지만 gvim을 사용하면 메뉴 막대와 같은 추가 기능을 사용할 수 있습니다. 
+나중에 그것에 대해 자세히 설명합니다.
 
 ==============================================================================
-*02.2*	Inserting text
+*02.2*	텍스트 삽입하기
 
-The Vim editor is a modal editor.  That means that the editor behaves
-differently, depending on which mode you are in.  The two basic modes are
-called Normal mode and Insert mode.  In Normal mode the characters you type
-are commands.  In Insert mode the characters are inserted as text.
-   Since you have just started Vim it will be in Normal mode.  To start Insert
-mode you type the "i" command (i for Insert).  Then you can enter
-the text.  It will be inserted into the file.  Do not worry if you make
-mistakes; you can correct them later.  To enter the following programmer's
-limerick, this is what you type: >
+Vim 편집기는 modar 편집기입니다. 
+즉, 현재 모드에 따라 편집기가 다르게 동작합니다. 
+두 가지 기본 모드를 일반 모드 및 삽입 모드라고합니다.
+ 일반 모드에서 입력하는 문자는 명령입니다. 
+ 삽입 모드에서 문자는 텍스트로 삽입됩니다.
+   Vim을 방금 시작 했으므로 표준 모드가 됩니다. 
+   삽입 모드를 시작하려면 "i"명령을 입력하십시오 (삽입에 대해 i). 
+   그런 다음 텍스트를 입력 할 수 있습니다. 파일에 삽입됩니다. 
+   실수하면 걱정하지 마십시오. 나중에 수정할 수 있습니다. 
+   다음 프로그래머의 limerick을 입력하려면 다음 내용을 입력하십시오.>
 
 	iA very intelligent turtle
 	Found programming Unix a hurdle
 
-After typing "turtle" you press the <Enter> key to start a new line.  Finally
-you press the <Esc> key to stop Insert mode and go back to Normal mode.  You
-now have two lines of text in your Vim window:
+"turtle"를 입력 한 후 <Enter> 키를 눌러 새 줄을 시작하십시오. 
+마지막으로 <Esc> 키를 눌러 삽입 모드를 중지하고 일반 모드로 돌아갑니다.
+ 이제 Vim 창에 두 줄의 텍스트가 나타납니다.
 
 	+---------------------------------------+
 	|A very intelligent turtle		|
@@ -93,18 +93,17 @@ now have two lines of text in your Vim window:
 	+---------------------------------------+
 
 
-WHAT IS THE MODE?
+모드란 무엇인가?
 
-To be able to see what mode you are in, type this command: >
+현재 어떤 모드인지 보려면 다음 명령을 입력하십시오.>
 
 	:set showmode
 
-You will notice that when typing the colon Vim moves the cursor to the last
-line of the window.  That's where you type colon commands (commands that start
-with a colon).  Finish this command by pressing the <Enter> key (all commands
-that start with a colon are finished this way).
-   Now, if you type the "i" command Vim will display --INSERT-- at the bottom
-of the window.  This indicates you are in Insert mode.
+콜론을 입력 할 때 커서가 윈도우의 마지막 줄로 이동한다는 것을 알 수 있습니다. 
+바로 콜론 명령 (콜론으로 시작하는 명령)을 입력하는 곳입니다. 
+<Enter> 키를 눌러 이 명령을 마칩니다 (콜론으로 시작하는 모든 명령은 이 방법으로 완료됩니다).
+   이제 "i"명령어를 입력하면 Vim은 창 하단에 - INSERT--를 표시합니다. 
+   삽입 모드에 있음을 나타냅니다.
 
 	+---------------------------------------+
 	|A very intelligent turtle		|
@@ -114,57 +113,54 @@ of the window.  This indicates you are in Insert mode.
 	|-- INSERT --				|
 	+---------------------------------------+
 
-If you press <Esc> to go back to Normal mode the last line will be made blank.
+
+<Esc> 키를 눌러 일반 모드로 돌아 가면 마지막 행이 비어있게 됩니다.
 
 
-GETTING OUT OF TROUBLE
+문제 해결하기
 
-One of the problems for Vim novices is mode confusion, which is caused by
-forgetting which mode you are in or by accidentally typing a command that
-switches modes.  To get back to Normal mode, no matter what mode you are in,
-press the <Esc> key.  Sometimes you have to press it twice.  If Vim beeps back
-at you, you already are in Normal mode.
+Vim 초보자가 겪는 문제 중 하나는 모드 혼동입니다. 
+모드 혼동은 모드를 잊어 버렸거나 실수로 모드를 전환하는 명령을 입력하여 발생합니다. 
+표준 모드로 돌아가려면 현재 모드에 관계없이 <Esc> 키를 누르십시오. 때로는 두 번 눌러야합니다.
+ Vim이 다시 경고음을 울리면 이미 정상 모드에 있습니다.
 
 ==============================================================================
-*02.3*	Moving around
+*02.3*	돌아다니기
 
-After you return to Normal mode, you can move around by using these keys:
+일반 모드로 돌아 가면 다음 키를 사용하여 이동할 수 있습니다.
 
 	h   left						*hjkl*
 	j   down
 	k   up
 	l   right
 
-At first, it may appear that these commands were chosen at random.  After all,
-who ever heard of using l for right?  But actually, there is a very good
-reason for these choices: Moving the cursor is the most common thing you do in
-an editor, and these keys are on the home row of your right hand.  In other
-words, these commands are placed where you can type them the fastest
-(especially when you type with ten fingers).
+처음에는 이러한 명령이 무작위로 선택되었다고 보일 수 있습니다. 
+결국, l을 오른쪽으로 사용하는 것에 대해 누가 들어 봤습니까? 
+하지만 실제로는 이러한 선택에 대한 매우 좋은 이유가 있습니다. 
+커서를 이동하는 것은 편집기에서 가장 일반적으로하는 작업이며 이러한 키는 오른손의 홈 행에 있습니다. 
+다른 말로하면, 이러한 명령은 가장 빨리 입력 할 수있는 곳에 배치됩니다 (특히 10 개의 손가락으로 입력하는 경우).
 
-	Note:
-	You can also move the cursor by using the arrow keys.  If you do,
-	however, you greatly slow down your editing because to press the arrow
-	keys, you must move your hand from the text keys to the arrow keys.
-	Considering that you might be doing it hundreds of times an hour, this
-	can take a significant amount of time.
-	   Also, there are keyboards which do not have arrow keys, or which
-	locate them in unusual places; therefore, knowing the use of the hjkl
-	keys helps in those situations.
+	참조 :
+	화살표 키를 사용하여 커서를 이동할 수도 있습니다. 
+  그러나 화살표 키를 누르기 때문에 편집 속도가 크게 느려지므로 텍스트 키에서 화살표 키로 손을 움직여야 합니다. 
+  한 시간에 수백 번하고 있다고 생각하면 상당한 시간이 걸릴 수 있습니다. 
+  또한 화살표 키가 없거나 특이한 장소에서 키보드를 찾을 수있는 키보드가 있습니다. 
+  따라서 hjkl 키의 사용이 이러한 상황에서 도움이 된다는 것을 알고 있습니다.
 
-One way to remember these commands is that h is on the left, l is on the
-right and j points down.  In a picture: >
+이 명령을 기억하는 한 가지 방법은 h가 왼쪽에, l이 오른쪽에, j가 아래로 향하는 것입니다. 
+사진에서 : >
 
 		       k
 		   h     l
 		     j
 
-The best way to learn these commands is by using them.  Use the "i" command to
-insert some more lines of text.  Then use the hjkl keys to move around and
-insert a word somewhere.  Don't forget to press <Esc> to go back to Normal
-mode.  |:Tutor| is also a nice way to learn by doing.
+이 명령들을 배우는 가장 좋은 방법은 그것을 사용하는 것입니다. 
+"i"명령을 사용하여 더 많은 텍스트 줄을 삽입하십시오. 
+그런 다음 hjkl 키를 사용하여 이동하고 어딘가에 단어를 삽입하십시오. 
+<Esc> 키를 눌러 일반 모드로 돌아가는 것을 잊지 마십시오. 
+|:Tutor| 하고 배우는 것도 좋은 방법입니다.
 
-For Japanese users, Hiroshi Iwatani suggested using this:
+이와타니 히로시 (Hiroshi Iwatani)는 일본 사용자에게 다음과 같이 제안했습니다.
 
 			Komsomolsk
 			    ^
@@ -175,13 +171,11 @@ For Japanese users, Hiroshi Iwatani suggested using this:
 			  Java (the island, not the programming language)
 
 ==============================================================================
-*02.4*	Deleting characters
+*02.4*	문자 삭제
 
-To delete a character, move the cursor over it and type "x".  (This is a
-throwback to the old days of the typewriter, when you deleted things by typing
-xxxx over them.)  Move the cursor to the beginning of the first line, for
-example, and type xxxxxxx (seven x's) to delete "A very ".  The result should
-look like this:
+문자를 삭제하려면 커서를 위에 놓고 "x"를 입력하십시오. 
+커서를 첫 번째 줄의 시작 부분으로 이동하고
+xxxxxxx (7 개의 x)를 입력하여 "A very ". 결과는 다음과 같아야 합니다.
 
 	+---------------------------------------+
 	|intelligent turtle			|
@@ -191,12 +185,12 @@ look like this:
 	|					|
 	+---------------------------------------+
 
-Now you can insert new text, for example by typing: >
+이제 다음과 같이 입력하여 새 텍스트를 삽입 할 수 있습니다.>
 
 	iA young <Esc>
 
-This begins an insert (the i), inserts the words "A young", and then exits
-insert mode (the final <Esc>).	The result:
+삽입 (i)이 시작되고 "A young"이라는 단어가 삽입 된 다음 종료됩니다.
+삽입 모드 (마지막 <Esc>). 결과:
 
 	+---------------------------------------+
 	|A young intelligent turtle		|
@@ -207,10 +201,12 @@ insert mode (the final <Esc>).	The result:
 	+---------------------------------------+
 
 
-DELETING A LINE
+라인 삭제하기
 
-To delete a whole line use the "dd" command.  The following line will
-then move up to fill the gap:
+
+전체 줄을 삭제하려면 "dd" 명령을 사용하십시오. 
+다음 줄이 간격을 채우기 위해 위로 이동합니다.
+
 
 	+---------------------------------------+
 	|Found programming Unix a hurdle	|
@@ -221,43 +217,46 @@ then move up to fill the gap:
 	+---------------------------------------+
 
 
-DELETING A LINE BREAK
+LINE BREAK 삭제하기
 
-In Vim you can join two lines together, which means that the line break
-between them is deleted.  The "J" command does this.
+Vim에서는 두 줄을 함께 결합 할 수 있습니다. 
+즉 줄 사이의 줄 바꿈이 삭제됩니다.
+"J"명령은 이 작업을 수행합니다.
+
    Take these two lines:
 
 	A young intelligent ~
 	turtle ~
 
-Move the cursor to the first line and press "J":
+커서를 첫 번째 줄로 이동하고 "J"를 누릅니다.
 
 	A young intelligent turtle ~
 
 ==============================================================================
-*02.5*	Undo and Redo
+*02.5*	실행 취소 및 다시 실행
 
-Suppose you delete too much.  Well, you can type it in again, but an easier
-way exists.  The "u" command undoes the last edit.  Take a look at this in
-action: After using "dd" to delete the first line, "u" brings it back.
-   Another one: Move the cursor to the A in the first line:
+너무 많이 삭제한다고 가정 해보십시오. 
+음, 다시 입력 할 수 있지만 더 쉬운 방법이 있습니다. 
+"u"명령은 마지막 편집을 취소합니다. 이것을 실행 해보자.
+"dd"를 사용하여 첫 번째 줄을 삭제 한 후, "u"가 그 줄을 다시 가져온다.
+   다른 하나 : 커서를 첫 번째 줄의 A로 이동하십시오.
 
 	A young intelligent turtle ~
 
-Now type xxxxxxx to delete "A young".  The result is as follows:
+이제 xxxxxxx를 입력하여 "A young"을 삭제하십시오. 결과는 다음과 같습니다.
 
 	 intelligent turtle ~
 
-Type "u" to undo the last delete.  That delete removed the g, so the undo
-restores the character.
+마지막 삭제를 취소하려면 "u"를 입력하십시오. 
+그 삭제는 g를 제거하므로 실행 취소는 문자를 복원합니다.
 
 	g intelligent turtle ~
 
-The next u command restores the next-to-last character deleted:
+다음 u 명령은 삭제 된 문자 다음의 마지막 문자를 복원합니다.
 
 	ng intelligent turtle ~
 
-The next u command gives you the u, and so on:
+다음 u 명령은 u를 제공합니다.
 
 	ung intelligent turtle ~
 	oung intelligent turtle ~
@@ -267,15 +266,15 @@ The next u command gives you the u, and so on:
 
 REDO
 
-If you undo too many times, you can press CTRL-R (redo) to reverse the
-preceding command.  In other words, it undoes the undo.  To see this in
-action, press CTRL-R twice.  The character A and the space after it disappear:
+너무 많이 실행 취소 한 경우 CTRL-R (재실행)을 눌러 위의 명령을 취소 할 수 있습니다. 
+즉, 실행 취소를 실행 취소합니다. 이 동작을 보려면 CTRL-R을 두 번 누릅니다. 
+문자 A가 사라진 후 :
 
 	young intelligent turtle ~
 
-There's a special version of the undo command, the "U" (undo line) command.
-The undo line command undoes all the changes made on the last line that was
-edited.  Typing this command twice cancels the preceding "U".
+실행 취소 명령의 특별 버전 인 "U"(실행 취소 명령) 명령이 있습니다. 
+명령 행 취소 명령은 편집 된 마지막 행의 모든 변경 사항을 실행 취소합니다. 
+이 명령을 두 번 입력하면 앞의 "U"가 취소됩니다.
 
 	A very intelligent turtle ~
 	  xxxx				Delete very
@@ -289,402 +288,399 @@ edited.  Typing this command twice cancels the preceding "U".
 					Undo "U" with "u"
 	A intelligent ~
 
-The "U" command is a change by itself, which the "u" command undoes and CTRL-R
-redoes.  This might be a bit confusing.  Don't worry, with "u" and CTRL-R you
-can go to any of the situations you had.  More about that in section |32.2|.
+"U"명령은 "u"명령이 실행 취소하고 CTRL-R 다시 실행하는 자체 변경입니다. 
+약간 혼란 스러울 수도 있습니다. 
+"u"와 CTRL-R을 사용하면 자신이 갖고있는 상황으로 이동할 수 있으므로 걱정하지 마십시오. 
+|32.2|절에서 더 자세히 설명합니다.
 
 ==============================================================================
-*02.6*	Other editing commands
+*02.6*	기타 편집 명령
 
-Vim has a large number of commands to change the text.  See |Q_in| and below.
-Here are a few often used ones.
+Vim은 텍스트를 변경하기 위해 많은 명령을 가지고있다. 
+참조 | Q_in | 아래. 
+다음은 자주 사용되는 몇 가지 예입니다.
 
+첨부
 
-APPENDING
+"i"명령은 커서 아래에있는 문자 앞에 문자를 삽입합니다. 
+그건 잘 작동합니다; 그러나 줄 끝까지 물건을 추가하고 싶다면 어떻게 될까요? 
+이를 위해서는 커서 뒤에 텍스트를 삽입해야합니다. 
+이것은 "a"(append) 명령으로 수행됩니다.
 
-The "i" command inserts a character before the character under the cursor.
-That works fine; but what happens if you want to add stuff to the end of the
-line?  For that you need to insert text after the cursor.  This is done with
-the "a" (append) command.
-   For example, to change the line
+   예를 들어, 행을 변경하려면
 
 	and that's not saying much for the turtle. ~
 to
 	and that's not saying much for the turtle!!! ~
 
-move the cursor over to the dot at the end of the line. Then type "x" to
-delete the period.  The cursor is now positioned at the end of the line on the
-e in turtle.  Now type >
+커서를 줄 끝의 점으로 이동하십시오. 
+그런 다음 "x"를 입력하여 기간을 삭제하십시오.
+커서는 이제 turtle 모양의 줄 끝 부분에 위치합니다. 
+지금 입력 >
 
 	a!!!<Esc>
 
-to append three exclamation points after the e in turtle:
+turtle에 e 다음에 세 개의 느낌표를 추가하십시오.
+
 
 	and that's not saying much for the turtle!!! ~
 
 
-OPENING UP A NEW LINE
+새로운 라인 열기
 
-The "o" command creates a new, empty line below the cursor and puts Vim in
-Insert mode.  Then you can type the text for the new line.
-   Suppose the cursor is somewhere in the first of these two lines:
-
+"o"명령은 커서 아래에 새로운 빈 줄을 만들고 Vim을 삽입 모드로 만듭니다. 
+그런 다음 새 줄의 텍스트를 입력 할 수 있습니다.
+   커서가 다음 두 줄 중 첫 번째 줄에 있다고 가정합니다.
+   
 	A very intelligent turtle ~
 	Found programming Unix a hurdle ~
 
-If you now use the "o" command and type new text: >
+이제 "o"명령을 사용하고 새 텍스트를 입력하는 경우 :>
 
 	oThat liked using Vim<Esc>
 
-The result is:
+결과는 다음과 같습니다.
 
 	A very intelligent turtle ~
 	That liked using Vim ~
 	Found programming Unix a hurdle ~
 
-The "O" command (uppercase) opens a line above the cursor.
+"O"명령 (대문자)은 커서 위의 행을 엽니다.
 
+COUNT 사용
 
-USING A COUNT
-
-Suppose you want to move up nine lines.  You can type "kkkkkkkkk" or you can
-enter the command "9k".  In fact, you can precede many commands with a number.
-Earlier in this chapter, for instance, you added three exclamation points to
-the end of a line by typing "a!!!<Esc>".  Another way to do this is to use the
-command "3a!<Esc>".  The count of 3 tells the command that follows to triple
-its effect.  Similarly, to delete three characters, use the command "3x".  The
-count always comes before the command it applies to.
+9 줄을 위로 이동하려고 한다고 가정 해보십시오. 
+"kkkkkkkkk"를 입력하거나 "9k"명령을 입력 할 수 있습니다. 
+실제로 많은 명령 앞에 번호를 붙일 수 있습니다. 
+예를 들어 이 장의 앞부분에서 "a !!! <Esc>"를 입력하여 줄 끝에 세 개의 느낌표를 추가했습니다. 
+이를 수행하는 또 다른 방법은 "3a! <Esc>" 명령을 사용하는 것입니다. 
+3의 카운트는 그 명령이 그 효과를 3 배로 한다는 것을 알려줍니다. 
+마찬가지로 3자를 삭제하려면 "3x"ㅜ명령을 사용하십시오.
+카운트는 항상 적용되는 명령 앞에 옵니다.
 
 ==============================================================================
-*02.7*	Getting out
+*02.7*	나가는 중
 
-To exit, use the "ZZ" command.  This command writes the file and exits.
+종료하려면 "ZZ"명령을 사용하십시오. 이 명령은 파일을 쓰고 종료합니다.
 
-	Note:
-	Unlike many other editors, Vim does not automatically make a backup
-	file.  If you type "ZZ", your changes are committed and there's no
-	turning back.  You can configure the Vim editor to produce backup
-	files, see |07.4|.
+	참조 :
+	다른 많은 편집기와 달리 Vim은 자동으로 백업 파일을 만들지 않습니다. 
+  "ZZ"를 입력하면 변경 사항이 커밋되고 되돌릴 수 없습니다. 
+  백업 파일을 생성하도록 Vim 편집기를 구성 할 수 있습니다 (| 07.4 | 참조).
 
 
-DISCARDING CHANGES
+취소 변경
 
-Sometimes you will make a sequence of changes and suddenly realize you were
-better off before you started.  Not to worry; Vim has a
-quit-and-throw-things-away command.  It is: >
+때로는 일련의 변화를 만들고 시작하기 전에 당신이 더 나아지는 것을 갑자기 깨닫게 될 것입니다. 
+걱정 마세요; Vim은 quit-and-throw-things-away 명령을 사용합니다. 
+그것은 다음과 같습니다 : >
 
 	:q!
 
-Don't forget to press <Enter> to finish the command.
+<Enter> 키를 눌러 명령을 완료하는 것을 잊지 마십시오.
 
-For those of you interested in the details, the three parts of this command
-are the colon (:), which enters Command-line mode; the q command, which tells
-the editor to quit; and the override command modifier (!).
-   The override command modifier is needed because Vim is reluctant to throw
-away changes.  If you were to just type ":q", Vim would display an error
-message and refuse to exit:
+자세한 내용에 관심이있는 사용자의 경우 이 명령의 세 부분은 콜론(:)으로, 명령 줄 모드로 들어갑니다. 
+편집기에서 종료하도록 지시하는 q 명령; 및 대체 명령 수정 자 (!). 
+Vim은 변경 사항을 버리지 않으므로 대체 명령 수정자가 필요합니다. 
+": q"라고 입력하면 Vim은 오류 메시지를 표시하고 종료를 거부합니다.
 
 	E37: No write since last change (use ! to override) ~
 
-By specifying the override, you are in effect telling Vim, "I know that what
-I'm doing looks stupid, but I'm a big boy and really want to do this."
+오버라이드를 지정하면 실제로 Vim에게 "내가하는 일이 어리석은 것을 알지만, 
+나는 큰 아이이고 정말로 이것을하고 싶다."라고 말하고 있습니다.
 
-If you want to continue editing with Vim: The ":e!" command reloads the
-original version of the file.
+Vim으로 계속 편집하려면 : ": e!" 명령을 입력합니다.
+원래 파일 버전을 다시 로드합니다.
 
 ==============================================================================
-*02.8*	Finding help
+*02.8*	도움말 찾기
 
-Everything you always wanted to know can be found in the Vim help files.
-Don't be afraid to ask!
+항상 알고 싶었던 모든 것은 Vim 도움말 파일에서 찾을 수 있습니다. 
+물어볼 것을 두려워하지 마라.
 
-If you know what you are looking for, it is usually easier to search for it
-using the help system, instead of using Google.  Because the subjects follow
-a certain style guide.
+찾고있는 것을 알고 있다면 Google을 사용하는 대신 도움말 시스템을 사용하여 검색하는 것이 일반적입니다. 
+피사체가 특정 스타일 가이드를 따르기 때문입니다.
 
-Also the help has the advantage of belonging to your particular Vim version.
-You won't see help for commands added later.  These would not work for you.
+또한 도움말에는 특정 Vim 버전에 속하는 이점이 있습니다. 
+나중에 추가 된 명령에 대해서는 도움말을 볼 수 없습니다. 
+이것은 당신을 위해 작동하지 않을 것입니다.
 
-To get generic help use this command: >
+일반 도움말을 보려면 다음 명령을 사용하십시오.>
 
 	:help
 
-You could also use the first function key <F1>.  If your keyboard has a <Help>
-key it might work as well.
-   If you don't supply a subject, ":help" displays the general help window.
-The creators of Vim did something very clever (or very lazy) with the help
-system: They made the help window a normal editing window.  You can use all
-the normal Vim commands to move through the help information.  Therefore h, j,
-k, and l move left, down, up and right.
-   To get out of the help window, use the same command you use to get out of
-the editor: "ZZ".  This will only close the help window, not exit Vim.
+첫 번째 기능 키 <F1>을 사용할 수도 있습니다. 
+키보드에 <Help> 키가 있으면 잘 작동 할 수도 있습니다. 
+제목을 입력하지 않으면 ": help"가 일반 도움말 창을 표시합니다. 
+Vim의 제작자는 도움말 시스템을 통해 매우 영리한 (또는 매우 게으른) 작업을 수행했습니다. 
+도움말 창을 일반적인 편집 창으로 만들었습니다. 모든 일반적인 Vim 명령을 사용하여 도움말 정보를 이동할 수 있습니다. 
+그러므로 h, j, k, l은 왼쪽, 아래, 위, 오른쪽으로 움직입니다. 
+도움말 창에서 나가려면 편집기에서 나가는 것과 동일한 명령 인 "ZZ"를 사용하십시오. 
+이렇게하면 Vim을 종료하지 않고 도움말 창을 닫을 수 있습니다.
 
-As you read the help text, you will notice some text enclosed in vertical bars
-(for example, |help|).  This indicates a hyperlink.  If you position the
-cursor anywhere between the bars and press CTRL-] (jump to tag), the help
-system takes you to the indicated subject.  (For reasons not discussed here,
-the Vim terminology for a hyperlink is tag.  So CTRL-] jumps to the location
-of the tag given by the word under the cursor.)
-   After a few jumps, you might want to go back.  CTRL-T (pop tag) takes you
-back to the preceding position.  CTRL-O (jump to older position) also works
-nicely here.
-   At the top of the help screen, there is the notation *help.txt*.  This name
-between "*" characters is used by the help system to define a tag (hyperlink
-destination).
-   See |29.1| for details about using tags.
+도움말 텍스트를 읽으면서 수직 막대로 묶인 텍스트 (예 : | 도움말 |)를 볼 수 있습니다. 
+이것은 하이퍼링크를 나타냅니다. 
+막대 사이에 커서를 놓고 CTRL-] (태그로 점프)를 누르면 도움말 시스템이 표시된 주제로 이동합니다. 
+(여기에서 설명하지 않는 이유로, 하이퍼 링크의 Vim 용어는 태그입니다. 
+그래서 CTRL-]은 커서 아래에 있는 단어가 가리키는 태그의 위치로 점프합니다.) 
+몇 번 건너 뛰고 나면 다시 돌아갈 수 있습니다. 
+CTRL-T (팝 태그)는 이전 위치로 돌아갑니다. 
+CTRL-O (이전 위치로 점프)도 여기에서 잘 작동합니다. 
+도움말 화면 상단에는 * help.txt * 표기법이 있습니다.
+"*"문자 사이의이 이름은 도움말 시스템이 태그 (하이퍼 링크 대상)를 정의하는 데 사용됩니다.
+  태그 사용에 대한 자세한 내용은 |29.1|을 참조하십시오. 
 
-To get help on a given subject, use the following command: >
+주어진 주제에 대한 도움을 얻으려면 다음 명령을 사용하십시오 :>
 
 	:help {subject}
 
-To get help on the "x" command, for example, enter the following: >
+예를 들어 "x"명령에 대한 도움말을 보려면 다음을 입력하십시오.>
 
 	:help x
 
-To find out how to delete text, use this command: >
+텍스트 삭제 방법을 찾으려면 다음 명령을 사용하십시오.>
 
 	:help deleting
 
-To get a complete index of all Vim commands, use the following command: >
+
+모든 Vim 명령의 전체 색인을 얻으려면 다음 명령을 사용하십시오 :>
 
 	:help index
 
-When you need to get help for a control character command (for example,
-CTRL-A), you need to spell it with the prefix "CTRL-". >
+제어 문자 명령 (예 : CTRL-A)에 대한 도움말을 얻으려면 
+접두사 "CTRL-"로 철자를 사용해야합니다.  >
 
 	:help CTRL-A
 
-The Vim editor has many different modes.  By default, the help system displays
-the normal-mode commands.  For example, the following command displays help
-for the normal-mode CTRL-H command: >
+Vim 편집기에는 많은 다른 모드가있다. 
+기본적으로 도움말 시스템은 일반 모드 명령을 표시합니다. 
+예를 들어 다음 명령은 일반 모드 CTRL-H 명령에 대한 도움말을 표시합니다.>
 
 	:help CTRL-H
 
-To identify other modes, use a mode prefix.  If you want the help for the
-insert-mode version of a command, use "i_".  For CTRL-H this gives you the
-following command: >
+다른 모드를 식별하려면 모드 접두어를 사용하십시오. 
+당신이 도움을 원한다면
+명령의 삽입 모드 버전은 "i_"를 사용하십시오. 
+CTRL-H의 경우 다음과 같은 명령을 내릴 수 있습니다 :>
 
 	:help i_CTRL-H
 
-When you start the Vim editor, you can use several command-line arguments.
-These all begin with a dash (-).  To find what the -t argument does, for
-example, use the command: >
+Vim 편집기를 시작하면 몇 가지 명령 행 인수를 사용할 수 있습니다.
+이것들은 모두 대시 (-)로 시작합니다. 
+예를 들어, -t 인수가 무엇인지 찾으려면 다음 명령을 사용하십시오.>
 
 	:help -t
 
-The Vim editor has a number of options that enable you to configure and
-customize the editor.  If you want help for an option, you need to enclose it
-in single quotation marks.  To find out what the 'number' option does, for
-example, use the following command: >
+Vim 편집기에는 편집기를 구성하고 사용자 정의 할 수있는 많은 옵션이 있습니다. 
+옵션에 대한 도움말이 필요하면 작은 따옴표로 묶어야합니다. 
+'number'옵션이 무엇을 하는지 알아 보려면
+예를 들어, 다음 명령을 사용하십시오.>
 
 	:help 'number'
 
-The table with all mode prefixes can be found below: |help-summary|.
+모든 모드 접두사가있는 테이블은 아래에서 찾을 수 있습니다 : | help-summary |.
 
-Special keys are enclosed in angle brackets.  To find help on the up-arrow key
-in Insert mode, for instance, use this command: >
+특수 키는 꺾쇠 괄호로 묶습니다. 
+삽입 모드의 위쪽 화살표 키에 대한 도움말을 찾으려면 다음 명령을 사용하십시오.>
 
 	:help i_<Up>
 
-If you see an error message that you don't understand, for example:
+이해할 수없는 오류 메시지가 표시되면 예를 들면 다음과 같습니다.
 
 	E37: No write since last change (use ! to override) ~
 
-You can use the error ID at the start to find help about it: >
+
+시작시 오류 ID를 사용하여 오류에 대한 도움말을 찾을 수 있습니다.>
 
 	:help E37
 
 
-Summary: 					*help-summary*  >
+요약 : 					*help-summary*  >
 
-1) Use Ctrl-D after typing a topic and let Vim show all available topics.
-   Or press Tab to complete: >
-    	:help some<Tab>
-<   More information on how to use the help: >
-	:help helphelp
+1)주제를 입력 한 후 Ctrl-D를 사용하고 Vim이 사용 가능한 모든 주제를 표시하도록하십시오.
+   또는 Tab 키를 눌러 완료하십시오 :>
+    : 일부 도움말 <Tab>
+<도움말 사용 방법에 대한 자세한 정보 :>
+: help 도움말
 
-2) Follow the links in bars to related help.  You can go from the detailed
-   help to the user documentation, which describes certain commands more from
-   a user perspective and less detailed.  E.g. after: >
-   	:help pattern.txt
-<   You can see the user guide topics |03.9| and |usr_27.txt| in the
-   introduction.
+2) 관련 도움말에 대한 막대의 링크를 따르십시오. 자세한 내용에서 이동할 수 있습니다.
+   특정 명령을 더 자세히 설명하는 사용자 문서에 도움이됩니다.
+   사용자의 관점과 덜 구체적입니다. 예 : 이후 :>
+   : help pattern.txt
+<사용자 가이드 주제를 볼 수 있습니다 | 03.9 | 및 | usr_27.txt | 소개에서.
 
-3) Options are enclosed in single apostrophes.  To go to the help topic for the
-   list option: >
-	:help 'list'
-<   If you only know you are looking for a certain option, you can also do: >
-	:help options.txt
-<   to open the help page which describes all option handling and then search
-   using regular expressions, e.g. textwidth.
-   Certain options have their own namespace, e.g.: >
-   	:help cpo-<letter>
-<   for the corresponding flag of the 'cpoptions' settings, substitute <letter>
-   by a specific flag, e.g.: >
-  	:help cpo-;
-<   And for the guioption flags: >
-  	:help go-<letter>
+3) 옵션은 작은 apostrophes로 묶입니다. 해당 항목에 대한 도움말 항목으로 이동하려면
+   목록 옵션 :>
+: 도움말 '목록'
+<특정 옵션을 찾고 있음을 알고있는 경우 다음을 수행 할 수도 있습니다.>
+: help options.txt
+<모든 옵션 처리를 설명하고 검색을 설명하는 도움말 페이지를 열려면
+   정규 표현식을 사용하여. textwidth를 입력합니다.
+  특정 옵션에는 고유 한 네임 스페이스가 있습니다 (예 :>).
+   : help cpo- <letter>
+< 'cpoptions'설정의 해당 플래그에 대해 <letter>
+   특정 플래그 (예 :>)로
+  : help cpo-;
+<및 guioption 플래그 :>
+  : help go- <letter>
 
-4) Normal mode commands do not have a prefix. To go to the help page for the
-   "gt" command: >
-   	:help gt
+4) 일반 모드 명령에는 접두사가 없습니다. 해당 페이지의 도움말 페이지로 이동하려면
+   "gt"명령 :>
+   : help gt
 
-5) Insert mode commands start with i_.  Help for deleting a word: >
-   	:help i_CTRL-W
+5) 삽입 모드 명령은 i_로 시작합니다. 단어 삭제 도움말 :>
+   :help i_CTRL-W 
 
-6) Visual mode commands start with v_.  Help for jumping to the other side of
-   the Visual area: >
-   	:help v_o
+6) 비주얼 모드 명령은 v_로 시작합니다. 상대방의 점프에 대한 도움말
+   시각 영역 :>
+   : help v_o
 
-7) Command line editing and arguments start with c_.  Help for using the
-   command argument %: >
-   	:help c_%
+7) 명령 행 편집과 인수는 c_로 시작합니다. 사용법에 대한 도움말
+   명령 인수 % :>
+   : help c_ %
+   
+8) 전 명령은 항상 ":"로 시작하므로 다음으로 이동하십시오.  
+   명령 도움말 :>
+   : help : s
 
-8) Ex-commands always start with ":", so to go to the :s command help: >
-	:help :s
+9) 디버깅을 위한 명령은 ">"로 시작합니다. 도움말로 이동하려면
+   "cont" 디버그 명령 :>
+    : help > 계속
 
-9) Commands specifically for debugging start with ">".  To go to to the help
-   for the "cont" debug command: >
-	:help >cont
+10) 키 조합. 그들은 보통 한 글자로 시작합니다.
+    그것들을 사용할 수있는 모드는 다음과 같습니다. 예 :>
+   :help i_CTRL-X 
+<삽입 모드에 대한 Ctrl-X 명령 계열로 이동하여 다른 작업을 자동 완료 할 수 있습니다. 
+특정 키는 항상 동일하게 작성됩니다. 
+컨트롤은 항상 CTRL입니다.
+    일반 모드 명령의 경우에는 접두어가 없고 주제는 사용할 수 있습니다.
+    : h CTRL- <Letter>. 예 : >
+   : CTRL-W 도움말
+<대조적으로>
+: help c_CTRL-R
+<명령에서 명령을 입력 할 때 Ctrl-R이 수행하는 작업을 설명합니다.
+    라인 및>
+   : 도움말 v_Ctrl-A
+<비주얼 모드에서 숫자를 증가시키는 법에 대한 이야기>
+: g_CTRL-A 도움말
+<g-C> 명령에 대해 이야기합니다 (예 : "g"를 누른 다음 <Ctrl-A>).
+    여기서 "g"는 "z"로 시작하는 명령과 비슷한 것을하기 전에 항상 두 번째 키를 기대하는 정상적인 명령 "g"를 의미합니다.
 
-10) Key combinations.  They usually start with a single letter indicating
-    the mode for which they can be used.  E.g.: >
-   	:help i_CTRL-X
-<    takes you to the family of Ctrl-X commands for insert mode which can be
-    used to auto complete different things.  Note, that certain keys will
-    always be written the same, e.g. Control will always be CTRL.
-    For normal mode commands there is no prefix and the topic is available at
-    :h CTRL-<Letter>. E.g.  >
-   	:help CTRL-W
-<    In contrast >
-	:help c_CTRL-R
-<    will describe what the Ctrl-R does when entering commands in the Command
-    line and >
-   	:help v_Ctrl-A
-<    talks about incrementing numbers in visual mode and >
-	:help g_CTRL-A
-<    talks about the g<C-A> command (e.g. you have to press "g" then <Ctrl-A>).
-    Here the "g" stand for the normal command "g" which always expects a second
-    key before doing something similar to the commands starting with "z"
+11) 정규 표현식 항목은 항상 /로 시작합니다. 그래서 "\ +"한정 기호에 대한 도움을 얻으려면
+    Vim 정규 표현식에서 다음을 입력합니다 :>
+   : 도움말 / \ 
+<정규식에 대한 모든 것을 알아야 할 필요가 있다면,
+    at :>
+   : help pattern.txt
 
-11) Regexp items always start with /.  So to get help for the "\+" quantifier
-    in Vim regexes: >
-   	:help /\+
-<    If you need to know everything about regular expressions, start reading
-    at: >
-   	:help pattern.txt
+12) 레지스터는 항상 "quote"로 시작합니다. 
+    중요한 것을 알기 위해서는 ":"
+    등록 :>
+   : 도움말 인용문 :
 
-12) Registers always start with "quote". To find out about the special ":"
-    register: >
-   	:help quote:
-
-13) Vim Script (VimL) is available at >
-	:help eval.txt
-<   Certain aspects of the language are available at :h expr-X where "X" is a
-   single letter. E.g.  >
-   	:help expr-!
-<   will take you to the topic describing the "!" (Not) operator for
+13) Vim Script (VimL)는 다음에서 구할 수 있습니다>
+: help eval.txt
+<언어의 특정 측면은 다음에서 사용할 수 있습니다. h expr-X 여기서 "X"는
+   단일 문자. 예 : >
+   : help expr-!
+< "!" (아닌) 연산자
    VimScript.
-   Also important is >
-   	:help function-list
-<   to find a short description of all functions available.  Help topics for
-   VimL functions always include the "()", so: >
-   	:help append()
-<   talks about the append VimL function rather than how to append text in the
-   current buffer.
+   또한 중요합니다>
+   : help 함수 목록
+<사용 가능한 모든 기능에 대한 간단한 설명을 찾으십시오. VimL 함수의 도움말 항목에는 항상 "()"이 포함되므로 다음과 같이하십시오.>
+   : help append ()
+<현재 버퍼에 텍스트를 추가하는 방법보다는 VimL 함수를 추가하는 것에 대해 이야기합니다.
 
-14) Mappings are talked about in the help page :h |map.txt|. Use >
-    	:help mapmode-i
-<    to find out about the |:imap| command.  Also use :map-topic
-    to find out about certain subtopics particular for mappings.  e.g: >
-    	:help :map-local
-<    for buffer-local mappings or >
-	:help map-bar
-<    for how the '|' is handled in mappings.
+14) mapping은 도움말 페이지에서 설명합니다 : h | map.txt |. 사용>
+    : help mapmode-i
+<mapping에 대해 알아 내려면 | : imap | 명령어를 입력하십시오. 
+또한 다음을 사용하십시오 : map-topic
+    매핑과 관련된 특정 하위 주제를 찾아야합니다. 예 :>
+    : help :map-local
+<버퍼 로컬 mapping 또는>
+:help map bar
+<어떻게 '|' 매핑에서 처리됩니다.
 
-15) Command definitions are talked about :h command-topic, so use >
-	:help command-bar
-<    to find out about the '!' argument for custom commands.
+15) 명령 정의는 다음과 같이 논의됩니다 : h command-topic, use>
+: help 명령 줄
+< '!' custom command의 인수.
 
-16) Window management commands always start with CTRL-W, so you find the
-    corresponding help at :h CTRL-W_letter.  E.g. >
-   	:help CTRL-W_p
-<    for moving the previous accessed window.  You can also access >
-	:help windows.txt
-<    and read your way through if you are looking for window handling
-    commands.
+16) 창 관리 명령은 항상 CTRL-W로 시작하므로 명령 행에서
+    해당 도움말 : h CTRL-W_letter. 예 : >
+   : CTRL-W_p 도움말
+<이전에 액세스 한 창 이동. 액세스 할 수도 있습니다>
+: help windows.txt
+<그리고 창 핸들링 명령을 찾고 있다면 길을 읽으십시오.
 
-17) Use |:helpgrep| to search in all help pages (and also of any installed
-    plugins).  See |:helpgrep| for how to use it.
-    To search for a topic: >
-    	:helpgrep topic
-<    This takes you to the first match.  To go to the next one: >
-	:cnext
-<    All matches are available in the quickfix window which can be opened
-    with: >
-    	:copen
-<    Move around to the match you like and press Enter to jump to that help.
+17) 사용 | : helpgrep | 모든 도움말 페이지 (및 설치된 모든 페이지)에서 검색
+    플러그인들). 참조 : | helpgrep |을 사용하는 방법.
+    주제 검색 :>
+    : helpgrep 주제
+<이것은 첫 번째 match로 이동합니다. 다음 페이지로 이동하려면 :>
+: cnext
+<모든 일치 항목은 열 수있는 퀵 픽스 창에서 사용할 수 있습니다
+    with :>
+    : copen
+<좋아하는 match로 이동하고 Enter 키를 눌러 해당 도움말로 이동하십시오.
 
-18) The user manual.  This describes help topics for beginners in a rather
-    friendly way.  Start at |usr_toc.txt| to find the table of content (as you
-    might have guessed): >
-    	:help usr_toc.txt
-<    Skim over the contents to find interesting topics. The "Digraphs" and
-    "Entering special characters" items are in chapter 24, so to go to that
-    particular help page: >
-    	:help usr_24.txt
-<    Also if you want to access a certain chapter in the help, the chapter
-    number can be accessed directly like this: >
-    	:help 10.1
-<    goes to chapter 10.1 in |usr_10.txt| and talks about recording macros.
+18) 사용자 설명서. 초보자를 위한 도움말 항목을 다소 친숙한 방식으로 설명합니다. 
+콘텐츠 표를 찾으려면 (
+    추측했을 수 있습니다.)| usr_toc.txt |에서 시작하십시오  :>
+    : help usr_toc.txt
+<흥미로운 주제를 찾기 위해 내용을 둘러보십시오. "Digraphs"및
+    "특수 문자 입력하기"항목은 24 장에 있습니다.
+    특정 도움말 페이지 :>
+    : help usr_24.txt
+<또한 도움말의 특정 장에 액세스하려면 장
+    번호는 다음과 같이 직접 액세스 할 수 있습니다.>
+    : help 10.1
+<usr_10.txt의 10.1 장으로 이동 | 매크로 기록에 대해 이야기합니다.
 
-19) Highlighting groups.  Always start with hl-groupname.  E.g. >
-    	:help hl-WarningMsg
-<    talks about the WarningMsg highlighting group.
+19) 그룹 강조 표시. 항상 hl-groupname으로 시작하십시오. 예 : >
+    : help hl-WarningMsg
+<WarningMsg 강조 그룹에 대해 이야기합니다.
 
-20) Syntax highlighting is namespaced to :syn-topic e.g. >
-	:help :syn-conceal
-<    talks about the conceal argument for the :syn command.
+20) 구문 강조 표시는 다음과 같이 이름이 붙여집니다 : syn-topic 예 : >
+: help : syn-conceal
+<: syn 명령에 대한 숨김 인수에 대해 설명합니다.
 
-21) Quickfix commands usually start with :c while location list commands
-    usually start with :l
+21) Quickfix 명령은 대개 다음으로 시작합니다. 
+:c while location list commands
+    보통 다음으로 시작하십시오 : l
 
-22) Autocommand events can be found by their name: >
-     	:help BufWinLeave
-<    To see all possible events: >
+22) 자동 명령 이벤트는 이름별로 찾을 수 있습니다.>
+     : help BufWinLeave
+<모든 가능한 이벤트를 보려면 :>
 	:help autocommands-events
+  
+23)명령 줄 스위치는 항상 "-"로 시작합니다. 
+   따라서 Vim의 -f 명령 스위치를 사용하면 다음과 같이 사용할 수 있습니다.>
+    : help -f
+    
+24) 선택적 기능은 항상 "+"로 시작합니다. 은폐 기능 사용에 대해 알아 보려면 :>
+    :help +conceal
+    
+25) 포함 된 파일 형식 특정 기능에 대한 문서는 대개 ft- <filetype> - <functionality> 형식으로 사용할 수 있습니다.
+    :help ft-c-syntax 
+<C 구문 파일과이 파일이 제공하는 옵션에 대해 설명합니다. 완성을위한 추가 섹션>
+    : help ft-php-omni
+<또는 파일 유형 플러그인>
+: help ft-tex-plugin
+<사용할 수 있습니다.
 
-23) Command-line switches always start with "-".  So for the help of the -f
-    command switch of Vim use: >
-    	:help -f
-
-24) Optional features always start with "+".  To find out about the
-    conceal feature use: >
-    	:help +conceal
-
-25) Documentation for included filetype specific functionality is usually
-    available  in the form ft-<filetype>-<functionality>.  So >
-    	:help ft-c-syntax
-<    talks about the C syntax file and the option it provides.  Sometimes,
-    additional sections for omni completion >
-    	:help ft-php-omni
-<    or filetype plugins >
-	:help ft-tex-plugin
-<    are available.
-
-26) Error and Warning codes can be looked up directly in the help.  So >
-	:help E297
-<    takes you exactly to the description of the swap error message and >
-	:help W10
-<    talks about the warning "Changing a readonly file".
-    Sometimes however, those error codes are not described, but rather are
-    listed at the Vim command that usually causes this.  So: >
-    	:help E128
-<    takes you to the |:function| command
+26) 오류 및 경고 코드는 도움말에서 직접 조회 할 수 있습니다. 그래서>
+: help E297  을 입력하면
+< 스왑 오류 메시지에 대한 설명으로 이동합니다.>
+: help W10
+<경고 메시지 "읽기 전용 파일 변경"에 대해 이야기합니다.
+    그러나 때로는 이러한 오류 코드는 설명되지 않지만
+    보통 Vim 명령에 나열되어 있습니다. 그래서 :>
+    : help E128
+< | : function | 명령도 사용할 수 있습니다.
 
 
 ==============================================================================
 
-Next chapter: |usr_03.txt|  Moving around
+다음 장 : |usr_03.txt|  이동하기
 
-Copyright: see |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:
+저작권 : |manual-copyright|을 참조하십시오.  vim:tw=78:ts=8:ft=help:norl:

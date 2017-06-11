@@ -11,8 +11,8 @@
   마우스로 조작: 태그에서 마우스 왼쪽 버튼을 두 번 클릭하세요 e.g. |bars|.
   뒤로 이동하기: CTRL-T 혹은 CTRL-O. 훨씬 더 이전 상태로 돌아갈 수 있습니다
 
-  구체적인 도움:  |: help| 명령어에 인자를 줌으로써 당신이 원하는 정보를 얻을 수 있습니다.
-		   Prepend something to specify the context:  *help-context*
+  구체적인 도움:  |:help| 명령어에 인자를 줌으로써 당신이 원하는 정보를 얻을 수 있습니다.
+		 Prepend something to specify the context:  *help-context*
 
 			  WHAT			PREPEND    EXAMPLE	~
 		      일반모드 명령어		           :help x
@@ -22,10 +22,10 @@
 		      Command-line 편집	           c_	   :help c_<Del>
 		      Vim 명령인자	           -	   :help -r
 		      옵션			   '	   :help 'textwidth'
-		      정규 표현	             /	     :help /[
+		      정규 표현	                   /	   :help /[
 		      |help-summary|를 보시면 더 많은 내용과 설명을 보실 수 있습니다.
 
- 도움말 검색:  ": help word"를 입력 한 다음 CTRL-D를 누르면
+ 도움말 검색: ":help word"를 입력 한 다음 CTRL-D를 누르면
  word와 일치하는 도움말 항목을 볼 수 있습니다.
  또는 ":helpgrep word". |:helpgrep|를 사용하십시오.
 

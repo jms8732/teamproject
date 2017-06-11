@@ -1,113 +1,110 @@
 *usr_01.txt*	Nvim
 
-		     VIM USER MANUAL - by Bram Moolenaar
+		     VIM 사용 설명서 - Bram Moolenaar 저
 
-			      About the manuals
+			     설명서 정보
 
 
-This chapter introduces the manuals available with Vim.  Read this to know the
-conditions under which the commands are explained.
+이 장에서는 Vim에서 사용할 수 있는 매뉴얼을 소개합니다. 
+명령을 설명하는 조건을 알아 보려면 이 부분을 읽으십시오.
 
-|01.1|	Two manuals
-|01.2|	Vim installed
-|01.3|	Using the Vim tutor
-|01.4|	Copyright
+|01.1|	2개의 매뉴얼
+|01.2|	Vim 설치
+|01.3|	Vim tutor 사용하기
+|01.4|	저작권
 
-     Next chapter: |usr_02.txt|  The first steps in Vim
-Table of contents: |usr_toc.txt|
+    다음 장: |usr_02.txt|  Vim의 첫 번째 단계
+목차: |usr_toc.txt|
 
 ==============================================================================
-*01.1*	Two manuals
+*01.1*	2개의 매뉴얼
 
-The Vim documentation consists of two parts:
+Vim 문서는 두 부분으로 구성된다.
 
-1. The User manual
-   Task oriented explanations, from simple to complex.  Reads from start to
-   end like a book.
+1. 사용자 설명서 
+  간단한 설명에서 복잡한 것에 이르기까지 작업 중심의 설명. 
+  책과 같이 처음부터 끝까지 읽습니다
 
-2. The Reference manual
-   Precise description of how everything in Vim works.
+2. 참조 설명서
+   Vim의 모든 기능이 어떻게 작동하는지에 대한 정확한 설명.
 
-The notation used in these manuals is explained here: |notation|
+이 설명서에 사용 된 표기법은 여기에 설명되어 있습니다 : |notation|
 
 
 JUMPING AROUND
 
-The text contains hyperlinks between the two parts, allowing you to quickly
-jump between the description of an editing task and a precise explanation of
-the commands and options used for it.  Use these two commands:
+이 텍스트에는 두 부분 사이에 하이퍼링크가 있어서 편집 작업에 대한 설명과 
+이를 사용하는 명령 및 옵션에 대한 정확한 설명 사이를 빠르게 이동할 수 있습니다.
+
+  다음 두 명령을 사용하십시오.
 
 	Press  CTRL-]  to jump to a subject under the cursor.
 	Press  CTRL-O  to jump back (repeat to go further back).
 
-Many links are in vertical bars, like this: |bars|.  The bars themselves may
-be hidden or invisible, see below.  An option name, like 'number', a command
-in double quotes like ":write" and any other word can also be used as a link.
-Try it out: Move the cursor to  CTRL-]  and press CTRL-] on it.
+많은 링크가 다음과 같이 수직 막대에 있습니다. | bars |
+막대 자체는 숨겨져 있거나 보이지 않을 수 있습니다 (아래 참조). 
+'number'와 같은 옵션 이름, ': write'와 같은 큰 따옴표로 묶은 명령 및 다른 단어도 링크로 사용할 수 있습니다.
+다음을 시도하십시오 : 커서를 CTRL-]로 이동시키고 CTRL-]을 누릅니다.
 
-Other subjects can be found with the ":help" command, see |help.txt|.
+다른 주제는 ": help"명령을 사용하여 찾을 수 있습니다. | help.txt |를 참조하십시오.
 
-The bars and stars are usually hidden with the |conceal| feature.  They also
-use |hl-Ignore|, using the same color for the text as the background.  You can
-make them visible with: >
+막대기와 별은 일반적으로 |conceal| 안에 숨겨져 있습니다.
+또한 텍스트와 배경색이 같은 색을 사용하는 | hl-Ignore |를 사용합니다. 
+다음과 같이 표시 할 수 있습니다.>
+
 	:set conceallevel=0
 	:hi link HelpBar Normal
 	:hi link HelpStar Normal
 
 ==============================================================================
-*01.2*	Vim installed					   *setup-vimrc_example*
+*01.2*	Vim 설치				 * 설치 - vimrc_example *
 
-It's not required for this tutorial, but we provide an example vimrc you may
-use:
+이 튜토리얼에서는 필수는 아니지만 다음과 같이 사용할 수있는 예제 인 vimrc를 제공합니다.
 
 	:!cp -i $VIMRUNTIME/vimrc_example.vim ~/.config/nvim/init.vim
 
-If the file already exists you probably want to keep it.
+파일이 이미있는 경우에는 그대로두기를 원할 것입니다.
 
-For more info see |vimrc|.
+자세한 내용은 | vimrc |를 참조하십시오.
 
 ==============================================================================
-*01.3*	Using the Vim tutor			         *tutor* *vimtutor*
+*01.3*	Vim tutor 사용법			         *tutor* *vimtutor*
 
-Instead of reading the text (boring!) you can use the vimtutor to learn your
-first Vim commands.  This is a 30 minute tutorial that teaches the most basic
-Vim functionality hands-on.
+텍스트 (boring!)를 읽는 대신 vimtutor를 사용하여 첫 번째 Vim 명령을 배울 수 있습니다.
+이것은 가장 기본적인 Vim 기능을 가르치는 30 분짜리 튜토리얼입니다.
 
-To start the tutorial, execute >
+튜토리얼을 시작하려면 >
 
         :Tutor
 <
-from within nvim. The tutorial will lead you from that point. Have fun!
+nvim에서. 튜토리얼은 그 시점에서 당신을 안내 할 것입니다. Have fun!
 
 ==============================================================================
-*01.4*	Copyright					*manual-copyright*
+*01.4*	저작권					*매뉴얼-저작권*
 
-The Vim user manual and reference manual are Copyright (c) 1988-2003 by Bram
-Moolenaar.  This material may be distributed only subject to the terms and
-conditions set forth in the Open Publication License, v1.0 or later.  The
-latest version is presently available at:
+Vim 사용자 설명서 및 참조 설명서는 Bram Moolenaar의 Copyright (c) 1988-2003입니다. 
+이 자료는 Open Publication License, v1.0 이상에 명시된 조건에 따라 배포 할 수 있습니다. 
+최신 버전은 현재 다음 위치에서 사용할 수 있습니다.
+
 	     http://www.opencontent.org/openpub/
 
-People who contribute to the manuals must agree with the above copyright
-notice.
+매뉴얼에 공헌하는 사람들은 위의 저작권 공지에 동의해야 합니다.
+
 							*frombook*
-Parts of the user manual come from the book "Vi IMproved - Vim" by Steve
-Oualline (published by New Riders Publishing, ISBN: 0735710015).  The Open
-Publication License applies to this book.  Only selected parts are included
-and these have been modified (e.g., by removing the pictures, updating the
-text for Vim 6.0 and later, fixing mistakes).  The omission of the |frombook|
-tag does not mean that the text does not come from the book.
+사용자 설명서의 일부는 Steve Oualline의 "Vi IMproved - Vim"책 (New Riders Publishing 발행, ISBN : 0735710015)에서 가져온 것입니다. 
+Open Publication License는 이 책에 적용됩니다. 
+선택한 부품 만 포함되고 수정 되었습니다 (예 : 사진을 제거하고 Vim 6.0 이상에서 텍스트를 업데이트하여 실수를 수정 함). 
+|frombook| 생략 태그가 책의 텍스트가 아니라는 의미는 아닙니다.
 
-Many thanks to Steve Oualline and New Riders for creating this book and
-publishing it under the OPL!  It has been a great help while writing the user
-manual.  Not only by providing literal text, but also by setting the tone and
-style.
+이 책을 만들고 OPL에 게시 한 Steve Oualline과 New Riders 덕분에 많은 감사를 드립니다! 
+사용자 매뉴얼을 작성하는 동안 큰 도움이 되었습니다. 
+literal text를 제공 할 뿐만 아니라 톤과 스타일을 설정합니다.
 
-If you make money through selling the manuals, you are strongly encouraged to
-donate part of the profit to help AIDS victims in Uganda.  See |iccf|.
+매뉴얼 판매를 통해 돈을 벌면 우간다의 에이즈 피해자를 돕기 위해 수익금의 일부를 기부하는 것이 좋습니다. 
+| iccf |를 참조하십시오.
 
 ==============================================================================
 
-Next chapter: |usr_02.txt|  The first steps in Vim
+다음 장: |usr_02.txt| Vim의 첫 번째 단계
 
-Copyright: see |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:
+저작권: |manual-copyright|을 참조하십시오.  vim:tw=78:ts=8:ft=help:norl:

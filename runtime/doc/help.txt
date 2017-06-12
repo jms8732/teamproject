@@ -12,7 +12,7 @@
   뒤로 이동하기: CTRL-T 혹은 CTRL-O. 훨씬 더 이전 상태로 돌아갈 수 있습니다
 
   구체적인 도움:  |:help| 명령어에 인자를 줌으로써 당신이 원하는 정보를 얻을 수 있습니다.
-		 Prepend something to specify the context:  *help-context*
+		 문맥을 지정하기 위해 미리 보기 : * help-context *
 
 			  WHAT			PREPEND    EXAMPLE	~
 		      일반모드 명령어		           :help x

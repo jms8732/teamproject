@@ -48,7 +48,7 @@ Neovim은 Vim을 적극적으로 Refactoring하여 다음과 같은 효과를 �
 
 [2. Git으로 설치하는 방법](https://github.com/jms8732/teamproject/wiki/Git%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95)
 
-[3. Git을 사용하지 않고 설치하는 방법](https://github.com/jms8732/teamproject/wiki/Git%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EA%B3%A0-%EC%84%A4%EC%B9%98%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)
+[3. PPA로 간단한 설치 방법](https://github.com/jms8732/teamproject/wiki/PPA%EB%A1%9C-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95)
 
 프로젝트 레이아웃
 --------------

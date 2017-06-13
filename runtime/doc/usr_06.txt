@@ -1,66 +1,67 @@
 *usr_06.txt*	Nvim
 
-		     VIM USER MANUAL - by Bram Moolenaar
+		     VIM 사용 설명서 - Bram Moolenaar 저
 
-			  Using syntax highlighting
+ 구문 강조 사용
 
 
-Black and white text is boring.  With colors your file comes to life.  This
-not only looks nice, it also speeds up your work.  Change the colors used for
-the different sorts of text.  Print your text, with the colors you see on the
-screen.
+흑백 텍스트는 지루하다. 색상으로 당신의 파일이 생기게 됩니다. 
+이것은보기 좋을 뿐만 아니라 작업 속도를 높입니다. 
+여러 종류의 텍스트에 사용되는 색상을 변경하십시오. 
+화면에 표시되는 색상으로 텍스트를 인쇄하십시오.
 
-|06.1|	Switching it on
-|06.2|	No or wrong colors?
-|06.3|	Different colors
-|06.4|	With colors or without colors
-|06.5|	Printing with colors
-|06.6|	Further reading
+|06.1|	켜기
+|06.2|	색상이 잘못 되었습니까?
+|06.3|	다른 색상
+|06.4|	색상 또는 색상 없음
+|06.5|	색상으로 인쇄
+|06.6|	추가 읽기
 
-     Next chapter: |usr_07.txt|  Editing more than one file
- Previous chapter: |usr_05.txt|  Set your settings
-Table of contents: |usr_toc.txt|
+     다음 장 : |usr_07.txt|  둘 이상의 파일 편집
+이전 장 : |usr_05.txt|  설정을 지정하십시오
+목차 : |usr_toc.txt|
 
 ==============================================================================
-*06.1*	Switching it on
+*06.1*	켜기
 
-It all starts with one simple command: >
+그것은 모두 하나의 간단한 명령으로 시작됩니다.>
 
 	:syntax enable
 
-That should work in most situations to get color in your files.  Vim will
-automagically detect the type of file and load the right syntax highlighting.
-Suddenly comments are blue, keywords brown and strings red.  This makes it
-easy to overview the file.  After a while you will find that black&white text
-slows you down!
+대부분의 상황에서 파일에서 색상을 얻으려면 작동해야합니다. 빔 의지
+자동으로 파일 유형을 감지하고 올바른 구문 강조 표시를로드합니다.
+갑자기 댓글은 파란색, 키워드 갈색 및 문자열 빨간색입니다. 이것은 그것을 만든다.
+파일을 쉽게보실 수 있습니다. 잠시 후 흑백 텍스트를 찾을 수 있습니다.
+당신을 감속시킵니다!
 
-If you always want to use syntax highlighting, put the ":syntax enable"
-command in your |init.vim| file.
+구문 강조를 항상 사용하려면 ": syntax enable"
+init.vim의 명령 | 파일.
 
-If you want syntax highlighting only when the terminal supports colors, you
-can put this in your |init.vim| file: >
+
+터미널이 색상을 지원할 때만 구문 강조를 원한다면
+이것을 |init.vim|파일에 넣을 수 있습니다  :>
 
 	if &t_Co > 1
 	   syntax enable
 	endif
 
-If you want syntax highlighting only in the GUI version, put the ":syntax
-enable" command in your |ginit.vim| file.
+GUI 버전에서만 구문 강조를 원하면 ginit.vim | grep에서
+": syntax enable"명령을 사용하십시오. 파일.
 
 ==============================================================================
-*06.2*	No or wrong colors?
+*06.2*	색상이 잘못 되었습니까?
 
-There can be a number of reasons why you don't see colors:
+색상이 보이지 않는 데에는 여러 가지 이유가 있을 수 있습니다.
 
-- Your terminal does not support colors.
-	Vim will use bold, italic and underlined text, but this doesn't look
-	very nice.  You probably will want to try to get a terminal with
-	colors.  For Unix, I recommend the xterm from the XFree86 project:
-	|xfree-xterm|.
+- 단말기가 색상을 지원하지 않습니다. 
+Vim은 굵게, 기울임 꼴과 밑줄 친 텍스트를 사용합니다. 
+그러나 이것은보기에 좋지 않습니다. 
+아마 색상이있는 터미널을 얻으려고 할 것입니다. 
+유닉스의 경우, XFree86 프로젝트에서 xterm을 권장합니다 : | xfree-xterm |.
 
-- Your terminal does support colors, but Vim doesn't know this.
-	Make sure your $TERM setting is correct.  For example, when using an
-	xterm that supports colors: >
+- 터미널은 색상을 지원하지만 Vim은 색상을 지원하지 않습니다. 
+$ TERM 설정이 올바른지 확인하십시오. 
+예를 들어, 색상을 지원하는 xterm을 사용할 때 :>
 
 		setenv TERM xterm-color
 <
@@ -68,213 +69,211 @@ There can be a number of reasons why you don't see colors:
 
 		TERM=xterm-color; export TERM
 
-<	The terminal name must match the terminal you are using.  If it
-	still doesn't work, have a look at |xterm-color|, which shows a few
-	ways to make Vim display colors (not only for an xterm).
+<	터미널 이름은 사용중인 터미널과 일치해야 합니다. 
+여전히 작동하지 않는다면, |xterm-color|를 살펴보십시오.
+|xterm-color|는 xterm뿐만 아니라 Vim 표시 색상을 만드는 몇 가지 방법을 보여줍니다.
 
-- The file type is not recognized.
-	Vim doesn't know all file types, and sometimes it's near to impossible
-	to tell what language a file uses.  Try this command: >
+- 파일 형식이 인식되지 않습니다.
+Vim은 모든 파일 유형을 알지 못하며 가끔은 불가능합니다.
+어떤 언어가 파일을 사용하는지 알기 위해서. 이 명령을 사용해보십시오 :>
 
 		:set filetype
 <
-	If the result is "filetype=" then the problem is indeed that Vim
-	doesn't know what type of file this is.  You can set the type
-	manually: >
+	결과가 "filetype ="이면 문제는 실제로 Vim입니다.
+이것이 어떤 파일 유형인지는 알지 못합니다. 유형을 설정할 수 있습니다.
+수동으로 :>
 
 		:set filetype=fortran
 
-<	To see which types are available, look in the directory
-	$VIMRUNTIME/syntax.  For the GUI you can use the Syntax menu.
-	Setting the filetype can also be done with a |modeline|, so that the
-	file will be highlighted each time you edit it.  For example, this
-	line can be used in a Makefile (put it near the start or end of the
-	file): >
+<	어떤 유형이 사용 가능한지 보려면 디렉토리를보십시오.
+$ VIMRUNTIME / 구문. GUI의 경우 구문 메뉴를 사용할 수 있습니다.
+파일 형식 설정은 | modeline |을 사용하여 수행 할 수도 있습니다.
+파일을 편집 할 때마다 강조 표시됩니다. 예를 들어,이
+Makefile에서 라인을 사용할 수있다.
+파일) :>
 
 		# vim: syntax=make
 
-<	You might know how to detect the file type yourself.  Often the file
-	name extension (after the dot) can be used.
-	See |new-filetype| for how to tell Vim to detect that file type.
+<직접 파일 형식을 감지하는 방법을 알고있을 수 있습니다. 종종 파일
+이름 확장자 (점 뒤에)를 사용할 수 있습니다.
+새로운 파일 유형보기 | Vim에게 그 파일 타입을 탐지하도록 지시하는 방법.
 
-- There is no highlighting for your file type.
-	You could try using a similar file type by manually setting it as
-	mentioned above.  If that isn't good enough, you can write your own
-	syntax file, see |mysyntaxfile|.
+- 파일 유형에 대한 강조 표시가 없습니다.
+유사한 파일 유형을 수동으로 설정하여 시도해 볼 수 있습니다.
+위에 언급했듯이. 그것이 충분하지 않다면, 당신은 당신 자신의 것을 쓸 수있다.
+구문 파일 | mysyntaxfile |을 참조하십시오.
 
 
-Or the colors could be wrong:
+또는 색상이 잘못되었을 수 있습니다.
 
-- The colored text is very hard to read.
-	Vim guesses the background color that you are using.  If it is black
-	(or another dark color) it will use light colors for text.  If it is
-	white (or another light color) it will use dark colors for text.  If
-	Vim guessed wrong the text will be hard to read.  To solve this, set
-	the 'background' option.  For a dark background: >
+- 색이 지정된 텍스트는 읽기가 매우 어렵습니다.
+Vim은 사용중인 배경색을 추측합니다. 
+검은 색 (또는 다른 어두운 색)이면 텍스트에 밝은 색을 사용합니다. 
+흰색 (또는 다른 밝은 색상)이면 텍스트에 어두운 색상이 사용됩니다. 
+Vim이 잘못 추측하면 텍스트를 읽기가 어려울 것입니다. 
+이 문제를 해결하려면 '배경'옵션을 설정하십시오. 어두운 배경 :>
 
 		:set background=dark
 
-<	And for a light background: >
+<그리고 밝은 배경을 위해 :>
 
 		:set background=light
 
-<	Make sure you put this _before_ the ":syntax enable" command,
-	otherwise the colors will already have been set.  You could do
-	":syntax reset" after setting 'background' to make Vim set the default
-	colors again.
+<: syntax enable "명령 이전에 이것을 넣어야 합니다. 
+그렇지 않으면 색상이 이미 설정되어있을 것입니다. 
+Vim이 기본 색상을 다시 설정하게하려면 'background'를 설정 한 후에 ": syntax reset"을 할 수 있습니다.
 
-- The colors are wrong when scrolling bottom to top.
-	Vim doesn't read the whole file to parse the text.  It starts parsing
-	wherever you are viewing the file.  That saves a lot of time, but
-	sometimes the colors are wrong.  A simple fix is hitting CTRL-L.  Or
-	scroll back a bit and then forward again.
-	For a real fix, see |:syn-sync|.  Some syntax files have a way to make
-	it look further back, see the help for the specific syntax file.  For
-	example, |tex.vim| for the TeX syntax.
+- 아래에서 위로 스크롤 할 때 색상이 잘못되었습니다. 
+빔은 텍스트를 파싱하기 위해 전체 파일을 읽지 않습니다. 
+파일을보고있는 곳이면 어디서나 파싱을 시작합니다. 
+시간을 많이 절약 할 수 있지만 때때로 색상이 잘못되었습니다. 
+간단한 수정으로 CTRL-L을 치고있다. 또는 조금 뒤로 스크롤 한 다음 다시 앞으로 이동하십시오. 
+실제 수정 사항은 | : syn-sync |를 참조하십시오. 
+일부 구문 파일에는 구문을 더 자세히 되돌릴 수있는 방법이 있습니다. 
+특정 구문 파일에 대한 도움말을 참조하십시오. 예를 들어, | tex.vim | TeX 문법.
 
 ==============================================================================
-*06.3*	Different colors				*:syn-default-override*
+*06.3*	다른 색상 				*:syn-default-override*
 
-If you don't like the default colors, you can select another color scheme.  In
-the GUI use the Edit/Color Scheme menu.  You can also type the command: >
+기본 색상이 마음에 들지 않으면 다른 색상 구성표를 선택할 수 있습니다. 
+GUI에서는 Edit / Color Scheme 메뉴를 사용하십시오. 
+다음 명령을 입력 할 수도 있습니다 :>
 
 	:colorscheme evening
 
-"evening" is the name of the color scheme.  There are several others you might
-want to try out.  Look in the directory $VIMRUNTIME/colors.
+"저녁"은 색 구성표의 이름입니다. 
+몇 가지 다른 도구를 사용해 볼 수 있습니다. 
+$ VIMRUNTIME / colors 디렉토리를 보십시오.
 
-When you found the color scheme that you like, add the ":colorscheme" command
-to your |init.vim| file.
+원하는 색 구성표를 찾았 으면 ": colorscheme"명령을 init.vim | 파일
 
-You could also write your own color scheme.  This is how you do it:
+나만의 색 구성표를 쓸 수도 있습니다. 
+이것은 당신이 그것을하는 방법입니다 
 
-1. Select a color scheme that comes close.  Copy this file to your own Vim
-   directory.  For Unix, this should work: >
+1. 가까운 색상 구성표를 선택하십시오. 
+이 파일을 자신의 Vim 디렉토리에 복사하십시오. 
+유닉스의 경우, 이것은 작동해야합니다 :>
 
 	!mkdir -p ~/.config/nvim/colors
 	!cp $VIMRUNTIME/colors/morning.vim ~/.config/nvim/colors/mine.vim
 <
    This is done from Vim, because it knows the value of $VIMRUNTIME.
 
-2. Edit the color scheme file.  These entries are useful:
+2.색 구성표 파일을 편집하십시오. 다음 항목이 유용합니다.
 
-	term		attributes in a B&W terminal
-	cterm		attributes in a color terminal
-	ctermfg		foreground color in a color terminal
-	ctermbg		background color in a color terminal
-	gui		attributes in the GUI
-	guifg		foreground color in the GUI
-	guibg		background color in the GUI
+	term		흑백 터미널의 속성
+	cterm		컬러 터미널의 속성
+	ctermfg		컬러 터미널의 전경색
+	ctermbg   컬러 터미널의 배경색
+	gui		GUI의 속성
+	guifg		GUI의 전경색
+	guibg		GUI의 배경색
 
-   For example, to make comments green: >
+   예를 들어, 댓글을 녹색으로 만들려면 :>
 
 	:highlight Comment ctermfg=green guifg=green
 <
-   Attributes you can use for "cterm" and "gui" are "bold" and "underline".
-   If you want both, use "bold,underline".  For details see the |:highlight|
-   command.
+  "cterm"및 "gui"에 사용할 수있는 속성은 "굵게"및 "밑줄"입니다.
+   둘 다 원하면 "굵은 체, 밑줄"을 사용하십시오. 자세한 내용은 | : highlight |
+   명령.
 
-3. Tell Vim to always use your color scheme.  Put this line in your |vimrc|: >
+3. Vim에게 항상 당신의 색체 배합을 사용하라고 말한다. 이 줄을 당신의 | vimrc | :>에 넣으십시오.
 
 	colorscheme mine
 
-If you want to see what the most often used color combinations look like, use
-this command: >
+자주 사용되는 색상 조합이 어떻게 보이는지 보려면 이 명령을 사용하십시오.>
 
 	:runtime syntax/colortest.vim
 
-You will see text in various color combinations.  You can check which ones are
-readable and look nice.
+다양한 색상 조합의 텍스트가 표시됩니다. 
+어느 것이 읽기 쉽고 멋진 지 확인할 수 있습니다.
 
 ==============================================================================
-*06.4*	With colors or without colors
+*06.4*	색상 또는 색상 없음
 
-Displaying text in color takes a lot of effort.  If you find the displaying
-too slow, you might want to disable syntax highlighting for a moment: >
+텍스트를 컬러로 표시하는 것은 많은 노력을 필요로합니다. 표시를 찾으면
+너무 느리면 잠시 구문 강조를 비활성화 할 수 있습니다.>
 
 	:syntax clear
 
-When editing another file (or the same one) the colors will come back.
+다른 파일 (또는 같은 파일)을 편집 할 때 색상이 다시 나타납니다.
 
 							*:syn-off*
 If you want to stop highlighting completely use: >
 
 	:syntax off
 
-This will completely disable syntax highlighting and remove it immediately for
-all buffers.
+이렇게하면 구문 강조를 완전히 비활성화하고 모든 버퍼에 대해 즉시 제거 할 수 있습니다.
 
 							*:syn-manual*
-If you want syntax highlighting only for specific files, use this: >
+특정 파일에만 구문 강조를 사용하려면 다음을 사용하십시오.>
 
 	:syntax manual
 
-This will enable the syntax highlighting, but not switch it on automatically
-when starting to edit a buffer.  To switch highlighting on for the current
-buffer, set the 'syntax' option: >
+이렇게하면 구문 강조 표시가 활성화되지만 버퍼 편집을 시작할 때 자동으로 전환되지 않습니다. 
+현재 버퍼에 대한 강조 표시를 전환하려면 '구문' 옵션을 설정하십시오.>
 
 	:set syntax=ON
 <
 ==============================================================================
-*06.5*	Printing with colors				*syntax-printing*
+*06.5*	색상으로 인쇄 				*syntax-printing*
 
-In the MS-Windows version you can print the current file with this command: >
+MS-Windows 버전에서는 다음 명령을 사용하여 현재 파일을 인쇄 할 수 있습니다.>
 
 	:hardcopy
 
-You will get the usual printer dialog, where you can select the printer and a
-few settings.  If you have a color printer, the paper output should look the
-same as what you see inside Vim.  But when you use a dark background the
-colors will be adjusted to look good on white paper.
+프린터와 대화 상자를 선택할 수있는 일반적인 프린터 대화 상자가 나타납니다.
+몇 가지 설정. 컬러 프린터를 가지고 있다면, 용지 출력물은 Vim 내부의 것과 똑같아 보여야 합니다. 
+그러나 어두운 배경을 사용하면 색이 흰 종이에 잘 보이도록 조정됩니다.
 
-There are several options that change the way Vim prints:
+Vim의 인쇄 방식을 변경하는 몇 가지 옵션이 있습니다.
 	'printdevice'
 	'printheader'
 	'printfont'
 	'printoptions'
 
-To print only a range of lines,  use Visual mode to select the lines and then
-type the command: >
+일련의 선만 인쇄하려면 비주얼 모드를 사용하여 선을 선택한 다음
+명령을 입력하십시오.>
 
 	v100j:hardcopy
 
-"v" starts Visual mode.  "100j" moves a hundred lines down, they will be
-highlighted.  Then ":hardcopy" will print those lines.  You can use other
-commands to move in Visual mode, of course.
+"v"는 비주얼 모드를 시작합니다. "100j"가 100 줄 아래로 이동하면
+강조 표시됩니다. 그러면 ": hardcopy"가 해당 행을 인쇄합니다. 너는 다른 것을 사용할 수있다.
+물론 비주얼 모드로 이동할 수 있습니다.
 
-This also works on Unix, if you have a PostScript printer.  Otherwise, you
-will have to do a bit more work.  You need to convert the text to HTML first,
-and then print it from a web browser.
+PostScript 프린터가 있으면 Unix에서도 작동합니다. 그렇지 않으면, 당신은
+좀 더 많은 작업을해야 할 것입니다. 텍스트를 HTML로 먼저 변환해야합니다.
+웹 브라우저에서 인쇄하십시오.
 
-Convert the current file to HTML with this command: >
+다음 명령을 사용하여 현재 파일을 HTML로 변환하십시오.>
 
 	:TOhtml
 
-In case that doesn't work: >
+
+작동하지 않는 경우 :>
 
 	:source $VIMRUNTIME/syntax/2html.vim
 
-You will see it crunching away, this can take quite a while for a large file.
-Some time later another window shows the HTML code.  Now write this somewhere
-(doesn't matter where, you throw it away later):
+이 파일은 큰 파일에 대해서는 꽤 오래 걸릴 수 있습니다.
+잠시 후 다른 창에 HTML 코드가 표시됩니다. 지금 어딘가에 써라.
+(당신이 나중에 버리는 곳은 중요하지 않습니다.)
 >
 	:write main.c.html
 
-Open this file in your favorite browser and print it from there.  If all goes
-well, the output should look exactly as it does in Vim.  See |2html.vim| for
-details.  Don't forget to delete the HTML file when you are done with it.
+이 파일을 즐겨 찾는 브라우저에서 열고 거기에서 인쇄하십시오. 모두가 가면
+출력은 Vim에서와 똑같이 보입니다. | 2html.vim | ...에 대한
+세부. HTML 파일을 다 마쳤 으면 HTML 파일을 삭제하는 것을 잊지 마십시오.
 
-Instead of printing, you could also put the HTML file on a web server, and let
-others look at the colored text.
-
-==============================================================================
-*06.6*	Further reading
-
-|usr_44.txt|  Your own syntax highlighted.
-|syntax|      All the details.
+인쇄하는 대신 HTML 파일을 웹 서버에 넣고 다른 사람들이 채색 된 텍스트를 볼 수도 있습니다.
 
 ==============================================================================
+*06.6*	추가 읽기
 
-Next chapter: |usr_07.txt|  Editing more than one file
+|usr_44.txt|  고유 한 구문이 강조 표시되었습니다.
+|syntax|     모든 세부 사항.
 
-Copyright: see |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:
+==============================================================================
+
+다음 장 : |usr_07.txt|  둘 이상의 파일 편집
+
+저작권 : |manual-copyright|을 참조하십시오.  vim:tw=78:ts=8:ft=help:norl:

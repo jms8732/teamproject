@@ -1,40 +1,38 @@
 *usr_04.txt*	Nvim
 
-		     VIM USER MANUAL - by Bram Moolenaar
+		     VIM 사용 설명서 - Bram Moolenaar 저
 
-			     Making small changes
+			     작은 변화 만들기
 
+이 장에서는 여러 가지 수정 방법과 텍스트 이동 방법을 보여줍니다. 
+텍스트를 변경하는 세 가지 기본 방법 인 조작자 동작, 비주얼 모드 및 텍스트 객체를 가르쳐줍니다.
 
-This chapter shows you several ways of making corrections and moving text
-around.  It teaches you the three basic ways to change text: operator-motion,
-Visual mode and text objects.
-
-|04.1|	Operators and motions
-|04.2|	Changing text
-|04.3|	Repeating a change
+|04.1|	연산자와 동작
+|04.2|	텍스트 변경
+|04.3|	변경 사항 반복하기
 |04.4|	Visual mode
-|04.5|	Moving text
-|04.6|	Copying text
-|04.7|	Using the clipboard
-|04.8|	Text objects
-|04.9|	Replace mode
-|04.10|	Conclusion
+|04.5|	텍스트 이동
+|04.6|	텍스트 복사 
+|04.7|	클립 보드 사용
+|04.8|	텍스트 개체
+|04.9|	모드 교체
+|04.10|	결론
 
-     Next chapter: |usr_05.txt|  Set your settings
- Previous chapter: |usr_03.txt|  Moving around
-Table of contents: |usr_toc.txt|
+    다음 장 : |usr_05.txt|  설정을 지정
+ 이전 장 : |usr_03.txt|  이동하기
+목차 : |usr_toc.txt|
 
 ==============================================================================
-*04.1*	Operators and motions
+*04.1*	연산자와 동작
 
-In chapter 2 you learned the "x" command to delete a single character.  And
-using a count: "4x" deletes four characters.
-   The "dw" command deletes a word.  You may recognize the "w" command as the
-move word command.  In fact, the "d" command may be followed by any motion
-command, and it deletes from the current location to the place where the
-cursor winds up.
-   The "4w" command, for example, moves the cursor over four words.  The d4w
-command deletes four words.
+2 장에서는 "x"명령을 사용하여 하나의 문자를 삭제했습니다. 
+그리고 카운트 사용 : "4x"는 4 개의 문자를 삭제합니다.
+   "dw"명령은 단어를 삭제합니다. 
+   "w"명령을 이동 단어 명령으로 인식 할 수 있습니다. 
+   실제로 "d"명령 다음에는 모든 동작 명령이 있을 수 있으며 
+   현재 위치에서 커서가 감겨있는 위치로 삭제됩니다.
+   예를 들어 "4w"명령은 커서를 네 단어 위로 이동합니다.
+   d4w 명령은 네 단어를 삭제합니다.
 
 	To err is human. To really foul up you need a computer. ~
 			 ------------------>
@@ -42,10 +40,9 @@ command deletes four words.
 
 	To err is human. you need a computer. ~
 
-Vim only deletes up to the position where the motion takes the cursor.  That's
-because Vim knows that you probably don't want to delete the first character
-of a word.  If you use the "e" command to move to the end of a word, Vim
-guesses that you do want to include that last character:
+Vim은 모션이 커서를 사용하는 위치까지만 삭제합니다.
+Vim은 단어의 첫 번째 문자를 삭제하지 않으려 한다는 사실을 알고 있기 때문입니다. 
+"e"명령을 사용하여 단어의 끝으로 이동하면 Vim은 마지막 문자를 포함하려고 한다고 추측합니다.
 
 	To err is human. you need a computer. ~
 			-------->
@@ -53,13 +50,13 @@ guesses that you do want to include that last character:
 
 	To err is human. a computer. ~
 
-Whether the character under the cursor is included depends on the command you
-used to move to that character.  The reference manual calls this "exclusive"
-when the character isn't included and "inclusive" when it is.
+커서 아래의 문자가 포함되는지 여부는 해당 문자로 이동하는 데 사용된 명령에 따라 다릅니다.
+참조 매뉴얼은 문자가 포함되지 않았을 때 이것을 
+"배타적" 이라고 하고 그것이 있을 때 "포괄적" 이라고 부른다.
 
-The "$" command moves to the end of a line.  The "d$" command deletes from the
-cursor to the end of the line.  This is an inclusive motion, thus the last
-character of the line is included in the delete operation:
+"$"명령은 줄 끝으로 이동합니다. 
+"d $"명령은 커서에서 줄 끝까지 삭제합니다. 
+이것은 포괄적인 동작이므로 줄의 마지막 문자가 삭제 작업에 포함됩니다.
 
 	To err is human. a computer. ~
 		       ------------>
@@ -67,16 +64,18 @@ character of the line is included in the delete operation:
 
 	To err is human ~
 
-There is a pattern here: operator-motion.  You first type an operator command.
-For example, "d" is the delete operator.  Then you type a motion command like
-"4l" or "w".  This way you can operate on any text you can move over.
+여기에 패턴이 있습니다 : 연산자 동작. 
+먼저 연산자 명령을 입력하십시오. 예를 들어, "d"는 삭제 연산자입니다. 
+그런 다음 "4l" 또는 "w"와 같은 동작 명령을 입력합니다. 
+이렇게하면 이동할 수 있는 텍스트를 조작 할 수 있습니다.
 
 ==============================================================================
-*04.2*	Changing text
+*04.2*	텍스트 변경
 
-Another operator is "c", change.  It acts just like the "d" operator, except
-it leaves you in Insert mode.  For example, "cw" changes a word.  Or more
-specifically, it deletes a word and then puts you in Insert mode.
+다른 연산자는 "c"입니다. 
+삽입 모드에서 나가는 것을 제외하고는 "d"연산자처럼 작동합니다. 
+예를 들어 "cw"는 단어를 변경합니다. 
+또는 더 구체적으로 말하면 단어를 삭제 한 다음 삽입 모드로 전환합니다.
 
 	To err is human ~
 	   ------->
@@ -84,89 +83,81 @@ specifically, it deletes a word and then puts you in Insert mode.
 
 	To be human ~
 
-This "c2wbe<Esc>" contains these bits:
+이 "c2wbe <Esc>"는 다음 비트를 포함합니다.
 
-	c	the change operator
-	2w	move two words (they are deleted and Insert mode started)
-	be	insert this text
-	<Esc>	back to Normal mode
+	c	변경 연산자
+	2w	두 단어 이동 (삭제되고 삽입 모드가 시작됨)
+	be	이 텍스트 삽입
+	<Esc>	정상 모드로 돌아 가기
 
-If you have paid attention, you will have noticed something strange: The space
-before "human" isn't deleted.  There is a saying that for every problem there
-is an answer that is simple, clear, and wrong.  That is the case with the
-example used here for the "cw" command.  The c operator works just like the
-d operator, with one exception: "cw".  It actually works like "ce", change to
-end of word.  Thus the space after the word isn't included.  This is an
-exception that dates back to the old Vi.  Since many people are used to it
-now, the inconsistency has remained in Vim.
+주의를 기울였다면 이상한 것을 발견하게 될 것입니다. 
+"human" 이전의 공간은 삭제되지 않습니다. 
+모든 문제에 대해 간단하고 명확하며 잘못된 대답이 있다는 말이 있습니다.
+  이 예제에서 "cw" 명령에 사용 된 예제가 있습니다. 
+  c 연산자는 "cw" 예외를 제외하고는 d 연산자와 똑같이 작동합니다. 
+  그것은 실제로 "ce"처럼 작동하며, 단어의 끝으로 바뀝니다. 
+  따라서 단어 뒤의 공간은 포함되지 않습니다. 
+  이것은 오래된 Vi로 거슬러 올라간 예외입니다. 
+  많은 사람들이 지금 익숙해져 있기 때문에, 모순이 Vim에 남아 있습니다.
 
+더 많은 변화
 
-MORE CHANGES
+"dd"는 전체 행을 삭제하고 "cc"는 전체 행을 변경합니다. 
+그것은 기존 들여 쓰기(선행 공백)를 유지합니다.
 
-Like "dd" deletes a whole line, "cc" changes a whole line.  It keeps the
-existing indent (leading white space) though.
+"d $"가 줄 끝까지 삭제하는 것처럼 "c $"는 줄 끝까지 변경됩니다. 
+텍스트를 지우려면 "d $"를, 삽입 모드를 시작하고 새 텍스트를 추가하려면 "a"를 하는 것과 같습니다.
 
-Just like "d$" deletes until the end of the line, "c$" changes until the end
-of the line.  It's like doing "d$" to delete the text and then "a" to start
-Insert mode and append new text.
+바로 가기
 
+일부 연산자 - 동작 명령은 너무 자주 사용되어 한 문자 명령을 받았습니다.
 
-SHORTCUTS
+	x  dl (커서 아래의 문자 삭제)를 의미합니다.
+	X  dh (커서 왼쪽에 문자 삭제)를 의미합니다.
+	D  d $ (줄 끝까지 삭제)를 의미합니다.
+	C  c $(줄 끝으로 변경)를 의미합니다.
+	s  cl (하나의 문자 변경)를 의미합니다.
+	S  cc(전체 줄 바꾸기)를 의미합니다.
 
-Some operator-motion commands are used so often that they have been given a
-single letter command:
+계산할 위치
 
-	x  stands for  dl  (delete character under the cursor)
-	X  stands for  dh  (delete character left of the cursor)
-	D  stands for  d$  (delete to end of the line)
-	C  stands for  c$  (change to end of the line)
-	s  stands for  cl  (change one character)
-	S  stands for  cc  (change a whole line)
+"3dw"및 "d3w"명령은 세 단어를 삭제합니다. 
+정말 까다롭다면 첫 번째 명령 인 "3dw"는 한 단어를 세 번 삭제합니다. 
+명령 "d3w"는 세 단어를 한 번 삭제합니다. 이것은 차이가 없습니다. 
+그러나 실제로 두 번 계산할 수 있습니다. 
+예를 들어, "3d2w"는 총 6 단어에 대해 세 번 반복 된 두 단어를 삭제합니다.
 
+한 문자로 바꾸기
 
-WHERE TO PUT THE COUNT
-
-The commands "3dw" and "d3w" delete three words.  If you want to get really
-picky about things, the first command, "3dw", deletes one word three times;
-the command "d3w" deletes three words once.  This is a difference without a
-distinction.  You can actually put in two counts, however.  For example,
-"3d2w" deletes two words, repeated three times, for a total of six words.
-
-
-REPLACING WITH ONE CHARACTER
-
-The "r" command is not an operator.  It waits for you to type a character, and
-will replace the character under the cursor with it.  You could do the same
-with "cl" or with the "s" command, but with "r" you don't have to press <Esc>
+"r"명령은 운영자가 아닙니다. 
+문자를 입력 할 때까지 기다리고 커서 아래에 있는것을 문자로 바꿉니다. 
+"cl"또는 "s"명령을 사용하여 동일하게 수행 할 수 있지만 "r"을 사용한다면 <Esc> 눌러서는 안됩니다.
 
 	there is somerhing grong here ~
 	rT	     rt    rw
 
 	There is something wrong here ~
 
-Using a count with "r" causes that many characters to be replaced with the
-same character.  Example:
+"r"과 함께 count를 사용하면 많은 문자가 동일한 문자로 대체됩니다. 예:
 
 	There is something wrong here ~
 			   5rx
 
 	There is something xxxxx here ~
 
-To replace a character with a line break use "r<Enter>".  This deletes one
-character and inserts a line break.  Using a count here only applies to the
-number of characters deleted: "4r<Enter>" replaces four characters with one
-line break.
+문자를 줄 바꿈 문자로 바꾸려면 "r <Enter>"를 사용하십시오. 
+한 문자를 삭제하고 줄 바꿈을 삽입합니다. 
+여기서 count를 사용하면 삭제 된 문자 수 : "4r <Enter>"는 4자를 한 줄 바꿈으로 바꿉니다.
 
 ==============================================================================
-*04.3*	Repeating a change
+*04.3*	변경 사항 반복하기
 
-The "." command is one of the most simple yet powerful commands in Vim.  It
-repeats the last change.  For instance, suppose you are editing an HTML file
-and want to delete all the <B> tags.  You position the cursor on the first <
-and delete the <B> with the command "df>".  You then go to the < of the next
-</B> and kill it using the "." command.  The "." command executes the last
-change command (in this case, "df>").  To delete another tag, position the
-cursor on the < and use the "." command.
+"." 명령은 Vim에서 가장 간단하면서도 강력한 명령 중 하나입니다.
+마지막 변경 사항을 반복합니다. 
+예를 들어, HTML 파일을 편집 중이며 모든 <B> 태그를 삭제하려고 한다고 가정합니다. 
+첫 번째 <에 커서를 놓고 "df>"명령으로 <B>를 삭제합니다. 
+그런 다음 <of / 다음> </ B>로 이동하여 "." 명령. "." 명령은 마지막 변경 명령을 실행합니다(이 경우 "df>"). 
+다른 태그를 삭제하려면 커서를 <에 놓고 "." 명령을 사용해야 합니다.
 
 			      To <B>generate</B> a table of <B>contents ~
 	f<   find first <     --->
@@ -176,12 +167,11 @@ cursor on the < and use the "." command.
 	f<   find next <		       ------------->
 	.    repeat df>					    -->
 
-The "." command works for all changes you make, except for the "u" (undo),
-CTRL-R (redo) and commands that start with a colon (:).
+"." 명령은 "u"(실행 취소), CTRL-R (재실행) 및 콜론 (:)으로 시작하는 명령을 제외한 모든 변경 사항에 적용됩니다.
 
-Another example: You want to change the word "four" to "five".  It appears
-several times in your text.  You can do this quickly with this sequence of
-commands:
+다른 예 : 단어 "4"를 "5"로 변경하려고합니다. 
+그것은 귀하의 텍스트에 여러 번 나타납니다.
+다음 명령을 사용하여이 작업을 빠르게 수행 할 수 있습니다.
 
 	/four<Enter>	find the first string "four"
 	cwfive<Esc>	change the word to "five"
@@ -194,14 +184,15 @@ commands:
 ==============================================================================
 *04.4*	Visual mode
 
-To delete simple items the operator-motion changes work quite well.  But often
-it's not so easy to decide which command will move over the text you want to
-change.  Then you can use Visual mode.
+간단한 항목을 삭제 하기 위한 연산자 - 동작 변경은 아주 잘 작동합니다. 
+그러나 변경하려는 텍스트를 어떤 명령으로 옮길 지 결정하는 것은 쉽지 않습니다. 
+그런 다음 Visual mode를 사용할 수 있습니다.
 
-You start Visual mode by pressing "v".  You move the cursor over the text you
-want to work on.  While you do this, the text is highlighted.  Finally type
-the operator command.
-   For example, to delete from the middle of a word to the middle of another:
+"v"를 눌러 Visual mode를 시작하십시오.
+커서를 작업하려는 텍스트 위로 이동하십시오. 
+이렇게하는 동안 텍스트가 강조 표시됩니다. 
+마지막으로 operator 명령을 입력하십시오.
+  예를 들어 한 단어 중간에서 다른 한 가운데로 삭제하려면 다음과 같이하십시오.
 
 		This is an examination sample of visual mode ~
 			       ---------->
@@ -209,21 +200,19 @@ the operator command.
 
 		This is an example of visual mode ~
 
-When doing this you don't really have to count how many times you have to
-press "l" to end up in the right position.  You can immediately see what text
-will be deleted when you press "d".
+이렇게하면 올바른 위치에 도달하기 위해 "l"을 눌러야하는 횟수를 실제로 세지 않아도 됩니다. 
+"d"를 누를 때 삭제 될 텍스트를 즉시 볼 수 있습니다.
 
-If at any time you decide you don't want to do anything with the highlighted
-text, just press <Esc> and Visual mode will stop without doing anything.
+강조 표시된 텍스트를 사용하고 싶지 않은 경우 
+언제든지 <Esc> 키를 누르면 아무 것도 하지 않고 visual mode가 중지됩니다.
 
+lines 선택
 
-SELECTING LINES
-
-If you want to work on whole lines, use "V" to start Visual mode.  You will
-see right away that the whole line is highlighted, without moving around.
-When you move left or right nothing changes.  When you move up or down the
-selection is extended whole lines at a time.
-   For example, select three lines with "Vjj":
+전체 라인을 작업하려면 "V"를 사용하여 비주얼 모드를 시작하십시오. 
+주위를 돌아 다니지 않고 전체 라인이 강조 표시됩니다. 
+당신이 왼쪽이나 오른쪽으로 움직일 때 아무것도 바뀌지 않습니다. 
+위 또는 아래로 움직이면 한 번에 전체 라인이 확장됩니다.
+  예를 들어 "Vjj"로 세 줄을 선택하십시오.
 
 			  +------------------------+
 			  | text more text	   |
@@ -234,56 +223,52 @@ selection is extended whole lines at a time.
 			  +------------------------+
 
 
-SELECTING BLOCKS
+BLOCKS 선택
 
-If you want to work on a rectangular block of characters, use CTRL-V to start
-Visual mode.  This is very useful when working on tables.
+직사각형 블록으로 작업하려면 CTRL-V를 사용하여 visual mode를 시작하십시오. 
+이것은 테이블에서 작업 할 때 매우 유용합니다.
 
 		name		Q1	Q2	Q3
 		pierre		123	455	234
 		john		0	90	39
 		steve		392	63	334
 
-To delete the middle "Q2" column, move the cursor to the "Q" of "Q2".  Press
-CTRL-V to start blockwise Visual mode.  Now move the cursor three lines down
-with "3j" and to the next word with "w".  You can see the first character of
-the last column is included.  To exclude it, use "h".  Now press "d" and the
-middle column is gone.
+중간의 "Q2"열을 삭제하려면 "Q2"의 "Q"로 커서를 이동하십시오. 
+blockwise Visual mode를 시작하려면 CTRL-V를 누릅니다. 
+이제 커서를 "3j"로 세 줄 아래로 이동하고 "w"로 다음 단어로 이동하십시오. 
+마지막 열의 첫 번째 문자가 포함 된 것을 볼 수 있습니다. 
+제외하려면 "h"를 사용하십시오. 
+이제 "d"를 누르면 중간 열이 사라집니다.
 
+다른면으로 가기
 
-GOING TO THE OTHER SIDE
+visual mode에서 일부 텍스트를 선택하고 선택 항목의 다른 쪽 끝을 변경해야 한다는 것을 알게 되면 "o"명령을 사용하십시오(다른 쪽 끝에 힌트 : o). 
+커서가 다른 쪽 끝으로 이동하고 커서를 이동하여 선택이 시작되는 위치를 변경할 수 있습니다. 
+"o"를 다시 누르면 다른 쪽 끝으로 돌아갑니다.
 
-If you have selected some text in Visual mode, and discover that you need to
-change the other end of the selection, use the "o" command (Hint: o for other
-end).  The cursor will go to the other end, and you can move the cursor to
-change where the selection starts.  Pressing "o" again brings you back to the
-other end.
+블록 단위 선택을 사용하면 네 모퉁이가 됩니다. 
+"o"는 대각선으로 다른 모퉁이 중 하나로 이동합니다. 
+"O"를 사용하여 같은 선의 다른 모서리로 이동하십시오.
 
-When using blockwise selection, you have four corners.  "o" only takes you to
-one of the other corners, diagonally.  Use "O" to move to the other corner in
-the same line.
-
-Note that "o" and "O" in Visual mode work very differently from Normal mode,
-where they open a new line below or above the cursor.
+비주얼 모드의 "o"와 "O"는 일반 모드와 매우 다르게 작동하며, 
+커서 아래 또는 위의 새로운 행을 엽니다.
 
 ==============================================================================
-*04.5*	Moving text
+*04.5*	텍스트 이동
 
-When you delete something with the "d", "x", or another command, the text is
-saved.  You can paste it back by using the p command.  (The Vim name for
-this is put).
-   Take a look at how this works.  First you will delete an entire line, by
-putting the cursor on the line you want to delete and typing "dd".  Now you
-move the cursor to where you want to put the line and use the "p" (put)
-command.  The line is inserted on the line below the cursor.
+"d", "x"또는 다른 명령으로 항목을 삭제하면 텍스트가 저장됩니다. 
+p 명령을 사용하여 다시 붙여 넣을 수 있습니다. (이것에 대한 Vim 이름을 넣는다).
+   이것이 어떻게 작동하는지 살펴보십시오. 
+   먼저 삭제하려는 행에 커서를 놓고 "dd"를 입력하여 전체 행을 삭제합니다. 
+   이제 커서를 놓을 위치로 커서를 이동하고 "p"(넣기) 명령을 사용합니다. 
+   행은 커서 아래 행에 삽입됩니다.
 
 	a line		a line	      a line
 	line 2	  dd	line 3	  p   line 3
 	line 3			      line 2
 
-Because you deleted an entire line, the "p" command placed the text line below
-the cursor.  If you delete part of a line (a word, for instance), the "p"
-command puts it just after the cursor.
+전체 행을 삭제했기 때문에 "p"명령은 텍스트 행을 커서 아래에 놓았습니다. 
+한 줄 (단어 등)의 일부를 지우면 "p"명령은 커서 바로 뒤에 놓습니다.
 
 	Some more boring try text to out commands. ~
 			 ---->
@@ -296,44 +281,45 @@ command puts it just after the cursor.
 	Some more boring text to try out commands. ~
 
 
-MORE ON PUTTING
+PUTTING에 대한 추가 정보
 
-The "P" command puts text like "p", but before the cursor.  When you deleted a
-whole line with "dd", "P" will put it back above the cursor.  When you deleted
-a word with "dw", "P" will put it back just before the cursor.
+"P"명령은 텍스트를 "p"와 같지만 커서 앞에 붙입니다. 
+"dd"로 전체 행을 지우면 "P"가 커서 위로 되돌릴 것입니다. 
+"dw"를 사용하여 단어를 삭제하면 "P"가 커서 바로 앞에 붙여 넣습니다.
 
-You can repeat putting as many times as you like.  The same text will be used.
+원하는만큼 여러 번 putting을 반복 할 수 있습니다. 
+같은 텍스트가 사용됩니다.
 
-You can use a count with "p" and "P".  The text will be repeated as many times
-as specified with the count.  Thus "dd" and then "3p" puts three copies of the
-same deleted line.
+"p"및 "P"와 함께 카운트를 사용할 수 있습니다. 
+텍스트는 개수로 지정된 횟수만큼 반복됩니다. 
+따라서 "dd"와 "3p"는 동일한 삭제 된 행의 세 사본을 넣습니다.
 
+두 문자 닦기
 
-SWAPPING TWO CHARACTERS
-
-Frequently when you are typing, your fingers get ahead of your brain (or the
-other way around?).  The result is a typo such as "teh" for "the".  Vim
-makes it easy to correct such problems.  Just put the cursor on the e of "teh"
-and execute the command "xp".  This works as follows: "x" deletes the
-character e and places it in a register.  "p" puts the text after the cursor,
-which is after the h.
+자주 입력 할 때 손가락이 뇌보다 먼저 (또는 다른 방향으로) 들립니다. 
+결과는 "the"에 대한 "teh"와 같은 오타입니다. Vim은 이러한 문제를 쉽게 해결할 수 있게 해줍니다. 
+"teh"에 커서를 놓고 "xp"명령을 실행하십시오. 
+이것은 다음과 같이 작동합니다 : "x"는 문자 e를 삭제하고 그것을 레지스터에 저장합니다. 
+"p"는 커서 뒤의 텍스트를 h 다음에 넣습니다.
 
 	teh     th     the ~
 	 x       p
 
 ==============================================================================
-*04.6*	Copying text
+*04.6*	텍스트 복사
 
-To copy text from one place to another, you could delete it, use "u" to undo
-the deletion and then "p" to put it somewhere else.  There is an easier way:
-yanking.  The "y" operator copies text into a register.  Then a "p" command
-can be used to put it.
-   Yanking is just a Vim name for copying.  The "c" letter was already used
-for the change operator, and "y" was still available.  Calling this
-operator "yank" made it easier to remember to use the "y" key.
+텍스트를 한 위치에서 다른 위치로 복사하려면 삭제할 수 있습니다. 
+삭제하려면 "u"를 사용하고 다른 위치에 넣으려면 "p"를 사용하십시오. 
+더 쉬운 방법이 있습니다. "y"연산자는 텍스트를 레지스터에 복사합니다. 
+그런 다음 "p"명령을 사용하여 넣을 수 있습니다.
+   Yanking은 복사를 위한 Vim 이름입니다. 
+   "c"문자는 이미 변경 연산자에 사용되었고 "y"는 여전히 사용 가능했습니다. 
+   이 연산자를 "yank"라고 부르면 "y"키를 사용하는 것이 더 쉬워졌습니다.
 
-Since "y" is an operator, you use "yw" to yank a word.  A count is possible as
-usual.  To yank two words use "y2w".  Example:
+"y"는 연산자이므로 "yw"를 사용하여 단어를 추출합니다. 
+평소처럼 count가 가능합니다. 
+두 단어를 뽑으려면 "y2w"를 사용하십시오.
+예:
 
 	let sqr = LongVariable * ~
 		 -------------->
@@ -344,13 +330,13 @@ usual.  To yank two words use "y2w".  Example:
 
 	let sqr = LongVariable * LongVariable ~
 
-Notice that "yw" includes the white space after a word.  If you don't want
-this, use "ye".
+"yw"에는 단어 뒤에 공백이 포함됩니다. 
+이것을 원하지 않으면 "ye"를 사용하십시오.
 
-The "yy" command yanks a whole line, just like "dd" deletes a whole line.
-Unexpectedly, while "D" deletes from the cursor to the end of the line, "Y"
-works like "yy", it yanks the whole line.  Watch out for this inconsistency!
-Use "y$" to yank to the end of the line.
+"yy"명령은 "dd"처럼 전체 행을 삭제합니다. 
+예기치 않게 "D"가 커서에서 줄 끝까지 삭제하는 동안 "Y"는 "yy"처럼 작동합니다. 
+전체 줄을 잡아 당깁니다.
+이 불일치에 조심하십시오! "y $"를 사용하여 줄의 끝을 잡아당깁니다.
 
 	a text line   yy	a text line	       a text line
 	line 2			line 2		p      line 2
@@ -358,157 +344,149 @@ Use "y$" to yank to the end of the line.
 						       last line
 
 ==============================================================================
-*04.7*	Using the clipboard
+*04.7*	클립 보드 사용
 
-If you are using the GUI version of Vim (gvim), you can find the "Copy" item
-in the "Edit" menu.  First select some text with Visual mode, then use the
-Edit/Copy menu.  The selected text is now copied to the clipboard.  You can
-paste the text in other programs.  In Vim itself too.
+GUI 버전의 Vim (gvim)을 사용하는 경우 "편집" 메뉴에서 "복사" 항목을 찾을 수 있습니다. 
+먼저 visual mode로 텍스트를 선택한 다음 편집 / 복사 메뉴를 사용하십시오. 
+선택한 텍스트가 이제 클립 보드에 복사됩니다. 
+텍스트를 다른 프로그램에 붙여 넣을 수 있습니다. Vim 자체에서도 마찬가지입니다.
 
-If you have copied text to the clipboard in another application, you can paste
-it in Vim with the Edit/Paste menu.  This works in Normal mode and Insert
-mode.  In Visual mode the selected text is replaced with the pasted text.
+다른 응용 프로그램의 클립 보드에 텍스트를 복사 한 경우 
+편집 / 붙여 넣기 메뉴를 사용하여 텍스트를 Vim에 붙여 넣을 수 있습니다. 
+이것은 일반 모드와 삽입 모드에서 작동합니다. 
+비주얼 모드에서 선택한 텍스트는 붙여 넣은 텍스트로 바뀝니다.
 
-The "Cut" menu item deletes the text before it's put on the clipboard.  The
-"Copy", "Cut" and "Paste" items are also available in the popup menu (only
-when there is a popup menu, of course).  If your Vim has a toolbar, you can
-also find these items there.
+"잘라 내기" 메뉴 항목은 클립 보드에 놓이기 전에 텍스트를 삭제합니다. 
+"복사", "잘라 내기" 및 "붙여 넣기" 항목은 팝업 메뉴에서도 사용할 수 있습니다 (물론 팝업 메뉴가 있는 경우에만 가능). 
+Vim에 툴바가 있다면, 거기에 있는 아이템을 찾을 수도 있습니다.
 
-If you are not using the GUI, or if you don't like using a menu, you have to
-use another way.  You use the normal "y" (yank) and "p" (put) commands, but
-prepend "* (double-quote star) before it.  To copy a line to the clipboard: >
+GUI를 사용하지 않거나 메뉴를 사용하지 않으려면 다른 방법을 사용해야 합니다. 
+일반적인 "y"(yank) 및 "p"(put) 명령을 사용하지만 그 앞에 "* (큰 따옴표)를 붙입니다. 
+한 줄을 클립 보드에 복사하려면 다음과 같이하십시오. >
 
 	"*yy
 
-To put text from the clipboard back into the text: >
+클립 보드에서 텍스트를 다시 텍스트로 넣으려면 :>
 
 	"*p
 
-This only works on versions of Vim that include clipboard support.  More about
-the clipboard in section |09.3| and here: |clipboard|.
+이 기능은 클립 보드를 지원하는 Vim 버전에서만 작동합니다. 
+클립 보드 | 09.3 | 그리고 여기 : | 클립 보드 |.
 
 ==============================================================================
-*04.8*	Text objects
+*04.8*	텍스트 개체
 
-If the cursor is in the middle of a word and you want to delete that word, you
-need to move back to its start before you can do "dw".  There is a simpler way
-to do this: "daw".
+커서가 단어 중간에 있고 해당 단어를 삭제하려면 "dw"를 수행하기 전에 처음으로 돌아가야합니다. 
+이렇게 하는 더 쉬운 방법이 있습니다 : "daw".
 
 	this is some example text. ~
 		       daw
 
 	this is some text. ~
 
-The "d" of "daw" is the delete operator.  "aw" is a text object.  Hint: "aw"
-stands for "A Word".  Thus "daw" is "Delete A Word".  To be precise, the white
-space after the word is also deleted (the white space before the word at the
-end of the line).
+"daw"의 "d"는 삭제 연산자입니다.
+"aw"는 텍스트 객체입니다. 힌트 : "aw"는 "A Word"를 의미합니다. 
+따라서 "daw"는 "Delete a Word"입니다. 
+정확히 말하면, 단어 뒤의 공백도 삭제됩니다 (줄 끝의 단어 앞의 공백).
 
-Using text objects is the third way to make changes in Vim.  We already had
-operator-motion and Visual mode.  Now we add operator-text object.
-   It is very similar to operator-motion, but instead of operating on the text
-between the cursor position before and after a movement command, the text
-object is used as a whole.  It doesn't matter where in the object the cursor
-was.
+Vim을 수정하는 세 번째 방법은 텍스트 객체를 사용하는 것입니다. 
+이미 operator 모션 및 visual mode가 있습니다.
+이제 operator 텍스트 객체를 추가합니다. 
+이는 operator 동작과 매우 유사하지만, 이동 명령 전후의 커서 위치 사이에서 텍스트를 조작하는 대신 
+텍스트 객체가 전체적으로 사용됩니다. 
+커서가있는 객체의 위치는 중요하지 않습니다.
 
-To change a whole sentence use "cis".  Take this text:
+전체 문장을 변경하려면 "cis"를 사용하십시오. 이 텍스트를 이용하십시오.
 
 	Hello there.  This ~
 	is an example.  Just ~
 	some text. ~
 
-Move to the start of the second line, on "is an".  Now use "cis":
+"is an"에서 두 번째 줄의 시작 부분으로 이동하십시오. 이제 "cis"를 사용하십시오 :
 
 	Hello there.    Just ~
 	some text. ~
 
-The cursor is in between the blanks in the first line.  Now you type the new
-sentence "Another line.":
+커서는 첫 x 째 행의 공 i 사이에 있습니다. 
+이제 "다른 줄"이라는 새 문장을 입력합니다.
 
 	Hello there.  Another line.  Just ~
 	some text. ~
 
-"cis" consists of the "c" (change) operator and the "is" text object.  This
-stands for "Inner Sentence".  There is also the "as" (a sentence) object.  The
-difference is that "as" includes the white space after the sentence and "is"
-doesn't.  If you would delete a sentence, you want to delete the white space
-at the same time, thus use "das".  If you want to type new text the white
-space can remain, thus you use "cis".
+"cis"는 "c"(변경) 연산자와 "is"텍스트 객체로 구성됩니다. 
+이것은 "Inner Sentence"의 약자입니다. 
+또한 "as"(문장) 객체가 있습니다. 
+차이점은 "as"는 문장 다음의 공백을 포함하고 "is"는 포함하지 않는다는 것입니다. 
+문장을 지우려면 동시에 공백을 삭제하고 싶으므로 "das"를 사용하십시오. 
+새 텍스트를 입력하려면 공백이 남을 수 있으므로 "cis"를 사용하십시오.
 
-You can also use text objects in Visual mode.  It will include the text object
-in the Visual selection.  Visual mode continues, thus you can do this several
-times.  For example, start Visual mode with "v" and select a sentence with
-"as".  Now you can repeat "as" to include more sentences.  Finally you use an
-operator to do something with the selected sentences.
+visual mode에서 텍스트 개체를 사용할 수도 있습니다. 
+시각적 선택 영역에 텍스트 객체가 포함됩니다. 
+visual mode가 계속되므로 이 작업을 여러 번 할 수 있습니다. 
+예를 들어, "v"로 비주얼 모드를 시작하고 "as"로 문장을 선택하십시오. 
+이제 "as"을 반복하여 더 많은 문장을 포함 할 수 있습니다. 
+마지막으로 연산자를 사용하여 선택한 문장으로 작업을 수행합니다.
 
-You can find a long list of text objects here: |text-objects|.
+다음과 같이 긴 텍스트 목록을 찾을 수 있습니다 : | text-objects |
 
 ==============================================================================
-*04.9*	Replace mode
+*04.9*	모드 교체
 
-The "R" command causes Vim to enter replace mode.  In this mode, each
-character you type replaces the one under the cursor.  This continues until
-you type <Esc>.
-   In this example you start Replace mode on the first "t" of "text":
+
+"R"명령은 Vim이 대체 모드로 들어가게 합니다. 
+이 모드에서는 입력하는 각 문자가 커서 아래의 문자로 바뀝니다. 
+이 작업은 <Esc>를 입력 할때까지 계속됩니다. 
+이 예제에서는 "text"의 첫 번째 "t"에서 바꾸기 모드를 시작합니다.
 
 	This is text. ~
 		Rinteresting.<Esc>
 
 	This is interesting. ~
 
-You may have noticed that this command replaced 5 characters in the line with
-twelve others.  The "R" command automatically extends the line if it runs out
-of characters to replace.  It will not continue on the next line.
+이 명령으로 줄의 5자를 12자로 대체 한 것을 알 수 있습니다. 
+"R"명령은 줄 바꿈 문자가 부족할 경우 줄을 자동으로 확장합니다. 
+다음 줄에서는 계속되지 않습니다.
+Insert 모드와 Replace 모드를 <Insert> 키로 전환 할 수 있습니다.
 
-You can switch between Insert mode and Replace mode with the <Insert> key.
-
-When you use <BS> (backspace) to make correction, you will notice that the
-old text is put back.  Thus it works like an undo command for the last typed
-character.
+<BS> (백 스페이스)를 사용하여 수정하면 오래된 텍스트가 되돌아 오게 됩니다. 
+따라서 마지막 입력 된 문자에 대해 실행 취소 명령처럼 작동합니다.
 
 ==============================================================================
-*04.10*	Conclusion
+*04.10*	결론
 
-The operators, movement commands and text objects give you the possibility to
-make lots of combinations.  Now that you know how it works, you can use N
-operators with M movement commands to make N * M commands!
+연산자, 이동 명령 및 텍스트 개체를 사용하면 많은 조합을 만들 수 있습니다. 
+이제는 어떻게 작동하는지 알았으므로 
+M 개의 이동 명령으로 N 개의 연산자를 사용하여 N * M 명령을 만들 수 있습니다!
 
-You can find a list of operators here: |operator|
+여기에서 연산자 목록을 찾을 수 있습니다 : | operator |
 
-For example, there are many other ways to delete pieces of text.  Here are a
-few often used ones:
+예를 들어 텍스트를 삭제하는 다른 많은 방법이 있습니다. 
+다음은 자주 사용되는 몇 가지 예입니다.
 
-x	delete character under the cursor (short for "dl")
-X	delete character before the cursor (short for "dh")
-D	delete from cursor to end of line (short for "d$")
-dw	delete from cursor to next start of word
-db	delete from cursor to previous start of word
-diw	delete word under the cursor (excluding white space)
-daw	delete word under the cursor (including white space)
-dG	delete until the end of the file
-dgg	delete until the start of the file
+x	커서 아래의 문자 삭제 ( "dl"의 약자)
+X	커서 앞에있는 문자 삭제 ( "dh"의 약자)
+D	커서에서 줄 끝까지 삭제 ( "d $"의 약자)
+dw	커서에서 다음 단어 시작으로 삭제
+db	단어의 이전 시작으로 커서에서 삭제
+diw	커서 아래의 단어 삭제 (공백 제외)
+daw	커서 아래의 단어 삭제 (공백 포함)
+dG	파일의 끝까지 삭제
+dgg	파일 시작까지 삭제
 
-If you use "c" instead of "d" they become change commands.  And with "y" you
-yank the text.  And so forth.
+"d" 대신 "c"를 사용하면 변경 명령이됩니다. 
+그리고 "y"를 사용하면 텍스트를 잡아 당깁니다. 기타 등등.
 
+다른 곳에서는 맞지 않는 변경 사항을 만들기 위해 자주 사용되는 명령이 몇 가지 있습니다.
 
-There are a few often used commands to make changes that didn't fit somewhere
-else:
+	~ 커서 아래의 문자의 대 / 소문자를 바꾸고 커서를 다음 문자로 이동합니다. 
+   이것은 연산자가 아닙니다. ('tildeop'이 설정 됨) 모션 명령과 함께 사용할 수 없습니다. 
+   비주얼 모드에서 작동하고 선택한 모든 텍스트의 대소 문자를 변경합니다.
 
-	~	change case of the character under the cursor, and move the
-		cursor to the next character.  This is not an operator (unless
-		'tildeop' is set), thus you can't use it with a motion
-		command.  It does work in Visual mode and changes case for
-		all the selected text then.
+	I	행에서 첫 번째 공백으로 커서를 이동 한 후 삽입 모드를 시작하십시오.
 
-	I	Start Insert mode after moving the cursor to the first
-		non-blank in the line.
-
-	A	Start Insert mode after moving the cursor to the end of the
-		line.
+	A	커서를 줄 끝으로 옮긴 후 삽입 모드를 시작하십시오.
 
 ==============================================================================
 
-Next chapter: |usr_05.txt|  Set your settings
-
-Copyright: see |manual-copyright|  vim:tw=78:ts=8:ft=help:norl:
+다음 장 : |usr_05.txt|  설정을 지정하십시오
+저작권 :see |manual-copyright|을 참조하십시오.   vim:tw=78:ts=8:ft=help:norl:
